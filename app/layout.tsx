@@ -1,13 +1,13 @@
 import type React from 'react';
 
-const { WEBSITE_TITLE_PREFIX } = process.env;
+const { NEXT_PUBLIC_WEBSITE_TITLE_PREFIX } = process.env;
 
 import './globals.css';
 
 import { Providers } from '@/app/providers';
 
-const titlePrefix = WEBSITE_TITLE_PREFIX?.trim()?.length
-  ? `${WEBSITE_TITLE_PREFIX.trim()} - `
+const titlePrefix = NEXT_PUBLIC_WEBSITE_TITLE_PREFIX?.trim()?.length
+  ? `${NEXT_PUBLIC_WEBSITE_TITLE_PREFIX.trim()} - `
   : '';
 
 export const metadata = {
