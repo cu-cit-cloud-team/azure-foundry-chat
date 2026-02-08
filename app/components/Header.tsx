@@ -41,7 +41,7 @@ export const Header = memo(
             <div className="flex items-center gap-4 flex-1">
               <a
                 className="font-semibold text-sm hover:text-primary transition-colors"
-                href="https://github.com/cu-cit-cloud-team/azure-openai-gpt-chat"
+                href="https://github.com/cu-cit-cloud-team/azure-foundry-chat"
                 target="_blank"
                 rel="noreferrer noopener"
               >
