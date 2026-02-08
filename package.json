@@ -1,5 +1,5 @@
 {
-  "name": "azure-openai-gpt-chat",
+  "name": "azure-foundry-chat",
   "version": "1.0.0-beta.28",
   "description": "Private streaming chat bot experience powered by Azure AI Foundry",
   "private": true,
@@ -20,13 +20,13 @@
   },
   "keywords": [],
   "repository": {
-    "url": "https://github.com/cu-cit-cloud-team/azure-openai-gpt-chat"
+    "url": "https://github.com/cu-cit-cloud-team/azure-foundry-chat"
   },
   "author": {
     "name": "Michael Sprague",
     "email": "ms388@cornell.edu"
   },
-  "homepage": "https://github.com/cu-cit-cloud-team/azure-openai-gpt-chat",
+  "homepage": "https://github.com/cu-cit-cloud-team/azure-foundry-chat",
   "license": "MIT",
   "dependencies": {
     "@ai-sdk/anthropic": "^3.0.38",
@@ -51,7 +51,7 @@
     "@radix-ui/react-use-controllable-state": "^1.2.2",
     "@streamdown/code": "^1.0.1",
     "@xyflow/react": "^12.10.0",
-    "ai": "^6.0.72",
+    "ai": "^6.0.77",
     "ai-elements": "^1.8.4",
     "babel-plugin-react-compiler": "^1.0.0",
     "class-variance-authority": "^0.7.1",
@@ -85,7 +85,7 @@
     "@biomejs/biome": "^2.3.14",
     "@tailwindcss/postcss": "^4.1.18",
     "@tailwindcss/typography": "^0.5.19",
-    "@types/node": "^25.2.1",
+    "@types/node": "^25.2.2",
     "@types/react": "^19.2.13",
     "@types/react-dom": "^19.2.3",
     "autoprefixer": "^10.4.24",
