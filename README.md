@@ -1,6 +1,6 @@
-# azure-openai-gpt-chat
+# azure-foundry-chat
 
-[![Build & Deploy](https://github.com/cu-cit-cloud-team/azure-openai-gpt-chat/actions/workflows/build-and-deploy.yml/badge.svg)](https://github.com/cu-cit-cloud-team/azure-openai-gpt-chat/actions/workflows/build-and-deploy.yml)
+[![Build & Deploy](https://github.com/cu-cit-cloud-team/azure-foundry-chat/actions/workflows/build-and-deploy.yml/badge.svg)](https://github.com/cu-cit-cloud-team/azure-foundry-chat/actions/workflows/build-and-deploy.yml)
 
 Private streaming chat interface powered by Azure AI Foundry with support for GPT-4.1, GPT-5, GPT-5.1, GPT-5.2, o-series, Anthropic (Claude 4.5), and DeepSeek models.
 
@@ -38,8 +38,8 @@ All data stays in your browser: chat history, uploaded files, preferences, and s
 1. **Clone and install**
 
    ```bash
-   git clone https://github.com/cu-cit-cloud-team/azure-openai-gpt-chat.git
-   cd azure-openai-gpt-chat
+   git clone https://github.com/cu-cit-cloud-team/azure-foundry-chat.git
+   cd azure-foundry-chat
    npm install
    ```
 
@@ -98,6 +98,7 @@ Key environment variables:
   - `AZURE_OPENAI_GPT51_CODEX_MAX_DEPLOYMENT`
   - `AZURE_OPENAI_GPT52_DEPLOYMENT`
   - `AZURE_OPENAI_GPT52_CHAT_DEPLOYMENT`
+  - `AZURE_OPENAI_GPT52_CODEX_DEPLOYMENT`
 
 - o-series:
   - `AZURE_OPENAI_O3_DEPLOYMENT`
@@ -120,6 +121,7 @@ Anthropic models are accessed through Azure AI Foundry using the same key and en
 - `AZURE_ANTHROPIC_CLAUDE_HAIKU_45_DEPLOYMENT` – deployment for `claude-haiku-4-5`
 - `AZURE_ANTHROPIC_CLAUDE_OPUS_45_DEPLOYMENT` – deployment for `claude-opus-4-5`
 - `AZURE_ANTHROPIC_CLAUDE_SONNET_45_DEPLOYMENT` – deployment for `claude-sonnet-4-5`
+- `AZURE_ANTHROPIC_CLAUDE_OPUS_46_DEPLOYMENT` – deployment for `claude-opus-4-6`
 
 ### DeepSeek (via Azure)
 
@@ -136,9 +138,9 @@ DeepSeek models support rich reasoning output, and this app uses AI SDK middlewa
 
 The canonical list of supported models and token limits lives in `app/utils/models.ts`. Broadly, the app supports:
 
-- **GPT-4.1 / GPT-5 family**: `gpt-4.1`, `gpt-4.1-mini`, `gpt-4.1-nano`, `gpt-5`, `gpt-5-mini`, `gpt-5-nano`, `gpt-5-chat`, `gpt-5-codex`, `gpt-5.1`, `gpt-5.1-chat`, `gpt-5.1-codex`, `gpt-5.2`, `gpt-5.2-chat`
+- **GPT-4.1 / GPT-5 family**: `gpt-4.1`, `gpt-4.1-mini`, `gpt-4.1-nano`, `gpt-5`, `gpt-5-mini`, `gpt-5-nano`, `gpt-5-chat`, `gpt-5-codex`, `gpt-5.1`, `gpt-5.1-chat`, `gpt-5.1-codex`, `gpt-5.2`, `gpt-5.2-chat`, `gpt-5.2-codex`
 - **o-series**: `o3`, `o3-mini`, `o4-mini`
-- **Anthropic (Claude 4.5)**: `claude-haiku-4-5`, `claude-sonnet-4-5`, `claude-opus-4-5`
+- **Anthropic (Claude 4.5)**: `claude-haiku-4-5`, `claude-sonnet-4-5`, `claude-opus-4-5`, `claude-opus-4-6`
 - **DeepSeek**: `DeepSeek-V3.1`, `DeepSeek-V3.2`, `DeepSeek-R1-0528`
 
 Refer to `app/utils/models.ts` and `.env.local.example` to ensure your deployments and environment variables are configured consistently.
@@ -291,15 +293,12 @@ The project uses:
 - [Tailwind CSS 4](https://tailwindcss.com/) - Utility-first CSS
 - [shadcn/ui](https://ui.shadcn.com/) - Component library built on Radix UI
 - [AI Elements](https://ui.shadcn.com/docs/components/ai-elements) - Chat UI primitives (Conversation, Message, PromptInput)
+  - [Streamdown](https://github.com/vercel-labs/streamdown) - Markdown and code rendering with syntax highlighting
 
 ### State & Data
 
 - [Jotai](https://jotai.org/) - Atomic state management
 - [Dexie](https://dexie.org/) - IndexedDB wrapper for chat persistence
-
-### Markdown & Syntax
-
-- [Streamdown](https://github.com/vercel-labs/streamdown) - Markdown and code rendering with syntax highlighting
 
 ### Backend & Hosting
 
