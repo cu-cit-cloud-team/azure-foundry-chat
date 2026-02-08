@@ -1,3 +1,21 @@
+## 1.0.0-beta.29 (2026-02-08)
+
+* refactor(api/chat): don't force responses api ([afc06e2](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/afc06e2))
+* refactor(env.local.example): add var ([2029159](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/2029159))
+* refactor(Header/UpdateCheck): update repo name and link ([d592565](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/d592565))
+* refactor(layout): add prefix to title ([4eb085d](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/4eb085d))
+* style(layout): update var name ([c402628](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/c402628))
+* style(npm): update name ([0277d9a](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/0277d9a))
+* style(pm2): update name ([4db34ae](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/4db34ae))
+* docs(README): update name; add missing models ([f1829db](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/f1829db))
+* chore(deps-dev): bump eslint from 9.39.2 to 10.0.0 in the eslint group (#2278) ([5148a5f](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/5148a5f)), closes [#2278](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2278)
+* chore(deps): bump the ai group with 2 updates (#2276) ([b91ac5f](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/b91ac5f)), closes [#2276](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2276)
+* chore(deps): bump the ai group with 2 updates (#2280) ([6ed2d5e](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/6ed2d5e)), closes [#2280](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2280)
+* chore(deps): bump the ai group with 5 updates (#2277) ([738b0e6](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/738b0e6)), closes [#2277](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2277)
+* chore(deps): bump use-stick-to-bottom from 1.1.2 to 1.1.3 (#2279) ([f06df5e](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/f06df5e)), closes [#2279](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2279)
+
+
+
 ## 1.0.0-beta.28 (2026-02-05)
 
 * chore(deps-dev): bump @types/node in the types group (#2272) ([ea76c99](https://github.com/cu-cit-cloud-team/azure-openai-gpt-chat/commit/ea76c99)), closes [#2272](https://github.com/cu-cit-cloud-team/azure-openai-gpt-chat/issues/2272)
