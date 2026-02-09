@@ -1,3 +1,19 @@
+## 1.0.0-beta.30 (2026-02-09)
+
+* feat(api/chat): enable xai grok models ([6579ac5](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/6579ac5))
+* feat(api/health): add health check endpoint ([79d7cb8](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/79d7cb8))
+* feat(Footer): enable xai grok models in model selector ([ebd9e62](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/ebd9e62))
+* feat(utils/models): add mistral and xai grok models ([e3e3934](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/e3e3934))
+* style(Models): fix linter warning ([be0fc7b](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/be0fc7b))
+* style(utils/models): fix case ([03ec57d](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/03ec57d))
+* refactor(env.local.example): add mistral and xai grok models ([1e2eb82](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/1e2eb82))
+* refactor(env.local.example): add openai compatible endpoint and remove mistral ([1ec2d08](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/1ec2d08))
+* build(typescript): remove deprecated option from config ([c9ce8f6](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/c9ce8f6))
+* chore(deps): add @ai-sdk/xai and @ai-sdk/mistral ([9052439](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/9052439))
+* chore(deps): bump motion from 12.33.0 to 12.34.0 (#2282) ([160d786](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/160d786)), closes [#2282](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2282)
+
+
+
 ## 1.0.0-beta.29 (2026-02-08)
 
 * refactor(api/chat): don't force responses api ([afc06e2](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/afc06e2))
