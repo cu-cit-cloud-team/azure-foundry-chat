@@ -271,7 +271,7 @@ export const models: Models = [
     modelVersion: '1',
     maxInputTokens: 128000,
     maxOutputTokens: 8192,
-    name: 'Grok-4',
+    name: 'grok-4',
     provider: 'xai',
     capabilities: ['tools', 'reasoning'],
   },
