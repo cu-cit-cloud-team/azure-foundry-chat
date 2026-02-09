@@ -18,13 +18,15 @@ export async function GET() {
       version: pkg.version,
     });
   } catch (error) {
+    const err = error instanceof Error ? error : new Error(String(error));
+
     // log error to server console for debugging
-    console.log('Health check error:', error);
+    console.log('Health check error:', err);
 
     // only return error details in development for security reasons
     if (isDevelopment()) {
       return NextResponse.json(
-        { status: 'error', message: error.message, stack: error.stack },
+        { status: 'error', message: err.message, stack: err.stack },
         { status: 500 }
       );
     }
