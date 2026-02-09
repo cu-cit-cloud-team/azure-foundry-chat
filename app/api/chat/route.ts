@@ -1,6 +1,8 @@
 import { createAnthropic } from '@ai-sdk/anthropic';
 import { createAzure } from '@ai-sdk/azure';
 import { createDeepSeek } from '@ai-sdk/deepseek';
+import { createMistral } from '@ai-sdk/mistral';
+import { createXai } from '@ai-sdk/xai';
 import {
   consumeStream,
   convertToModelMessages,
@@ -51,8 +53,9 @@ export type MyUIMessage = UIMessage<unknown, MyMetadata>;
 // destructure env vars we need
 const {
   AZURE_FOUNDRY_API_KEY,
-  AZURE_FOUNDRY_RESOURCE_NAME,
   AZURE_FOUNDRY_ENDPOINT,
+  AZURE_FOUNDRY_OPENAI_COMPATIBLE_ENDPOINT,
+  AZURE_FOUNDRY_RESOURCE_NAME,
   AZURE_OPENAI_GPT_IMAGE_DEPLOYMENT,
   AZURE_OPENAI_GPT41_DEPLOYMENT,
   AZURE_OPENAI_GPT41_MINI_DEPLOYMENT,
@@ -83,6 +86,11 @@ const {
   AZURE_DEEPSEEK_R1_0528_DEPLOYMENT,
   AZURE_DEEPSEEK_V31_DEPLOYMENT,
   AZURE_DEEPSEEK_V32_DEPLOYMENT,
+  AZURE_MISTRAL_LARGE_3_DEPLOYMENT,
+  AZURE_XAI_GROK_4_DEPLOYMENT,
+  AZURE_XAI_GROK_4_FAST_NON_REASONING_DEPLOYMENT,
+  AZURE_XAI_GROK_4_FAST_REASONING_DEPLOYMENT,
+  AZURE_XAI_GROK_CODE_FAST_1_DEPLOYMENT,
 } = process.env;
 
 // tell next.js to use the nodejs runtime
@@ -150,6 +158,7 @@ export async function POST(req: Request) {
       },
     });
 
+    // create anthropic client
     const anthropic = createAnthropic({
       baseURL: `${AZURE_FOUNDRY_ENDPOINT}${AZURE_ANTHROPIC_API_PATH}`,
       apiKey: AZURE_FOUNDRY_API_KEY,
@@ -160,10 +169,30 @@ export async function POST(req: Request) {
       },
     });
 
+    // create deepseek client
     const deepseek = createDeepSeek({
       baseURL: `${AZURE_FOUNDRY_ENDPOINT}${AZURE_DEEPSEEK_API_PATH}`,
       apiKey: AZURE_FOUNDRY_API_KEY,
       headers: {
+        'Authorization': `Bearer ${AZURE_FOUNDRY_API_KEY}`,
+      },
+    });
+
+    // create mistral client
+    const mistral = createMistral({
+      apiKey: AZURE_FOUNDRY_API_KEY,
+      baseURL: AZURE_FOUNDRY_OPENAI_COMPATIBLE_ENDPOINT,
+      headers: {
+        'Authorization': `Bearer ${AZURE_FOUNDRY_API_KEY}`,
+      },
+    });
+
+    // create xai client
+    const xai = createXai({
+      apiKey: AZURE_FOUNDRY_API_KEY,
+      baseURL: AZURE_FOUNDRY_OPENAI_COMPATIBLE_ENDPOINT,
+      headers: {
+        // 'Content-Type': 'application/json',
         'Authorization': `Bearer ${AZURE_FOUNDRY_API_KEY}`,
       },
     });
@@ -196,13 +225,19 @@ export async function POST(req: Request) {
       'DeepSeek-V3.1': AZURE_DEEPSEEK_V31_DEPLOYMENT,
       'DeepSeek-V3.2': AZURE_DEEPSEEK_V32_DEPLOYMENT,
       'DeepSeek-R1-0528': AZURE_DEEPSEEK_R1_0528_DEPLOYMENT,
+      'grok-4': AZURE_XAI_GROK_4_DEPLOYMENT,
+      'grok-4-fast-non-reasoning':
+        AZURE_XAI_GROK_4_FAST_NON_REASONING_DEPLOYMENT,
+      'grok-4-fast-reasoning': AZURE_XAI_GROK_4_FAST_REASONING_DEPLOYMENT,
+      'grok-code-fast-1': AZURE_XAI_GROK_CODE_FAST_1_DEPLOYMENT,
+      'Mistral-Large-3': AZURE_MISTRAL_LARGE_3_DEPLOYMENT,
     };
 
     const deploymentName = modelDeploymentMap[model];
 
     if (!deploymentName) {
       throw new Error(
-        `No deployment configured for model: ${model}. Please set the AZURE_OPENAI_${model.toUpperCase().replace(/[.-]/g, '_')}_DEPLOYMENT environment variable.`
+        `No deployment configured for model: ${model}. Please set the corresponding environment variable.`
       );
     }
 
@@ -214,7 +249,11 @@ export async function POST(req: Request) {
             model: deepseek(deploymentName),
             middleware: extractReasoningMiddleware({ tagName: 'think' }),
           })
-        : azure(deploymentName);
+        : deploymentName.toLowerCase().startsWith('mistral')
+          ? mistral(deploymentName)
+          : deploymentName.toLowerCase().startsWith('grok')
+            ? xai(deploymentName)
+            : azure(deploymentName);
 
     // set up streaming options
     const convertedMessages = await convertToModelMessages(uiMessages);
