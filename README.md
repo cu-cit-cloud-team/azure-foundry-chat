@@ -2,7 +2,7 @@
 
 [![Build & Deploy](https://github.com/cu-cit-cloud-team/azure-foundry-chat/actions/workflows/build-and-deploy.yml/badge.svg)](https://github.com/cu-cit-cloud-team/azure-foundry-chat/actions/workflows/build-and-deploy.yml)
 
-Private streaming chat interface powered by Azure AI Foundry with support for GPT-4.1, GPT-5, GPT-5.1, GPT-5.2, o-series, Anthropic (Claude 4.5), and DeepSeek models.
+Private streaming chat interface powered by Azure AI Foundry with support for GPT-4.1, GPT-5, GPT-5.1, GPT-5.2, o-series, Anthropic (Claude 4.5), DeepSeek, and xAI Grok models.
 
 ## About
 
@@ -14,7 +14,7 @@ All data stays in your browser: chat history, uploaded files, preferences, and s
 
 ### Key Features
 
-- 💬 Real-time streaming chat with multiple models (GPT-4.1, GPT-5, GPT-5.1, GPT-5.2, o3, o4, Claude, DeepSeek)
+- 💬 Real-time streaming chat with multiple models (GPT-4.1, GPT-5, GPT-5.1, GPT-5.2, o3, o4, Claude, DeepSeek, xAI Grok)
 - 🔍 Optional web search with source URLs and reasoning traces
 - 🧠 Reasoning support with model-specific reasoning output (including DeepSeek `<think>` segments)
 - 🖼️ Image generation integrated into the chat flow (when using supported GPT models)
@@ -30,7 +30,7 @@ All data stays in your browser: chat history, uploaded files, preferences, and s
 - Node.js >= 24.x (npm >= 11.x recommended)
 - Azure Subscription with:
   - Azure AI Foundry access
-  - Deployed model(s) (GPT-4.1, GPT-5, GPT-5.1, GPT-5.2, o-series, Claude 4.5, DeepSeek)
+  - Deployed model(s) (GPT-4.1, GPT-5, GPT-5.1, GPT-5.2, o-series, Claude 4.5, DeepSeek, xAI Grok)
   - API key and endpoint
 
 ## Getting Started
@@ -61,7 +61,7 @@ All data stays in your browser: chat history, uploaded files, preferences, and s
 
 ## Configuration
 
-This app uses Azure AI Foundry-style endpoints and a single API key for OpenAI, Anthropic, and DeepSeek models. Environment variables are validated on each chat request; missing variables will cause a clear error indicating which values are required.
+This app uses Azure AI Foundry-style endpoints and a single API key for OpenAI, Anthropic, DeepSeek, and xAI Grok models. Environment variables are validated on each chat request; missing variables will cause a clear error indicating which values are required.
 
 ### Core Azure configuration
 
@@ -134,6 +134,16 @@ DeepSeek models are also accessed through Azure AI Foundry with their own API pa
 
 DeepSeek models support rich reasoning output, and this app uses AI SDK middleware to extract reasoning segments tagged with `<think>`.
 
+### xAI Grok (via Azure)
+
+xAI Grok models are accessed through Azure AI Foundry using your Azure Foundry OpenAI-compatible endpoint:
+
+- `AZURE_FOUNDRY_OPENAI_COMPATIBLE_ENDPOINT` – Your Azure Foundry OpenAI-compatible endpoint, e.g. `https://your-resource-name.openai.azure.com/openai/v1/`
+- `AZURE_XAI_GROK_4_DEPLOYMENT` – deployment for `grok-4`
+- `AZURE_XAI_GROK_4_FAST_NON_REASONING_DEPLOYMENT` – deployment for `grok-4-fast-non-reasoning`
+- `AZURE_XAI_GROK_4_FAST_REASONING_DEPLOYMENT` – deployment for `grok-4-fast-reasoning`
+- `AZURE_XAI_GROK_CODE_FAST_1_DEPLOYMENT` – deployment for `grok-code-fast-1`
+
 ### Supported models
 
 The canonical list of supported models and token limits lives in `app/utils/models.ts`. Broadly, the app supports:
@@ -142,12 +152,13 @@ The canonical list of supported models and token limits lives in `app/utils/mode
 - **o-series**: `o3`, `o3-mini`, `o4-mini`
 - **Anthropic (Claude 4.5)**: `claude-haiku-4-5`, `claude-sonnet-4-5`, `claude-opus-4-5`, `claude-opus-4-6`
 - **DeepSeek**: `DeepSeek-V3.1`, `DeepSeek-V3.2`, `DeepSeek-R1-0528`
+- **xAI Grok**: `grok-4`, `grok-4-fast-non-reasoning`, `grok-4-fast-reasoning`, `grok-code-fast-1`
 
 Refer to `app/utils/models.ts` and `.env.local.example` to ensure your deployments and environment variables are configured consistently.
 
 ### Upgrading from earlier versions
 
-Several recent releases updated environment variable names and added support for Anthropic and DeepSeek models. If you are upgrading from an earlier beta:
+Several recent releases updated environment variable names and added support for Anthropic, DeepSeek, and xAI Grok models. If you are upgrading from an earlier beta:
 
 1. Copy the latest example file:
 
@@ -171,8 +182,11 @@ The main chat endpoint lives at `app/api/chat/route.ts` and is implemented using
   - `createAzure` for OpenAI (GPT and o-series)
   - `createAnthropic` for Claude models
   - `createDeepSeek` wrapped with `extractReasoningMiddleware` for DeepSeek models
+  - `createXai` for xAI Grok models
 
-> **Runtime:** The chat API currently uses the **Node.js runtime** (`export const runtime = 'nodejs'`), not the Edge runtime.
+Health check endpoint at `app/api/health/route.ts` verifies connectivity to the Azure AI Foundry endpoint and validates that the configured deployments are accessible.
+
+> **Runtime:** APIs currently uses the **Node.js runtime** (`export const runtime = 'nodejs'`), not the Edge runtime.
 
 ### Error behavior
 
