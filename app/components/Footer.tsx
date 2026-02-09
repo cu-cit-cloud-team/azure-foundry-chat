@@ -264,7 +264,13 @@ export const Footer = memo(
                     <ModelSelectorList>
                       <ModelSelectorEmpty>No models found.</ModelSelectorEmpty>
 
-                      {['OpenAI', 'Anthropic', 'DeepSeek'].map((provider) => (
+                      {[
+                        'OpenAI',
+                        'Anthropic',
+                        'DeepSeek',
+                        // 'Mistral',
+                        'xAI',
+                      ].map((provider) => (
                         <ModelSelectorGroup heading={provider} key={provider}>
                           {models
                             .filter(
