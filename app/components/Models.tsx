@@ -48,7 +48,7 @@ export const Models = ({ focusTextarea }: ModelsProps) => {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="center" className="w-64">
-          <ScrollArea className="h-[400px]">
+          <ScrollArea className="h-100">
             {models.map((m) => (
               <DropdownMenuItem
                 key={m.name}
