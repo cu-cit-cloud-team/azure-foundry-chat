@@ -5,7 +5,7 @@ export interface Model {
   maxInputTokens: number;
   maxOutputTokens: number;
   name: string;
-  provider: 'openai' | 'anthropic' | 'deepseek';
+  provider: 'openai' | 'anthropic' | 'deepseek' | 'mistral' | 'xai';
   providers?: string[];
   capabilities?: ('tools' | 'reasoning')[];
 }
@@ -255,6 +255,51 @@ export const models: Models = [
     maxOutputTokens: 163840,
     name: 'DeepSeek-R1-0528',
     provider: 'deepseek',
+    capabilities: ['tools', 'reasoning'],
+  },
+  {
+    displayName: 'Mistral Large 3',
+    modelVersion: '1',
+    maxInputTokens: 128000,
+    maxOutputTokens: 8192,
+    name: 'Mistral-Large-3',
+    provider: 'mistral',
+    capabilities: ['tools', 'reasoning'],
+  },
+  {
+    displayName: 'Grok 4',
+    modelVersion: '1',
+    maxInputTokens: 128000,
+    maxOutputTokens: 8192,
+    name: 'Grok-4',
+    provider: 'xai',
+    capabilities: ['tools', 'reasoning'],
+  },
+  {
+    displayName: 'Grok 4 Fast Non-Reasoning',
+    modelVersion: '1',
+    maxInputTokens: 256000,
+    maxOutputTokens: 256000,
+    name: 'grok-4-fast-non-reasoning',
+    provider: 'xai',
+    capabilities: ['tools'],
+  },
+  {
+    displayName: 'Grok 4 Fast Reasoning',
+    modelVersion: '1',
+    maxInputTokens: 256000,
+    maxOutputTokens: 256000,
+    name: 'grok-4-fast-reasoning',
+    provider: 'xai',
+    capabilities: ['tools', 'reasoning'],
+  },
+  {
+    displayName: 'Grok Code Fast 1',
+    modelVersion: '1',
+    maxInputTokens: 128000,
+    maxOutputTokens: 128000,
+    name: 'grok-code-fast-1',
+    provider: 'xai',
     capabilities: ['tools', 'reasoning'],
   },
 ];
