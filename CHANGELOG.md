@@ -1,3 +1,21 @@
+## 1.0.0-beta.31 (2026-02-11)
+
+* chore(deps-dev): bump @types/node in the types group (#2289) ([38741b2](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/38741b2)), closes [#2289](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2289)
+* chore(deps): bump @ai-sdk/anthropic in the ai group (#2288) ([871ec3c](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/871ec3c)), closes [#2288](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2288)
+* chore(deps): bump @streamdown/code from 1.0.1 to 1.0.2 (#2284) ([5855d59](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/5855d59)), closes [#2284](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2284)
+* chore(deps): bump openai from 6.18.0 to 6.19.0 (#2286) ([cf3da23](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/cf3da23)), closes [#2286](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2286)
+* chore(deps): bump openai from 6.19.0 to 6.21.0 (#2290) ([752f77d](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/752f77d)), closes [#2290](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2290)
+* chore(deps): bump remend from 1.1.0 to 1.2.0 (#2285) ([9b7b580](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/9b7b580)), closes [#2285](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2285)
+* chore(deps): bump streamdown from 2.1.0 to 2.2.0 (#2283) ([8593b01](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/8593b01)), closes [#2283](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2283)
+* chore(deps): bump the ai group with 2 updates (#2287) ([6d5c085](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/6d5c085)), closes [#2287](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2287)
+* ci(build-and-deploy): add latest env vars ([f7597f5](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/f7597f5))
+* style(api/health): fix typing issues ([1a9d568](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/1a9d568))
+* refactor(api/health): imrpove health check endpoint ([356164d](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/356164d))
+* refactor(util/utils): add isDevelopment function ([0108fa8](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/0108fa8))
+* docs(README): add info about xai grok models ([e752fe7](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/e752fe7))
+
+
+
 ## 1.0.0-beta.30 (2026-02-09)
 
 * feat(api/chat): enable xai grok models ([6579ac5](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/6579ac5))
