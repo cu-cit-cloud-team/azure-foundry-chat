@@ -1,3 +1,23 @@
+## 1.0.0-beta.32 (2026-02-15)
+
+* build(npm): bump packageManager ([75cb457](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/75cb457))
+* chore(deps-dev): bump @biomejs/biome from 2.3.14 to 2.3.15 (#2295) ([9a9d940](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/9a9d940)), closes [#2295](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2295)
+* chore(deps-dev): bump @biomejs/biome from 2.3.15 to 2.4.0 (#2304) ([69a76e0](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/69a76e0)), closes [#2304](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2304)
+* chore(deps-dev): bump @types/react in the types group (#2292) ([942a24c](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/942a24c)), closes [#2292](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2292)
+* chore(deps): bump @ai-sdk/xai from 3.0.56 to 3.0.57 in the ai group (#2302) ([6c7f33f](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/6c7f33f)), closes [#2302](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2302)
+* chore(deps): bump lucide-react from 0.563.0 to 0.564.0 (#2298) ([4c88543](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/4c88543)), closes [#2298](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2298)
+* chore(deps): bump mikesprague/teams-incoming-webhook-action from 1 to 2 (#2296) ([173c420](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/173c420)), closes [#2296](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2296)
+* chore(deps): bump openai from 6.21.0 to 6.22.0 (#2301) ([cab087c](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/cab087c)), closes [#2301](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2301)
+* chore(deps): bump react-error-boundary from 6.1.0 to 6.1.1 (#2300) ([5317cab](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/5317cab)), closes [#2300](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2300)
+* chore(deps): bump tailwind-merge in the tailwindcss group (#2303) ([360ef5f](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/360ef5f)), closes [#2303](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2303)
+* chore(deps): bump the ai group with 2 updates (#2291) ([1b932db](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/1b932db)), closes [#2291](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2291)
+* chore(deps): bump the ai group with 2 updates (#2294) ([68490a7](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/68490a7)), closes [#2294](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2294)
+* chore(deps): bump the ai group with 4 updates (#2299) ([5a03524](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/5a03524)), closes [#2299](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2299)
+* chore(deps): bump the ai group with 6 updates (#2293) ([304bf6a](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/304bf6a)), closes [#2293](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2293)
+* chore(deps): bump the ai group with 7 updates (#2297) ([4148cef](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/4148cef)), closes [#2297](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2297)
+
+
+
 ## 1.0.0-beta.31 (2026-02-11)
 
 * chore(deps-dev): bump @types/node in the types group (#2289) ([38741b2](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/38741b2)), closes [#2289](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2289)
