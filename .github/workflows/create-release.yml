@@ -3,7 +3,76 @@ name: Create Release
 on:
   push:
     tags:
-      - "v[0-9]+.[0-9]+.[0-9]+(?:-(?:alpha|beta).[0-9]+)?"
+      - "v[0-9]*.[0-9]*.[0-9]*"
+
+env:
+  # preset for conventional changelog cli
+  CHANGELOG_PRESET: conventionalcommits
+  # expected config file for conventional changelog cli
+  CHANGELOG_CONFIG_PATH: changelog.config.mjs
+  # fallback config for conventional changelog cli if expected config file is not found
+  CHANGELOG_FALLBACK_CONFIG: |
+    // Changelog section mapping by Conventional Commit type.
+    // - Rename a heading: change `section`.
+    // - Hide a heading: set `hidden: true` for that type.
+    // - Show a heading: set `hidden: false` (or remove `hidden`).
+    // - Add support for a new type: add a new object to this array.
+
+    const types = [
+      { type: 'feat', section: '✨ Features', hidden: false },
+      { type: 'fix', section: '🐛 Fixes', hidden: false },
+      { type: 'perf', section: '⚡ Performance Improvements', hidden: false },
+      { type: 'revert', section: '⏪ Reverts', hidden: false },
+      { type: 'docs', section: '📚 Documentation', hidden: false },
+      { type: 'chore', section: '🔧 Chores', hidden: false },
+      { type: 'refactor', section: '🛠️ Code Refactoring', hidden: false },
+      { type: 'build', section: '🏗️ Build System', hidden: false },
+      { type: 'ci', section: '🔄 Continuous Integration', hidden: false },
+      { type: 'test', section: '🧪 Tests', hidden: false },
+    ];
+
+    const typeMap = new Map(types.map((entry) => [entry.type, entry]));
+
+    export default {
+      writer: {
+        transform(commit) {
+          const commitType = (
+            commit.revert ? 'revert' : commit.type || ''
+          ).toLowerCase();
+          const entry = typeMap.get(commitType);
+
+          if (entry?.hidden) {
+            return undefined;
+          }
+
+          const sectionTitle = entry?.section || commit.type;
+
+          if (!sectionTitle) {
+            return undefined;
+          }
+
+          return {
+            type: sectionTitle,
+            scope: commit.scope === '*' ? '' : commit.scope,
+            subject: commit.subject,
+            shortHash:
+              typeof commit.hash === 'string'
+                ? commit.hash.substring(0, 7)
+                : commit.shortHash,
+            references: commit.references || [],
+            notes: (commit.notes || []).map((note) => ({
+              ...note,
+              title: 'BREAKING CHANGES',
+            })),
+          };
+        },
+        groupBy: 'type',
+        commitsSort: ['scope', 'subject'],
+        noteGroupsSort: 'title',
+      },
+    };
+  # get node version from repo variable or default to 24.x
+  NODE_VERSION: ${{ vars.NODE_VERSION  || '24.x' }}
 
 jobs:
   create-github-release:
@@ -12,23 +81,115 @@ jobs:
     permissions:
       contents: write
     steps:
+      # checkout repo with full history to ensure all tags are available for changelog generation
       - name: Checkout Repo
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
-      - name: Set Vars
+
+      # setup Node.js environment with npm caching for node modules to speed up changelog generation
+      - name: Setup Node.js ${{ env.NODE_VERSION }} environment
+        uses: actions/setup-node@v6
+        with:
+          cache: "npm"
+          check-latest: true
+          node-version: ${{ env.NODE_VERSION }}
+
+      # additional caching layer for node_modules to speed up subsequent runs
+      - name: Cache node_modules
+        uses: actions/cache@v5
+        id: cache
+        with:
+          path: ./node_modules
+          key: ${{ runner.os }}-node-${{ env.NODE_VERSION }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-${{ env.NODE_VERSION }}-
+
+      # install conventional changelog dependencies if not cached
+      - name: Install conventional changelog dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm install conventional-changelog conventional-changelog-cli conventional-changelog-conventionalcommits
+
+      # generate and output data for release creation and changelog generation steps
+      - name: Prepare release data
+        id: prep_release
+        shell: bash
         run: |
-          echo "NEW_TAG=$(git tag | sort --version-sort -r | head -1)" >> $GITHUB_ENV
-          echo "LAST_TAG=$(git tag | sort --version-sort -r | head -2 | tail -1)" >> $GITHUB_ENV
+          set -euo pipefail
+
+          new_tag="${GITHUB_REF_NAME}"
+
+          if ! [[ "$new_tag" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Tag '$new_tag' is not strict semver (vX.Y.Z)."
+            exit 1
+          fi
+
+          echo "new_tag: $new_tag"
+
+          last_tag="$(
+            git tag --sort=-version:refname \
+            | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' \
+            | sed -n "/^${new_tag//./\\.}$/d; p; q"
+          )"
+
+          echo "last_tag: $last_tag"
+
+          if [[ -n "$last_tag" ]]; then
+            full_changelog_url="https://github.com/${{ github.repository }}/compare/${last_tag}...${new_tag}"
+          else
+            full_changelog_url="https://github.com/${{ github.repository }}/releases/tag/${new_tag}"
+          fi
+
+          echo "full_changelog_url: $full_changelog_url"
+
+          echo "new_tag=$new_tag" >> "$GITHUB_OUTPUT"
+          echo "last_tag=$last_tag" >> "$GITHUB_OUTPUT"
+          echo "full_changelog_url=$full_changelog_url" >> "$GITHUB_OUTPUT"
+
+      # generate release notes content using conventional changelog cli and create GitHub release via GH CLI
       - name: Generate Release via CLI
-        if: ${{ !contains(env.NEW_TAG, 'alpha') && !contains(env.NEW_TAG, 'beta') }}
+        shell: bash
         run: |
-          echo -e "## What's Changed\n\n$(git log --pretty=format:' * %s - %h' ${{ env.LAST_TAG }}..${{ env.NEW_TAG }} --reverse)\n\n**Full Changelog:** https://github.com/${{ github.repository }}/compare/${{ env.LAST_TAG }}...${{ env.NEW_TAG }}" | gh release create "${{ env.NEW_TAG }}" -t "${{ env.NEW_TAG }}" -F -
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Generate Pre-release via CLI
-        if: ${{ contains(env.NEW_TAG, 'alpha') || contains(env.NEW_TAG, 'beta') }}
-        run: |
-          echo -e "## What's Changed\n\n$(git log --pretty=format:' * %s - %h' ${{ env.LAST_TAG }}..${{ env.NEW_TAG }} --reverse)\n\n**Full Changelog:** https://github.com/${{ github.repository }}/compare/${{ env.LAST_TAG }}...${{ env.NEW_TAG }}" | gh release create --prerelease "${{ env.NEW_TAG }}" -t "${{ env.NEW_TAG }}" -F -
+          set -euo pipefail
+
+          changelog_config_path="${{ env.CHANGELOG_CONFIG_PATH }}"
+
+          echo "changelog_config_path: $changelog_config_path"
+
+          if [[ ! -f "$changelog_config_path" ]]; then
+            changelog_config_path="$RUNNER_TEMP/changelog.config.mjs"
+            printf '%s\n' "${{ env.CHANGELOG_FALLBACK_CONFIG }}" > "$changelog_config_path"
+          fi
+
+          echo "FALLBACK changelog_config_path: $changelog_config_path"
+
+          changelog_content="$(npx -y conventional-changelog \
+            -p ${{ env.CHANGELOG_PRESET }} \
+            -n $changelog_config_path \
+            --stdout -u -r 1 -i /dev/null \
+            | sed -n '/^### /,$p')"
+          echo "changelog_content: $changelog_content"
+
+          if [[ -z "$changelog_content" ]]; then
+            changelog_content="$(npx -y conventional-changelog \
+              -p ${{ env.CHANGELOG_PRESET }} \
+              -n $changelog_config_path \
+              --stdout -u -r 2 -i /dev/null \
+              | sed -n '/^### /,$p')"
+          fi
+          echo "FALLBACK changelog_content: $changelog_content"
+
+          if [[ -z "$changelog_content" ]]; then
+              echo "No changelog content generated. Exiting."
+              exit 1
+          fi
+
+          {
+            echo "## What's Changed"
+            echo
+            echo "$changelog_content"
+            echo
+            echo "**Full Changelog:** ${{ steps.prep_release.outputs.full_changelog_url }}"
+          } | gh release create "${{ steps.prep_release.outputs.new_tag }}" -t "${{ steps.prep_release.outputs.new_tag }}" -F -
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
