@@ -1,4 +1,4 @@
-module.exports = {
+const config = {
   apps: [
     {
       name: 'azure-foundry-chat',
@@ -9,3 +9,5 @@ module.exports = {
     },
   ],
 };
+
+export default config;
