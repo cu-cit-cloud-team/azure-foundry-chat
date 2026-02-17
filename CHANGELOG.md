@@ -1,3 +1,21 @@
+## [1.0.0-beta.34](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.33...v1.0.0-beta.34) (2026-02-17)
+
+### 🏗️ Build System
+
+* **npm:** remove type module (pm2 won't start without cjs support) ([2796d65](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/2796d65706bf0f72255d66c102ee6381b2b61338))
+
+### ⏪ Reverts
+
+* **ecosystem.config:** revert esm changes (pm2 will not start with cjs) ([f39f68b](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/f39f68b56ce94f0a6a765453473f2d8ffe9f4a03))
+
+### 🔧 Chores
+
+* **overrides:** add `ajv` to close dependabot security alert ([a44a805](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/a44a805d36a6c370914262321f0b2fee51334e45))
+
+### 🛠️ Code Refactoring
+
+* **ecosystem.config:** rename and refacor to esm ([80a9c21](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/80a9c21e3217c045346e06d355ef37d203927806))
+
 ## [1.0.0-beta.33](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.32...v1.0.0-beta.33) (2026-02-17)
 
 ### 🔄 Continuous Integration
