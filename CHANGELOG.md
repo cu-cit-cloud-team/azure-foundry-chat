@@ -1,3 +1,28 @@
+## [1.0.0-beta.33](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.32...v1.0.0-beta.33) (2026-02-17)
+
+### 🔄 Continuous Integration
+
+* **create-release:** refactor var creation and changelog content creation ([dcf94e8](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/dcf94e88a1bc12f32ecec15b0a7a99e5767f06c9))
+* **create-release:** update config (add style and init sections; sort sections by type) ([4449113](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/44491131c8a88fb8670782d1dbcf9678af5b7bd0))
+
+### 🏗️ Build System
+
+* **changelog.config.js:** add style and init sections; sort sections by type ([33806fb](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/33806fbb65b2b6df3d79f859032870aedea2b49e))
+* **changelog:** add config file for conventional-changelog ([a929278](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/a92927898741e232b61c8230dbe0064312c47e44))
+* **npm:** update `changelog` to use config; add `changelog:preview` ([6eaca4b](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/6eaca4b7f23deba6f5633cd4623ca2413371a1b7))
+
+### 📚 Documentation
+
+* **CHANGELOG:** add regenrated content using new format ([4fd5a4d](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/4fd5a4d63590d19cb32cc8ef3d2ebda35a70a939))
+
+### 🔧 Chores
+
+* **deps-dev:** bump @biomejs/biome from 2.4.0 to 2.4.2 (#2305) ([5f64ec5](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/5f64ec58a2a4464a09fb59b95131c504d7b31864)), closes [#2305](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2305)
+* **deps:** bump lucide-react from 0.564.0 to 0.572.0 (#2306) ([866daba](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/866daba49b5f1c8d874acb6805b2de6d2adfa256)), closes [#2306](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2306)
+* **deps:** bump lucide-react from 0.572.0 to 0.574.0 (#2308) ([50b06b2](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/50b06b2e5734a317609aa356858daa0e60c468bd)), closes [#2308](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2308)
+* **deps:** bump motion from 12.34.0 to 12.34.1 (#2307) ([e220564](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/e220564110bb056f38f7eb45efa68fc5b26c1642)), closes [#2307](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2307)
+* **overrides:** add eslint (quiet install warnings) ([5b77ca8](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/5b77ca8ee9a53bcc8086f4356d23f26b0dacbf90))
+
 ## [1.0.0-beta.32](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.31...v1.0.0-beta.32) (2026-02-15)
 
 ### 🔧 Chores
