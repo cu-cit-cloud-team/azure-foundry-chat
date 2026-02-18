@@ -30,7 +30,7 @@ All data stays in your browser: chat history, uploaded files, preferences, and s
 - Node.js >= 24.x (npm >= 11.x recommended)
 - Azure Subscription with:
   - Azure AI Foundry access
-  - Deployed model(s) (GPT-4.1, GPT-5, GPT-5.1, GPT-5.2, o-series, Claude 4.5, DeepSeek, xAI Grok)
+  - Deployed model(s) (GPT-4.1, GPT-5, GPT-5.1, GPT-5.2, o-series, Claude, DeepSeek, xAI Grok)
   - API key and endpoint
 
 ## Getting Started
@@ -112,7 +112,7 @@ If a model is selected in the UI but the corresponding deployment variable is no
 
 > `No deployment configured for model: gpt-5.1. Please set the AZURE_OPENAI_GPT51_DEPLOYMENT environment variable.`
 
-### Anthropic (Claude 4.5 via Azure)
+### Anthropic (Claude via Azure)
 
 Anthropic models are accessed through Azure AI Foundry using the same key and endpoint, but with a different API path and deployment names.
 
@@ -122,6 +122,7 @@ Anthropic models are accessed through Azure AI Foundry using the same key and en
 - `AZURE_ANTHROPIC_CLAUDE_OPUS_45_DEPLOYMENT` – deployment for `claude-opus-4-5`
 - `AZURE_ANTHROPIC_CLAUDE_SONNET_45_DEPLOYMENT` – deployment for `claude-sonnet-4-5`
 - `AZURE_ANTHROPIC_CLAUDE_OPUS_46_DEPLOYMENT` – deployment for `claude-opus-4-6`
+- `AZURE_ANTHROPIC_CLAUDE_SONNET_46_DEPLOYMENT` – deployment for `claude-sonnet-4-6`
 
 ### DeepSeek (via Azure)
 
@@ -150,7 +151,7 @@ The canonical list of supported models and token limits lives in `app/utils/mode
 
 - **GPT-4.1 / GPT-5 family**: `gpt-4.1`, `gpt-4.1-mini`, `gpt-4.1-nano`, `gpt-5`, `gpt-5-mini`, `gpt-5-nano`, `gpt-5-chat`, `gpt-5-codex`, `gpt-5.1`, `gpt-5.1-chat`, `gpt-5.1-codex`, `gpt-5.2`, `gpt-5.2-chat`, `gpt-5.2-codex`
 - **o-series**: `o3`, `o3-mini`, `o4-mini`
-- **Anthropic (Claude 4.5)**: `claude-haiku-4-5`, `claude-sonnet-4-5`, `claude-opus-4-5`, `claude-opus-4-6`
+- **Anthropic (Claude)**: `claude-haiku-4-5`, `claude-sonnet-4-5`, `claude-opus-4-5`, `claude-sonnet-4-6`, `claude-opus-4-6`
 - **DeepSeek**: `DeepSeek-V3.1`, `DeepSeek-V3.2`, `DeepSeek-R1-0528`
 - **xAI Grok**: `grok-4`, `grok-4-fast-non-reasoning`, `grok-4-fast-reasoning`, `grok-code-fast-1`
 
