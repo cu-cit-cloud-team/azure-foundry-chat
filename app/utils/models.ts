@@ -222,6 +222,15 @@ export const models: Models = [
     capabilities: ['tools', 'reasoning'],
   },
   {
+    displayName: 'Claude Sonnet 4.6',
+    modelVersion: '1',
+    maxInputTokens: 136000,
+    maxOutputTokens: 64000,
+    name: 'claude-sonnet-4-6',
+    provider: 'anthropic',
+    capabilities: ['tools', 'reasoning'],
+  },
+  {
     displayName: 'Claude Opus 4.6',
     modelVersion: '1',
     maxInputTokens: 136000,
