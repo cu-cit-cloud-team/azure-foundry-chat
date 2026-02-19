@@ -7,7 +7,7 @@
     "node": ">= 24.x",
     "npm": ">= 11.x"
   },
-  "packageManager": "npm@11.10.0",
+  "packageManager": "npm@11.10.1",
   "scripts": {
     "biome": "biome check ./app",
     "build": "next build",
@@ -114,7 +114,7 @@
     "@conventional-changelog/git-client": "2.5.1",
     "ajv": "8.18.0",
     "eslint": "10.0.0",
-    "minimatch": "10.2.1"
+    "minimatch": "10.2.2"
   },
   "browserslist": {
     "production": [
@@ -135,6 +135,6 @@
   },
   "volta": {
     "node": "24.13.1",
-    "npm": "11.10.0"
+    "npm": "11.10.1"
   }
 }
