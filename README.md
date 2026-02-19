@@ -2,7 +2,7 @@
 
 [![Build & Deploy](https://github.com/cu-cit-cloud-team/azure-foundry-chat/actions/workflows/build-and-deploy.yml/badge.svg)](https://github.com/cu-cit-cloud-team/azure-foundry-chat/actions/workflows/build-and-deploy.yml)
 
-Private streaming chat interface powered by Azure AI Foundry with support for GPT-4.1, GPT-5, GPT-5.1, GPT-5.2, o-series, Anthropic (Claude 4.5), DeepSeek, and xAI Grok models.
+Private streaming chat interface powered by Azure AI Foundry with support for OpenAI GPT, OpenAI o-series, Anthropic Claude, DeepSeek, and xAI Grok models.
 
 ## About
 
@@ -14,8 +14,8 @@ All data stays in your browser: chat history, uploaded files, preferences, and s
 
 ### Key Features
 
-- 💬 Real-time streaming chat with multiple models (GPT-4.1, GPT-5, GPT-5.1, GPT-5.2, o3, o4, Claude, DeepSeek, xAI Grok)
-- 🔍 Optional web search with source URLs and reasoning traces
+- 💬 Real-time streaming chat with multiple models
+- 🔍 Optional web search with source URLs and reasoning traces for supported models
 - 🧠 Reasoning support with model-specific reasoning output (including DeepSeek `<think>` segments)
 - 🖼️ Image generation integrated into the chat flow (when using supported GPT models)
 - 📎 File upload support (images, PDFs, text files, and code files)
@@ -30,7 +30,7 @@ All data stays in your browser: chat history, uploaded files, preferences, and s
 - Node.js >= 24.x (npm >= 11.x recommended)
 - Azure Subscription with:
   - Azure AI Foundry access
-  - Deployed model(s) (GPT-4.1, GPT-5, GPT-5.1, GPT-5.2, o-series, Claude, DeepSeek, xAI Grok)
+  - Deployed model(s) (GPT-4.1 series, GPT-5-mini/nano, GPT-5.1 series, GPT-5.2 series, o-series, Anthropic Claude, DeepSeek, xAI Grok)
   - API key and endpoint
 
 ## Getting Started
@@ -74,23 +74,20 @@ Required environment variables (see `.env.local.example` for the canonical list)
 
 > **Important:** Use your **deployment names**, not raw model IDs, for all `*_DEPLOYMENT` variables.
 >
-> For example, if you deployed a model as `my-gpt-5-chat`, set `AZURE_OPENAI_GPT5_CHAT_DEPLOYMENT="my-gpt-5-chat"`, even though the base model is `gpt-5.1-mini`.
+> For example, if you deployed a model as `my-gpt-5.2-chat`, set `AZURE_OPENAI_GPT5_CHAT_DEPLOYMENT="my-gpt-5.2-chat"`, even though the base model is `gpt-5.2-chat`.
 
 ### Azure OpenAI (GPT and o-series)
 
-The chat route maps UI model names (e.g. `gpt-5.1`) to specific deployment environment variables via `modelDeploymentMap` in `app/api/chat/route.ts`.
+The chat route maps UI model names (e.g. `gpt-5.2`) to specific deployment environment variables via `modelDeploymentMap` in `app/api/chat/route.ts`.
 
 Key environment variables:
 
-- GPT-4.1 / GPT-5 family:
+- GPT-4.1 / GPT-5.x series:
   - `AZURE_OPENAI_GPT41_DEPLOYMENT`
   - `AZURE_OPENAI_GPT41_MINI_DEPLOYMENT`
   - `AZURE_OPENAI_GPT41_NANO_DEPLOYMENT`
-  - `AZURE_OPENAI_GPT5_DEPLOYMENT`
   - `AZURE_OPENAI_GPT5_MINI_DEPLOYMENT`
   - `AZURE_OPENAI_GPT5_NANO_DEPLOYMENT`
-  - `AZURE_OPENAI_GPT5_CHAT_DEPLOYMENT`
-  - `AZURE_OPENAI_GPT5_CODEX_DEPLOYMENT`
   - `AZURE_OPENAI_GPT51_DEPLOYMENT`
   - `AZURE_OPENAI_GPT51_CHAT_DEPLOYMENT`
   - `AZURE_OPENAI_GPT51_CODEX_DEPLOYMENT`
@@ -110,7 +107,7 @@ Key environment variables:
 
 If a model is selected in the UI but the corresponding deployment variable is not set, the API will return an error similar to:
 
-> `No deployment configured for model: gpt-5.1. Please set the AZURE_OPENAI_GPT51_DEPLOYMENT environment variable.`
+> `No deployment configured for model: gpt-5.2. Please set the AZURE_OPENAI_GPT52_DEPLOYMENT environment variable.`
 
 ### Anthropic (Claude via Azure)
 
@@ -149,7 +146,7 @@ xAI Grok models are accessed through Azure AI Foundry using your Azure Foundry O
 
 The canonical list of supported models and token limits lives in `app/utils/models.ts`. Broadly, the app supports:
 
-- **GPT-4.1 / GPT-5 family**: `gpt-4.1`, `gpt-4.1-mini`, `gpt-4.1-nano`, `gpt-5`, `gpt-5-mini`, `gpt-5-nano`, `gpt-5-chat`, `gpt-5-codex`, `gpt-5.1`, `gpt-5.1-chat`, `gpt-5.1-codex`, `gpt-5.2`, `gpt-5.2-chat`, `gpt-5.2-codex`
+- **GPT-4.1 / GPT-5.x series**: `gpt-4.1`, `gpt-4.1-mini`, `gpt-4.1-nano`, `gpt-5-mini`, `gpt-5-nano`, `gpt-5.1`, `gpt-5.1-chat`, `gpt-5.1-codex`, `gpt-5.2`, `gpt-5.2-chat`, `gpt-5.2-codex`
 - **o-series**: `o3`, `o3-mini`, `o4-mini`
 - **Anthropic (Claude)**: `claude-haiku-4-5`, `claude-sonnet-4-5`, `claude-opus-4-5`, `claude-sonnet-4-6`, `claude-opus-4-6`
 - **DeepSeek**: `DeepSeek-V3.1`, `DeepSeek-V3.2`, `DeepSeek-R1-0528`
@@ -249,7 +246,7 @@ When the "web search" option is enabled in the UI, the backend:
 - Up to 3 files per message (25MB each)
 - Inline preview and modal display for images, PDFs, and text files
 - Image generation:
-  - Available for supported GPT models (e.g. GPT-4.1 / GPT-5 families) when `AZURE_OPENAI_GPT_IMAGE_DEPLOYMENT` is configured.
+  - Available for supported GPT models (e.g. GPT-4.1 / GPT-5.x series) when `AZURE_OPENAI_GPT_IMAGE_DEPLOYMENT` is configured.
   - Generated images appear directly in the conversation, similar to user attachments.
 
 ### Customization
