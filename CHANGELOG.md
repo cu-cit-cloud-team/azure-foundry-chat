@@ -1,3 +1,39 @@
+## [1.0.0-beta.35](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.34...v1.0.0-beta.35) (2026-02-19)
+
+### 🔧 Chores
+
+* **deps-dev:** bump @types/node in the types group (#2314) ([19be046](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/19be04647e81aac3d6957368a50146a9b0d43e12)), closes [#2314](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2314)
+* **deps-dev:** bump the tailwindcss group with 2 updates (#2312) ([dd2c31b](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/dd2c31b2fb08fb91818317ad56d1f68fc0fc5573)), closes [#2312](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2312)
+* **deps:** bump @xyflow/react from 12.10.0 to 12.10.1 (#2317) ([5d18d3d](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/5d18d3de5f840a04947248f798121af11ecc9497)), closes [#2317](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2317)
+* **deps:** bump jotai from 2.17.1 to 2.18.0 (#2316) ([8c9fc3c](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/8c9fc3c9fb3aeaa8f19e877a23ea6a08002642ab)), closes [#2316](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2316)
+* **deps:** bump lucide-react from 0.574.0 to 0.575.0 (#2318) ([d962879](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/d962879e04048e8eebcf12200ffa5f00b099da87)), closes [#2318](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2318)
+* **deps:** bump motion from 12.34.1 to 12.34.2 (#2313) ([f755c47](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/f755c47759219b08746246fbcab256ae947660a4)), closes [#2313](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2313)
+* **deps:** bump tailwind-merge in the tailwindcss group (#2315) ([6c6c918](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/6c6c9188ced4cd4bc2e25944f733aad512d9253a)), closes [#2315](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2315)
+* **deps:** bump the ai group with 2 updates (#2310) ([45b8cca](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/45b8cca4af2dfaebab934dbd6e25211c303296a2)), closes [#2310](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2310)
+* **deps:** bump the ai group with 3 updates (#2309) ([93a4c74](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/93a4c74fe74c530b5b9e55c2d7019cb72b5b11a3)), closes [#2309](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2309)
+* **deps:** bump the ai group with 3 updates (#2311) ([3dbfb87](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/3dbfb87b6602529c8e525b000732e2a03f5a5088)), closes [#2311](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2311)
+* **overrides:** add `minimatch` to address security alert ([02a587c](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/02a587caf7f47cdad9b6440ae5948358be99bc5a))
+
+### 📚 Documentation
+
+* **README:** update info about claude support ([365246c](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/365246c7d6eccd46b6e545b587e5e21dad97aaae))
+
+### 🔄 Continuous Integration
+
+* **build-and-deploy:** and env var for build ([a3976c2](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/a3976c22e69fd8569c94fd4ff46f38f88e0bf3b8))
+* **create-release:** update fallback config ([3b38812](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/3b3881202da8815db11eeab0973d0db6978ca078))
+
+### ✨ Features
+
+* **api/chat:** add support for claude sonnet 4.6 ([e1c7e9b](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/e1c7e9b92e5c7f0d0cc402ab040f2fd632a21b76))
+* **env.local.example:** add env var for claude sonnet 4.6 ([bfc49d9](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/bfc49d9fa2fe4bebdc1fd7ee5428cde16a7a3e69))
+* **utils/models:** add claude sonnet 4.6 ([7ef5344](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/7ef53440d712b2c87f94dea8038d5d5bf65c3df9))
+
+### 🏗️ Build System
+
+* **changelog.config:** ensure linebreak at end of content ([a0e6c31](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/a0e6c31c4aeb7649dca62bc99f07a0e32308be43))
+
+
 ## [1.0.0-beta.34](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.33...v1.0.0-beta.34) (2026-02-17)
 
 ### 🏗️ Build System
