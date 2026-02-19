@@ -1,3 +1,33 @@
+## [1.0.0-beta.36](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.35...v1.0.0-beta.36) (2026-02-19)
+
+### 🔄 Continuous Integration
+
+* **build-and-deploy:** remove vars for deprecated models ([af07db2](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/af07db2ae30bdef8ec2c1358d904e35bf1ac787e))
+
+### 📚 Documentation
+
+* **README:** remove gpt-5/gpt-5-chat/gpt-5-codex ([ed23b75](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/ed23b75e75e95685f824cee924c19130ade6217d))
+
+### 🛠️ Code Refactoring
+
+* **api/chat:** remove support for gpt-5/gpt-5-chat/gpt-5-codex ([3081f69](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/3081f69344190c7f1ec67d18f555c89dca13b36d))
+* **env.local.example:** remove vars for gpt-5/gpt-5-chat/gpt-5-codex ([314018a](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/314018adf761667d3983f8ca04fd31a7ebb07ac6))
+* **utils/models:** deprecate gpt-5/gpt-5-chat/gpt-5-codex (use gpt-5.2 versions instead) ([6eb7298](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/6eb729886ccea37d25095bcb69fe91086c455fd7))
+
+### 🏗️ Build System
+
+* **npm:** bump `packageManager` ([bb75022](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/bb750226f52d52399047b74b7ef54590292a5cbb))
+
+### 🔧 Chores
+
+* **deps-dev:** bump @biomejs/biome from 2.4.2 to 2.4.3 (#2324) ([93389e8](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/93389e82fb4b1dc58ac287d6e1c3cc3989fc004e)), closes [#2324](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2324)
+* **deps:** bump @streamdown/code from 1.0.2 to 1.0.3 (#2321) ([a153248](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/a153248c1c015e13815f1c5b5e6fb5a8d72352d3)), closes [#2321](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2321)
+* **deps:** bump remend from 1.2.0 to 1.2.1 (#2322) ([1a100fb](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/1a100fbcb1fd81790be755c3a86c9567ecd6bddd)), closes [#2322](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2322)
+* **deps:** bump streamdown from 2.2.0 to 2.3.0 (#2320) ([3e1aed7](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/3e1aed786f804b362bb126d41269ddb6602f6d22)), closes [#2320](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2320)
+* **deps:** bump the ai group with 2 updates (#2319) ([7b66ef7](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/7b66ef7bd455429937f38cbc280da8e0cbab39fe)), closes [#2319](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2319)
+* **deps:** bump the ai group with 2 updates (#2323) ([7adf86e](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/7adf86e3a4cabe8d06d4483ad837566c77889032)), closes [#2323](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2323)
+
+
 ## [1.0.0-beta.35](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.34...v1.0.0-beta.35) (2026-02-19)
 
 ### 🔧 Chores
