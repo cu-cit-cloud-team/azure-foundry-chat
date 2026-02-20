@@ -5,7 +5,7 @@ export interface Model {
   maxInputTokens: number;
   maxOutputTokens: number;
   name: string;
-  provider: 'openai' | 'anthropic' | 'deepseek' | 'mistral' | 'xai';
+  provider: 'openai' | 'anthropic' | 'deepseek' | 'xai';
   providers?: string[];
   capabilities?: ('tools' | 'reasoning')[];
 }
@@ -131,15 +131,6 @@ export const models: Models = [
     provider: 'openai',
     capabilities: ['tools', 'reasoning'],
   },
-  // {
-  //   displayName: 'GPT-5.3 Codex',
-  //   modelVersion: '2025-12-11',
-  //   maxInputTokens: 272000,
-  //   maxOutputTokens: 128000,
-  //   name: 'gpt-5.3-codex',
-  //   provider: 'openai',
-  //   capabilities: ['tools', 'reasoning'],
-  // },
   {
     displayName: 'o3',
     modelVersion: '2025-04-16',
@@ -237,15 +228,6 @@ export const models: Models = [
     maxOutputTokens: 163840,
     name: 'DeepSeek-R1-0528',
     provider: 'deepseek',
-    capabilities: ['tools', 'reasoning'],
-  },
-  {
-    displayName: 'Mistral Large 3',
-    modelVersion: '1',
-    maxInputTokens: 128000,
-    maxOutputTokens: 8192,
-    name: 'Mistral-Large-3',
-    provider: 'mistral',
     capabilities: ['tools', 'reasoning'],
   },
   {
