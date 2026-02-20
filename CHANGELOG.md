@@ -1,3 +1,28 @@
+## [1.0.0-beta.37](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.36...v1.0.0-beta.37) (2026-02-20)
+
+### 🔄 Continuous Integration
+
+* **build-and-deploy:** move `env` config into gh environment vars/secrets ([30c1ba6](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/30c1ba6e5b4d83dc0b357e52a8d6f7994d5640b1))
+* **build-and-deploy:** remove env vars required by deployment ([9ef8463](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/9ef84632977a463d246f6daed61912c9888eb032))
+
+### 🛠️ Code Refactoring
+
+* **api/chat:** remove mistral-related code ([172f32b](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/172f32b06d8088d860ccd268522f82d6ac8837f2))
+* **Footer:** use `web-search` to enable/disable functionality ([aed0a1a](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/aed0a1a32c98b3a8b1487d0116c817e5873c4a21))
+* **utils/models:** add `web-search` to `capabilities` ([b61ca5e](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/b61ca5e2abc088bf8f04c208d9261aaff5712059))
+* **utils/models:** remove unused mistral references ([78c472a](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/78c472ae9880cf64330d788b29b95c7e6d0f9e11))
+
+### 🎨 Style
+
+* **Footer:** alphabetize model providers ([52dd9df](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/52dd9df8b5b29daa622da90a346e8cdda8480c8b))
+
+### 🔧 Chores
+
+* **deps:** bump motion from 12.34.2 to 12.34.3 (#2326) ([8f07c45](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/8f07c458497a3de3b9bd8301bf3917c992c39afc)), closes [#2326](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2326)
+* **deps:** bump the ai group with 3 updates (#2325) ([f9cfe10](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/f9cfe10630dfa6402ed74839b2dddb279ed9ad36)), closes [#2325](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2325)
+* **deps:** remove unused dependency ([e6af9bc](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/e6af9bc7a2d99d37c3471ef68ef77f28c348d211))
+
+
 ## [1.0.0-beta.36](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.35...v1.0.0-beta.36) (2026-02-19)
 
 ### 🔄 Continuous Integration
