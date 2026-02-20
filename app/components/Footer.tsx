@@ -106,7 +106,7 @@ export const Footer = memo(
     // Get current model capabilities
     const currentModel = modelFromName(model);
     const supportsWebSearch =
-      currentModel?.capabilities?.includes('tools') ?? false;
+      currentModel?.capabilities?.includes('web-search') ?? false;
     const selectedModelData = models.find((m) => m.name === model) ?? null;
 
     const handleModelChange = useCallback(
