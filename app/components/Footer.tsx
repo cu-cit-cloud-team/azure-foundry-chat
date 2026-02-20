@@ -264,45 +264,41 @@ export const Footer = memo(
                     <ModelSelectorList>
                       <ModelSelectorEmpty>No models found.</ModelSelectorEmpty>
 
-                      {[
-                        'OpenAI',
-                        'Anthropic',
-                        'DeepSeek',
-                        // 'Mistral',
-                        'xAI',
-                      ].map((provider) => (
-                        <ModelSelectorGroup heading={provider} key={provider}>
-                          {models
-                            .filter(
-                              (m) =>
-                                m.provider.toLowerCase() ===
-                                provider.toLowerCase()
-                            )
-                            .map((m) => (
-                              <ModelSelectorItem
-                                key={m.name}
-                                value={m.name}
-                                onSelect={() => {
-                                  handleModelChange(m.name);
-                                  setModelSelectorOpen(false);
-                                }}
-                              >
-                                <ModelSelectorLogo
-                                  provider={m.provider.toLowerCase()}
-                                />
-                                <ModelSelectorName>
-                                  {m.displayName ?? m.name}
-                                </ModelSelectorName>
+                      {['Anthropic', 'DeepSeek', 'OpenAI', 'xAI'].map(
+                        (provider) => (
+                          <ModelSelectorGroup heading={provider} key={provider}>
+                            {models
+                              .filter(
+                                (m) =>
+                                  m.provider.toLowerCase() ===
+                                  provider.toLowerCase()
+                              )
+                              .map((m) => (
+                                <ModelSelectorItem
+                                  key={m.name}
+                                  value={m.name}
+                                  onSelect={() => {
+                                    handleModelChange(m.name);
+                                    setModelSelectorOpen(false);
+                                  }}
+                                >
+                                  <ModelSelectorLogo
+                                    provider={m.provider.toLowerCase()}
+                                  />
+                                  <ModelSelectorName>
+                                    {m.displayName ?? m.name}
+                                  </ModelSelectorName>
 
-                                {model === m.name ? (
-                                  <CheckIcon className="ml-auto size-4" />
-                                ) : (
-                                  <div className="ml-auto size-4" />
-                                )}
-                              </ModelSelectorItem>
-                            ))}
-                        </ModelSelectorGroup>
-                      ))}
+                                  {model === m.name ? (
+                                    <CheckIcon className="ml-auto size-4" />
+                                  ) : (
+                                    <div className="ml-auto size-4" />
+                                  )}
+                                </ModelSelectorItem>
+                              ))}
+                          </ModelSelectorGroup>
+                        )
+                      )}
                     </ModelSelectorList>
                   </ModelSelectorContent>
                 </ModelSelector>
