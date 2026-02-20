@@ -1,7 +1,6 @@
 import { createAnthropic } from '@ai-sdk/anthropic';
 import { createAzure } from '@ai-sdk/azure';
 import { createDeepSeek } from '@ai-sdk/deepseek';
-import { createMistral } from '@ai-sdk/mistral';
 import { createXai } from '@ai-sdk/xai';
 import {
   consumeStream,
@@ -84,7 +83,6 @@ const {
   AZURE_DEEPSEEK_R1_0528_DEPLOYMENT,
   AZURE_DEEPSEEK_V31_DEPLOYMENT,
   AZURE_DEEPSEEK_V32_DEPLOYMENT,
-  AZURE_MISTRAL_LARGE_3_DEPLOYMENT,
   AZURE_XAI_GROK_4_DEPLOYMENT,
   AZURE_XAI_GROK_4_FAST_NON_REASONING_DEPLOYMENT,
   AZURE_XAI_GROK_4_FAST_REASONING_DEPLOYMENT,
@@ -176,15 +174,6 @@ export async function POST(req: Request) {
       },
     });
 
-    // create mistral client
-    const mistral = createMistral({
-      apiKey: AZURE_FOUNDRY_API_KEY,
-      baseURL: AZURE_FOUNDRY_OPENAI_COMPATIBLE_ENDPOINT,
-      headers: {
-        'Authorization': `Bearer ${AZURE_FOUNDRY_API_KEY}`,
-      },
-    });
-
     // create xai client
     const xai = createXai({
       apiKey: AZURE_FOUNDRY_API_KEY,
@@ -226,7 +215,6 @@ export async function POST(req: Request) {
         AZURE_XAI_GROK_4_FAST_NON_REASONING_DEPLOYMENT,
       'grok-4-fast-reasoning': AZURE_XAI_GROK_4_FAST_REASONING_DEPLOYMENT,
       'grok-code-fast-1': AZURE_XAI_GROK_CODE_FAST_1_DEPLOYMENT,
-      'Mistral-Large-3': AZURE_MISTRAL_LARGE_3_DEPLOYMENT,
     };
 
     const deploymentName = modelDeploymentMap[model];
@@ -245,11 +233,9 @@ export async function POST(req: Request) {
             model: deepseek(deploymentName),
             middleware: extractReasoningMiddleware({ tagName: 'think' }),
           })
-        : deploymentName.toLowerCase().startsWith('mistral')
-          ? mistral(deploymentName)
-          : deploymentName.toLowerCase().startsWith('grok')
-            ? xai(deploymentName)
-            : azure(deploymentName);
+        : deploymentName.toLowerCase().startsWith('grok')
+          ? xai(deploymentName)
+          : azure(deploymentName);
 
     // set up streaming options
     const convertedMessages = await convertToModelMessages(uiMessages);
