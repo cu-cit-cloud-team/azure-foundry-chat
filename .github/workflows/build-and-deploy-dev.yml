@@ -24,9 +24,9 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  APP_DISPLAY_NAME: "DEV Cloud Team Chat"
-  AZURE_WEBAPP_NAME: "ct-aoai-gpt-chat-demo"
-  AZURE_WEBAPP_PACKAGE_PATH: "."
+  APP_DISPLAY_NAME: ${{ vars.APP_DISPLAY_NAME }}
+  AZURE_WEBAPP_NAME: ${{ secrets.AZURE_WEBAPP_NAME }}
+  AZURE_WEBAPP_PACKAGE_PATH: ${{ vars.AZURE_WEBAPP_PACKAGE_PATH || '.' }}
   AZURE_WEBAPP_PUBLISH_PROFILE: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
   MS_TEAMS_WEBHOOK_URL: ${{ secrets.MS_TEAMS_WEBHOOK_URL }}
 
