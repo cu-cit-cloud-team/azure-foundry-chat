@@ -1,7 +1,7 @@
 version: 2
-updates:
-  - package-ecosystem: "github-actions"
-    directory: "/"
+
+multi-ecosystem-groups:
+  all-updates:
     schedule:
       interval: "daily"
       time: "07:00"
@@ -11,62 +11,80 @@ updates:
       prefix: "chore"
       prefix-development: "chore"
       include: "scope"
+
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    patterns: ["*"]
+    multi-ecosystem-group: "all-updates"
   - package-ecosystem: "npm"
     directory: "/"
+    patterns: ["*"]
+    multi-ecosystem-group: "all-updates"
     groups:
-      ai:
+      ai-sdk:
         patterns:
           - "@ai-sdk/*"
           - "ai"
       next:
         patterns:
-          - "next"
           - "next-*"
+          - "next"
       react:
         patterns:
-          - "react"
+          - "babel-plugin-react-compiler"
+          - "jotai"
+          - "react-compiler-runtime"
           - "react-dom"
+          - "react-error-boundary"
+          - "react"
           - "use-local-storage-state"
+          - "use-stick-to-bottom"
+      dexie:
+        patterns:
+          - "dexie-react-hooks"
+          - "dexie"
       radix:
         patterns:
           - "@radix-ui/*"
+          - "@xyflow/react"
+          - "embla-carousel-react"
+          - "lucide-react"
+          - "motion"
+      ai-elements:
+        patterns:
+          - "@streamdown/code"
+          - "ai-elements"
+          - "remend"
+          - "shiki"
+          - "streamdown"
       types:
         patterns:
           - "@types/*"
       tailwindcss:
         patterns:
-          - "tailwindcss"
           - "@tailwindcss/*"
-          - "tw-animate-css"
+          - "class-variance-authority"
+          - "clsx"
           - "tailwind-merge"
+          - "tailwindcss"
+          - "tw-animate-css"
       eslint:
         patterns:
-          - "eslint"
           - "@typescript-eslint/*"
-          - "eslint-*"
+          - "eslint-config-*"
+          - "eslint-plugin-*"
+          - "eslint"
       prettier:
         patterns:
-          - "prettier"
-          - "eslint-config-prettier"
           - "prettier-plugin-*"
-      stylelint:
-        patterns:
-          - "stylelint"
-          - "stylelint-*"
+          - "prettier"
       postcss:
         patterns:
-          - "postcss"
-          - "postcss-*"
           - "autoprefixer"
+          - "cssnano"
+          - "postcss-*"
+          - "postcss"
       conventional-changelog:
         patterns:
           - "conventional-changelog*"
-    schedule:
-      interval: "daily"
-      time: "07:00"
-      timezone: "America/New_York"
-    target-branch: "dev"
-    commit-message:
-      prefix: "chore"
-      prefix-development: "chore"
-      include: "scope"
