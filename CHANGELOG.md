@@ -1,3 +1,38 @@
+## [1.0.0-beta.38](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.37...v1.0.0-beta.38) (2026-02-25)
+
+### 🔧 Chores
+
+* **deps-dev/overrides:** bump eslint ([c0a5b6f](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/c0a5b6f4e23a8322b07fff5fff6db7bf7a0e6e52))
+* **deps-dev/overrides:** bump eslint ([6d4f669](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/6d4f669325f29fe7f4b4ddee45b4128b01ca1301))
+* **deps-dev:** bump @biomejs/biome from 2.4.3 to 2.4.4 (#2328) ([d5b922a](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/d5b922ab2e2b90ccb77fe5290af23e7bc61f1835)), closes [#2328](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2328)
+* **deps-dev:** bump the tailwindcss group with 2 updates (#2330) ([64bb604](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/64bb604309ed83add9b1f253e02330503dce0869)), closes [#2330](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2330)
+* **deps:** bump @ai-sdk/azure from 3.0.31 to 3.0.32 in the ai group (#2329) ([300c8c8](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/300c8c8b69e1cedae7f64827b04e5f712642af49)), closes [#2329](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2329)
+* **deps:** bump openai from 6.22.0 to 6.23.0 (#2331) ([13c5dd2](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/13c5dd2bd90323be9889d95fbe72e5b9ef96c123)), closes [#2331](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2331)
+* **deps:** bump openai from 6.23.0 to 6.24.0 (#2332) ([9f40f5f](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/9f40f5fbf28751baa6544ad02a27b24922bfb6c4)), closes [#2332](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2332)
+* **deps:** bump openai from 6.24.0 to 6.25.0 (#2335) ([206264e](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/206264e741b839d1361f4c850e3bc2103d9d6281)), closes [#2335](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2335)
+* **deps:** bump shiki from 3.22.0 to 3.23.0 (#2336) ([992962d](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/992962deeb8dc964165465164fe0f04d6f66d4d0)), closes [#2336](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2336)
+* **deps:** bump the ai group with 2 updates (#2327) ([ce0d56d](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/ce0d56d93adcca0131371374592cb3c98223c892)), closes [#2327](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2327)
+* **deps:** bump the ai group with 5 updates (#2334) ([4d0aeee](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/4d0aeeecf574e380e7206cf47f7f0040307cc94a)), closes [#2334](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2334)
+* **overrides:** bump `minimatch` ([7196f1f](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/7196f1f402e538f0d6d536544fa5ff1f9191d335))
+
+### 📚 Documentation
+
+* **README:** add gpt-5.3-codex ([8fe4bcb](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/8fe4bcb0ff85951206190635a73f351bd029a188))
+
+### ✨ Features
+
+* **api/chat:** add/enable gpt-5.3-codex ([0dd90bb](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/0dd90bbc37f4210fd3847a8d7ca909c57404c383))
+* **utils/models:** add gpt-5.3-codex ([7836dcf](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/7836dcf07134cdc16ea3bd967d005642bcef43fc))
+
+### 🛠️ Code Refactoring
+
+* **env.local.example:** add gpt 5.3 codex var ([356bea3](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/356bea365c8a4013bff177972e7b660d8686dda3))
+
+### 🔄 Continuous Integration
+
+* **create-release:** improve logic; remove fallback configs to simplify ([90a2570](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/90a257073795829f550e3eefaf44c4d5101fa9fc))
+
+
 ## [1.0.0-beta.37](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.36...v1.0.0-beta.37) (2026-02-20)
 
 ### 🔄 Continuous Integration
