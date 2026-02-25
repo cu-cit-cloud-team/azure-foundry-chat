@@ -90,7 +90,7 @@
     "@types/node": "25.3.0",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
-    "autoprefixer": "10.4.24",
+    "autoprefixer": "10.4.27",
     "conventional-changelog": "7.1.1",
     "conventional-changelog-cli": "5.0.0",
     "conventional-changelog-conventionalcommits": "9.1.0",
