@@ -1,3 +1,22 @@
+## [1.0.0-beta.39](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.38...v1.0.0-beta.39) (2026-03-01)
+
+### 🏗️ Build System
+
+* **npm:** bump `packageManager` ([4cf6830](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/4cf6830af3ebe44e214c9c5165a49d7610aef94b))
+
+### 🔧 Chores
+
+* **deps-dev:** bump @types/node in the types group (#2340) ([a1458a8](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/a1458a8714f72c0ad6deffb0505060322cda8681)), closes [#2340](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2340)
+* **deps-dev:** bump @types/node in the types group (#2342) ([4d95ca0](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/4d95ca009e0ba6a5213930ca8e7db59ab64b24ed)), closes [#2342](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2342)
+* **deps-dev:** bump @types/node in the types group (#2345) ([1018d90](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/1018d90c726507d73682ebd0f89b215bd55fa106)), closes [#2345](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2345)
+* **deps-dev:** bump autoprefixer in the postcss group (#2338) ([b7e258a](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/b7e258ac5e34960cdacbab86beacf23b94bded15)), closes [#2338](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2338)
+* **deps:** bump shiki from 3.23.0 to 4.0.0 (#2343) ([95fc986](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/95fc986e7caaf6fc881f0565e3edfe3e7a702150)), closes [#2343](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2343)
+* **deps:** bump the ai group with 2 updates (#2337) ([a15b1ce](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/a15b1ce7ad860508e05fc818d0b89673411eb5c8)), closes [#2337](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2337)
+* **deps:** bump the ai group with 3 updates (#2339) ([c4b1b52](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/c4b1b527087c9fd42756c47c0bc7e4057d54902e)), closes [#2339](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2339)
+* **deps:** bump the ai group with 4 updates (#2341) ([ec8233c](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/ec8233ce603b4b6d1cb55bd2048569a4a537b427)), closes [#2341](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2341)
+* **deps:** bump the ai group with 6 updates (#2344) ([8eaa438](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/8eaa438b49d43c2a1a8ceb9fd9bfafb6c9b4209a)), closes [#2344](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2344)
+
+
 ## [1.0.0-beta.38](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.37...v1.0.0-beta.38) (2026-02-25)
 
 ### 🔧 Chores
