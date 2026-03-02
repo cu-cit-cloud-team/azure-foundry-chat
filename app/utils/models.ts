@@ -32,15 +32,6 @@ export const models: Models = [
     capabilities: ['tools', 'reasoning', 'web-search'],
   },
   {
-    displayName: 'GPT 4.1 Nano',
-    modelVersion: '2025-04-14',
-    maxInputTokens: 1047576,
-    maxOutputTokens: 32768,
-    name: 'gpt-41-nano',
-    provider: 'openai',
-    capabilities: ['tools', 'reasoning', 'web-search'],
-  },
-  {
     displayName: 'GPT 5 Mini',
     modelVersion: '2025-08-07',
     maxInputTokens: 272000,
@@ -50,66 +41,12 @@ export const models: Models = [
     capabilities: ['tools', 'reasoning', 'web-search'],
   },
   {
-    displayName: 'GPT 5 Nano',
-    modelVersion: '2025-08-07',
-    maxInputTokens: 272000,
-    maxOutputTokens: 128000,
-    name: 'gpt-5-nano',
-    provider: 'openai',
-    capabilities: ['tools', 'reasoning', 'web-search'],
-  },
-  {
-    displayName: 'GPT 5.1',
-    modelVersion: '2025-11-13',
-    maxInputTokens: 272000,
-    maxOutputTokens: 128000,
-    name: 'gpt-5.1',
-    default: true,
-    provider: 'openai',
-    capabilities: ['tools', 'reasoning', 'web-search'],
-  },
-  {
-    displayName: 'GPT 5.1 Chat',
-    modelVersion: '2025-11-13',
-    maxInputTokens: 111616,
-    maxOutputTokens: 16384,
-    name: 'gpt-5.1-chat',
-    provider: 'openai',
-    capabilities: ['tools', 'web-search'],
-  },
-  {
-    displayName: 'GPT 5.1 Codex',
-    modelVersion: '2025-11-13',
-    maxInputTokens: 272000,
-    maxOutputTokens: 128000,
-    name: 'gpt-5.1-codex',
-    provider: 'openai',
-    capabilities: ['tools', 'reasoning', 'web-search'],
-  },
-  {
-    displayName: 'GPT 5.1 Codex Max',
-    modelVersion: '2025-12-04',
-    maxInputTokens: 272000,
-    maxOutputTokens: 128000,
-    name: 'gpt-5.1-codex-max',
-    provider: 'openai',
-    capabilities: ['tools', 'reasoning', 'web-search'],
-  },
-  {
-    displayName: 'GPT 5.1 Codex Mini',
-    modelVersion: '2025-11-13',
-    maxInputTokens: 272000,
-    maxOutputTokens: 128000,
-    name: 'gpt-5.1-codex-mini',
-    provider: 'openai',
-    capabilities: ['tools', 'reasoning', 'web-search'],
-  },
-  {
     displayName: 'GPT 5.2',
     modelVersion: '2025-12-11',
     maxInputTokens: 272000,
     maxOutputTokens: 128000,
     name: 'gpt-5.2',
+    default: true,
     provider: 'openai',
     capabilities: ['tools', 'reasoning', 'web-search'],
   },
@@ -275,10 +212,19 @@ export const models: Models = [
     provider: 'xai',
     capabilities: ['tools', 'reasoning'],
   },
+  {
+    displayName: 'Grok 4.1 Fast Non-Reasoning',
+    modelVersion: '1',
+    maxInputTokens: 256000,
+    maxOutputTokens: 256000,
+    name: 'grok-4-1-fast-non-reasoning',
+    provider: 'xai',
+    capabilities: ['tools'],
+  },
 ];
 
 // constants to use as fallbacks when no model is found
-export const DEFAULT_MODEL_NAME = 'gpt-5.1';
+export const DEFAULT_MODEL_NAME = 'gpt-5.2';
 export const DEFAULT_MAX_INPUT_TOKENS = 272000;
 export const DEFAULT_MAX_OUTPUT_TOKENS = 128000;
 
