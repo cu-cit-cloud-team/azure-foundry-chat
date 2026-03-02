@@ -30,7 +30,7 @@ All data stays in your browser: chat history, uploaded files, preferences, and s
 - Node.js >= 24.x (npm >= 11.x recommended)
 - Azure Subscription with:
   - Azure AI Foundry access
-  - Deployed model(s) (GPT-4.1 series, GPT-5-mini/nano, GPT-5.1 series, GPT-5.2 series, GPT 5.3 Codex, o-series, Anthropic Claude, DeepSeek, xAI Grok)
+  - Deployed model(s) (GPT 4.1 series, GPT-5 mini/nano, GPT 5.2 series, GPT 5.3 Codex, o-series, Anthropic Claude, DeepSeek, xAI Grok)
   - API key and endpoint
 
 ## Getting Started
@@ -85,14 +85,8 @@ Key environment variables:
 - GPT-4.1 / GPT-5.x series:
   - `AZURE_OPENAI_GPT41_DEPLOYMENT`
   - `AZURE_OPENAI_GPT41_MINI_DEPLOYMENT`
-  - `AZURE_OPENAI_GPT41_NANO_DEPLOYMENT`
   - `AZURE_OPENAI_GPT5_MINI_DEPLOYMENT`
   - `AZURE_OPENAI_GPT5_NANO_DEPLOYMENT`
-  - `AZURE_OPENAI_GPT51_DEPLOYMENT`
-  - `AZURE_OPENAI_GPT51_CHAT_DEPLOYMENT`
-  - `AZURE_OPENAI_GPT51_CODEX_DEPLOYMENT`
-  - `AZURE_OPENAI_GPT51_CODEX_MINI_DEPLOYMENT`
-  - `AZURE_OPENAI_GPT51_CODEX_MAX_DEPLOYMENT`
   - `AZURE_OPENAI_GPT52_DEPLOYMENT`
   - `AZURE_OPENAI_GPT52_CHAT_DEPLOYMENT`
   - `AZURE_OPENAI_GPT52_CODEX_DEPLOYMENT`
@@ -142,16 +136,17 @@ xAI Grok models are accessed through Azure AI Foundry using your Azure Foundry O
 - `AZURE_XAI_GROK_4_FAST_NON_REASONING_DEPLOYMENT` – deployment for `grok-4-fast-non-reasoning`
 - `AZURE_XAI_GROK_4_FAST_REASONING_DEPLOYMENT` – deployment for `grok-4-fast-reasoning`
 - `AZURE_XAI_GROK_CODE_FAST_1_DEPLOYMENT` – deployment for `grok-code-fast-1`
+- `AZURE_XAI_GROK_4_1_FAST_NON_REASONING_DEPLOYMENT` – deployment for `grok-4-1-fast-non-reasoning`
 
 ### Supported models
 
 The canonical list of supported models and token limits lives in `app/utils/models.ts`. Broadly, the app supports:
 
-- **GPT-4.1 / GPT-5.x series**: `gpt-4.1`, `gpt-4.1-mini`, `gpt-4.1-nano`, `gpt-5-mini`, `gpt-5-nano`, `gpt-5.1`, `gpt-5.1-chat`, `gpt-5.1-codex`, `gpt-5.2`, `gpt-5.2-chat`, `gpt-5.2-codex`, `gpt-5.3-codex`
+- **GPT-4.1 / GPT-5.x series**: `gpt-4.1`, `gpt-4.1-mini`, `gpt-5-mini`, `gpt-5-nano`, `gpt-5.2`, `gpt-5.2-chat`, `gpt-5.2-codex`, `gpt-5.3-codex`
 - **o-series**: `o3`, `o3-mini`, `o4-mini`
 - **Anthropic (Claude)**: `claude-haiku-4-5`, `claude-sonnet-4-5`, `claude-opus-4-5`, `claude-sonnet-4-6`, `claude-opus-4-6`
 - **DeepSeek**: `DeepSeek-V3.1`, `DeepSeek-V3.2`, `DeepSeek-R1-0528`
-- **xAI Grok**: `grok-4`, `grok-4-fast-non-reasoning`, `grok-4-fast-reasoning`, `grok-code-fast-1`
+- **xAI Grok**: `grok-4`, `grok-4-fast-non-reasoning`, `grok-4-fast-reasoning`, `grok-code-fast-1`, `grok-4-1-fast-non-reasoning`
 
 Refer to `app/utils/models.ts` and `.env.local.example` to ensure your deployments and environment variables are configured consistently.
 
