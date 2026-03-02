@@ -58,7 +58,7 @@ Managed in `app/utils/models.ts`. When adding a model:
 2. Add the corresponding `AZURE_OPENAI_<MODEL>_DEPLOYMENT` variable to `.env.local.example`.
 3. Map the model in `api/chat/route.ts` via `modelDeploymentMap`.
 
-Supported: GPT-4.1 (and mini/nano), GPT-5 (all variants), GPT-5.1 (including codex), o-series (o3/o4 and mini versions).
+Supported: GPT-4.1 (and mini), GPT-5 (mini and nano), GPT-5.2 (including codex), GPT-5.3 Codex, o-series (o3/o4 and mini versions).
 
 ### Streaming API
 
