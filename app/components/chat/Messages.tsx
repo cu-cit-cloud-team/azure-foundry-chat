@@ -59,6 +59,114 @@ type StoredMessage = UIMessage & {
   createdAt?: string;
 };
 
+type RenderableToolState =
+  | 'input-streaming'
+  | 'input-available'
+  | 'output-available'
+  | 'output-error';
+
+type NormalizedToolPart = {
+  kind: 'dynamic' | 'typed';
+  type: `tool-${string}`;
+  toolName: string;
+  state: RenderableToolState;
+  input: unknown;
+  output: unknown;
+  errorText?: string;
+  hasImageOutput: boolean;
+};
+
+function isRenderableToolState(value: unknown): value is RenderableToolState {
+  return (
+    value === 'input-streaming' ||
+    value === 'input-available' ||
+    value === 'output-available' ||
+    value === 'output-error'
+  );
+}
+
+function getToolState(value: unknown): RenderableToolState {
+  return isRenderableToolState(value) ? value : 'input-available';
+}
+
+function normalizeToolPart(part: unknown): NormalizedToolPart | null {
+  if (!part || typeof part !== 'object') {
+    return null;
+  }
+
+  const toolPart = part as Record<string, unknown>;
+
+  if (toolPart.type === 'dynamic-tool') {
+    const toolName =
+      typeof toolPart.toolName === 'string' ? toolPart.toolName : 'tool';
+    const hasImageOutput =
+      toolName === 'image_generation' &&
+      !!toolPart.output &&
+      typeof toolPart.output === 'object' &&
+      'result' in (toolPart.output as Record<string, unknown>);
+
+    return {
+      kind: 'dynamic',
+      type: `tool-${toolName}`,
+      toolName,
+      state: getToolState(toolPart.state),
+      input: toolPart.input,
+      output: toolPart.output,
+      errorText:
+        typeof toolPart.errorText === 'string' ? toolPart.errorText : undefined,
+      hasImageOutput,
+    };
+  }
+
+  if (typeof toolPart.type === 'string' && toolPart.type.startsWith('tool-')) {
+    const typedToolPart = toolPart as ToolUIPart;
+    const toolName = typedToolPart.type.split('tool-')[1] || 'tool';
+    const hasImageOutput =
+      typedToolPart.type === 'tool-image_generation' &&
+      !!typedToolPart.output &&
+      typeof typedToolPart.output === 'object' &&
+      'result' in typedToolPart.output;
+
+    return {
+      kind: 'typed',
+      type: typedToolPart.type,
+      toolName,
+      state: getToolState(typedToolPart.state),
+      input: typedToolPart.input,
+      output: typedToolPart.output,
+      errorText: typedToolPart.errorText,
+      hasImageOutput,
+    };
+  }
+
+  return null;
+}
+
+function extractMcpTextOutput(output: unknown): string | null {
+  if (!output || typeof output !== 'object') {
+    return null;
+  }
+
+  const outputObject = output as Record<string, unknown>;
+  if (!Array.isArray(outputObject.content)) {
+    return null;
+  }
+
+  const textChunks = outputObject.content
+    .map((contentPart) => {
+      if (!contentPart || typeof contentPart !== 'object') {
+        return null;
+      }
+      const typedPart = contentPart as Record<string, unknown>;
+      return typedPart.type === 'text' && typeof typedPart.text === 'string'
+        ? typedPart.text
+        : null;
+    })
+    .filter((text): text is string => Boolean(text));
+
+  return textChunks.length > 0 ? textChunks.join('\n\n') : null;
+}
+
 export interface MessagesProps {
   messages: UIMessage[];
   userMeta?: UserMeta;
@@ -214,6 +322,98 @@ const MessageRow = memo(
     const handleFileClick = useCallback(
       (file: FileUIPart) => onFileClick(file),
       [onFileClick]
+    );
+
+    const renderToolPart = useCallback(
+      (part: NormalizedToolPart, key: string) => {
+        const mcpTextOutput =
+          part.state === 'output-available'
+            ? extractMcpTextOutput(part.output)
+            : null;
+
+        // Keep tool output compact for generated images while preserving full image preview below.
+        const displayOutput =
+          part.toolName === 'image_generation' &&
+          part.output &&
+          typeof part.output === 'object' &&
+          'result' in (part.output as Record<string, unknown>) &&
+          typeof (part.output as { result?: unknown }).result === 'string'
+            ? {
+                ...(part.output as Record<string, unknown>),
+                result: `${(part.output as { result: string }).result.substring(0, 60)}... (truncated)`,
+              }
+            : part.output;
+
+        return (
+          <Fragment key={key}>
+            <Tool className="w-full">
+              <ToolHeader
+                title={part.toolName}
+                type={part.type}
+                state={part.state}
+              />
+              <ToolContent>
+                <ToolInput input={part.input} />
+                {part.state === 'output-available' && mcpTextOutput ? (
+                  <MessageResponse
+                    mode="streaming"
+                    parseIncompleteMarkdown
+                    isAnimating={false}
+                    shikiTheme={['github-light', 'github-dark']}
+                    plugins={{ code: code }}
+                  >
+                    {mcpTextOutput}
+                  </MessageResponse>
+                ) : (
+                  part.output !== undefined && (
+                    <ToolOutput
+                      output={displayOutput}
+                      errorText={part.errorText}
+                    />
+                  )
+                )}
+              </ToolContent>
+            </Tool>
+
+            {part.hasImageOutput ? (
+              <div className="mt-4 rounded-lg border p-2 bg-muted/50 max-w-2/5 h-auto">
+                <button
+                  type="button"
+                  onClick={() => {
+                    const output = part.output as {
+                      result: string;
+                    };
+                    const dataUrl = `data:image/png;base64,${output.result}`;
+                    const filePart = {
+                      type: 'file' as const,
+                      name: `${message.id}.png`,
+                      mediaType: 'image/png',
+                      url: dataUrl,
+                      title: `${message.id}.png`,
+                    };
+                    onFileClick(filePart);
+                  }}
+                  className="cursor-pointer hover:opacity-80 transition-opacity w-full"
+                >
+                  {/* biome-ignore lint/performance/noImgElement: base64 from tool output */}
+                  <img
+                    src={`data:image/png;base64,${(part.output as { result: string }).result}`}
+                    alt={
+                      typeof part.input === 'object' &&
+                      part.input &&
+                      'prompt' in part.input
+                        ? String(part.input.prompt)
+                        : 'AI-generated content'
+                    }
+                    className="object-cover rounded-md w-full"
+                  />
+                </button>
+              </div>
+            ) : null}
+          </Fragment>
+        );
+      },
+      [message.id, onFileClick]
     );
 
     return (
@@ -411,140 +611,16 @@ const MessageRow = memo(
                       </span>
                     );
                   }
-
-                  case 'dynamic-tool': {
-                    // Handle generic dynamic tool invocations
+                  default: {
                     if (isUser) {
                       return null;
                     }
-                    const dynamicPart = part as unknown as Record<
-                      string,
-                      unknown
-                    >;
-                    const toolName =
-                      typeof dynamicPart.toolName === 'string'
-                        ? dynamicPart.toolName
-                        : 'tool';
-                    // Default to 'input-available' if state is not a valid tool state
-                    const state: ToolUIPart['state'] =
-                      typeof dynamicPart.state === 'string' &&
-                      (dynamicPart.state === 'input-streaming' ||
-                        dynamicPart.state === 'input-available' ||
-                        dynamicPart.state === 'output-available' ||
-                        dynamicPart.state === 'output-error')
-                        ? (dynamicPart.state as ToolUIPart['state'])
-                        : 'input-available';
 
-                    return (
-                      <div key={`${message.id}-${i}`} className="my-2">
-                        <Tool className="w-full">
-                          <ToolHeader
-                            title={toolName}
-                            type={`tool-${toolName}` as `tool-${string}`}
-                            state={state}
-                          />
-                          <ToolContent>
-                            <ToolInput input={dynamicPart.input} />
-                            {dynamicPart.output !== undefined && (
-                              <ToolOutput
-                                output={dynamicPart.output}
-                                errorText={
-                                  typeof dynamicPart.errorText === 'string'
-                                    ? dynamicPart.errorText
-                                    : undefined
-                                }
-                              />
-                            )}
-                          </ToolContent>
-                        </Tool>
-                      </div>
-                    );
-                  }
-
-                  default: {
-                    // Handle dynamic tool types (tool-{toolName})
-                    if (part.type.startsWith('tool-')) {
-                      if (isUser) {
-                        return null;
-                      }
-                      const toolPart = part as ToolUIPart;
-
-                      // Check if this is an image generation tool with output
-                      const isImageGeneration =
-                        toolPart.type === 'tool-image_generation';
-                      const hasImageOutput =
-                        isImageGeneration &&
-                        toolPart.output &&
-                        typeof toolPart.output === 'object' &&
-                        'result' in toolPart.output;
-
-                      // For image generation, truncate the base64 result in the tool output display
-                      const displayOutput =
-                        isImageGeneration &&
-                        toolPart.output &&
-                        typeof toolPart.output === 'object' &&
-                        'result' in toolPart.output &&
-                        typeof toolPart.output.result === 'string'
-                          ? {
-                              ...toolPart.output,
-                              result: `${toolPart.output.result.substring(0, 60)}... (truncated)`,
-                            }
-                          : toolPart.output;
-
-                      return (
-                        <Fragment key={`${message.id}-${i}`}>
-                          <Tool className="w-full">
-                            <ToolHeader
-                              title={toolPart.type.split('tool-')[1] || 'tool'}
-                              type={toolPart.type}
-                              state={toolPart.state}
-                            />
-                            <ToolContent>
-                              <ToolInput input={toolPart.input} />
-                              {toolPart.output !== undefined && (
-                                <ToolOutput
-                                  output={displayOutput}
-                                  errorText={toolPart.errorText}
-                                />
-                              )}
-                            </ToolContent>
-                          </Tool>
-                          {hasImageOutput ? (
-                            <div className="mt-4 rounded-lg border p-2 bg-muted/50 max-w-2/5 h-auto">
-                              <button
-                                type="button"
-                                onClick={() => {
-                                  const output = toolPart.output as {
-                                    result: string;
-                                  };
-                                  const dataUrl = `data:image/png;base64,${output.result}`;
-                                  const filePart = {
-                                    type: 'file' as const,
-                                    name: `${message.id}.png`,
-                                    mediaType: 'image/png',
-                                    url: dataUrl,
-                                    title: `${message.id}.png`,
-                                  };
-                                  onFileClick(filePart);
-                                }}
-                                className="cursor-pointer hover:opacity-80 transition-opacity w-full"
-                              >
-                                {/* biome-ignore lint/performance/noImgElement: base64 from tool output */}
-                                <img
-                                  src={`data:image/png;base64,${(toolPart.output as { result: string }).result}`}
-                                  alt={
-                                    typeof toolPart.input === 'object' &&
-                                    toolPart.input &&
-                                    'prompt' in toolPart.input
-                                      ? String(toolPart.input.prompt)
-                                      : 'AI-generated content'
-                                  }
-                                  className="object-cover rounded-md w-full"
-                                />
-                              </button>
-                            </div>
-                          ) : null}
-                        </Fragment>
+                    const normalizedToolPart = normalizeToolPart(part);
+                    if (normalizedToolPart) {
+                      return renderToolPart(
+                        normalizedToolPart,
+                        `${message.id}-${i}`
                       );
                     }
 
