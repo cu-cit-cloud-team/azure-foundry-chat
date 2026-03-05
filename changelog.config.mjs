@@ -43,6 +43,7 @@ const defaultTemplate = `{{> header}}
 {{> commit root=@root}}
 {{/each}}
 {{/each}}
+{{> footer}}
 
 `;
 
