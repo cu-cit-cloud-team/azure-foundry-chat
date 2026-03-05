@@ -1,3 +1,58 @@
+## [1.0.0-beta.40](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.39...v1.0.0-beta.40) (2026-03-05)
+
+### ✨ Features
+
+* **api/chat:** add/enable gpt 5.3 chat and grok 4.1 fast reasoning models ([b1027ab](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/b1027abfa247dbe98f301268cd3093c165242cfd))
+* **env.local.example:** add vars for gpt 5.3 chat and grok 4.1 fast reasoning ([677103b](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/677103b3b7f98c09d7bb07429196f6e2ee3a7add))
+* **utils/models:** add gpt 5.3 chat and grok 4.1 fast reasoning ([1177b91](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/1177b9120adae4fd735faae913f71751f32c1548))
+
+### 🔧 Chores
+
+* **deps-dev:** bump @biomejs/biome from 2.4.4 to 2.4.5 (#2351) ([8f034c2](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/8f034c28c1e362951af677d4ff35f7f087e8f0fd)), closes [#2351](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2351)
+* **deps-dev:** bump conventional-changelog-conventionalcommits (#2364) ([5d40b12](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/5d40b120f9ab9700e1bc63e6b849e0dc24326686)), closes [#2364](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2364)
+* **deps-dev:** bump postcss from 8.5.6 to 8.5.8 in the postcss group (#2353) ([2216abf](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/2216abf35a643150a1d8cee32526b075d0f0889f)), closes [#2353](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2353)
+* **deps-dev:** bump the conventional-changelog group with 2 updates (#2346) ([76df224](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/76df224bd4ae5a90e3c1a67b475e7e9f00e7f7a8)), closes [#2346](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2346)
+* **deps-dev:** remove deprecated dev dependency ([14a9e2e](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/14a9e2e93f3112baa6d5b3601ff4361508271a92))
+* **deps:** bump lucide-react from 0.575.0 to 0.576.0 (#2347) ([846b0d2](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/846b0d229999407bdfe322775a06d3b5bfe1fa45)), closes [#2347](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2347)
+* **deps:** bump lucide-react from 0.576.0 to 0.577.0 (#2359) ([8f53236](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/8f53236a1e6790a8016e0776e41358420968de30)), closes [#2359](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2359)
+* **deps:** bump motion from 12.34.3 to 12.34.4 (#2350) ([e9eb669](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/e9eb669c6fc5c05f05084569b1d432958adac970)), closes [#2350](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2350)
+* **deps:** bump motion from 12.34.4 to 12.34.5 (#2357) ([462557e](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/462557e41c3f2ef9bc9ac3f5971007caef9c3e5d)), closes [#2357](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2357)
+* **deps:** bump motion from 12.34.5 to 12.35.0 (#2360) ([c4c4edc](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/c4c4edc9bfb58ac276fdcdc6ad6513e4241e8154)), closes [#2360](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2360)
+* **deps:** bump shiki from 4.0.0 to 4.0.1 (#2348) ([8e24ab1](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/8e24ab1b77727e344a85bee881490fd6c94a42d9)), closes [#2348](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2348)
+* **deps:** bump the ai group with 2 updates (#2352) ([08f02c6](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/08f02c69f7493f57729c7e3ac2ca061edfb9aac1)), closes [#2352](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2352)
+* **deps:** bump the ai group with 2 updates (#2356) ([c9e6b8a](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/c9e6b8a345d391a596f0ecf18b501982858eda39)), closes [#2356](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2356)
+* **deps:** bump the ai group with 3 updates (#2349) ([adb87a2](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/adb87a2db405edccac2da4644641c85c1614622e)), closes [#2349](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2349)
+* **deps:** bump the ai group with 3 updates (#2358) ([1fce0e0](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/1fce0e0a4c3c5c84f5409414cb4fd3e5056ffd8b)), closes [#2358](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2358)
+* **deps:** bump the ai group with 3 updates (#2361) ([c6a0d80](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/c6a0d807d7da90054faf80773154e04cc1a81fa9)), closes [#2361](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2361)
+* **deps:** bump the ai group with 4 updates (#2355) ([c18ba6a](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/c18ba6a7d38f7319fb6a7389993f7332cf20a374)), closes [#2355](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2355)
+* **deps:** bump the ai group with 4 updates (#2363) ([d0c783d](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/d0c783db29a0ff2efd0107e290efbbd8152b2820)), closes [#2363](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2363)
+* **deps:** bump the ai group with 6 updates (#2354) ([2ea7072](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/2ea707268f2677c10fc3bbf00d543e708683e008)), closes [#2354](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2354)
+* **deps:** bump the ai group with 6 updates (#2365) ([8d526b8](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/8d526b8a3b12433fafe9f778f762932f172ba52d)), closes [#2365](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2365)
+* **overrides:** add svgo to close security alert (https://github.com/cu-cit-cloud-team/azure-foundry-chat/security/dependabot/40) ([21fbaa9](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/21fbaa90fc5e0df32b38f16395561293c7f8faf1))
+
+### 🏗️ Build System
+
+* **changelog.config:** update mainTemplate ([04d647d](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/04d647de4674f4463624a5f4e92919e1a5d70e9b))
+
+### 🔄 Continuous Integration
+
+* **create-release:** remove deprecated dependency ([f76d2aa](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/f76d2aa492aa343c4d818d4da5cddb91c42aade7))
+
+### 🐛 Fixes
+
+* **api/chat:** reference to old var ([9e075d6](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/9e075d6f10e4a3efd1c6e5a114c0ddb2c769e973))
+
+### 📚 Documentation
+
+* **copilot-instructions:** update supported models ([1ab6d7d](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/1ab6d7ddf6b5e69c3eec153c7e3f006b4711b7a0))
+* **README:** update supported models ([7cc9dc5](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/7cc9dc5214235f3fc030da33df0f0fe91f359d3c))
+
+### 🛠️ Code Refactoring
+
+* **api/chat:** remove gpt-5.1 models; add grok 4.1 fast non reasoning ([d7cea63](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/d7cea63a16343fabf9309fe336832d9e110dce58))
+* **env.local.example:** update supported models ([33623e0](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/33623e0f1814aa061e2d49d8fab1bc882ec1974e))
+* **utils/models:** remove gpt-5.1 models; set gpt-5.2 as default; add grok 4.1 fast non reasoning ([3f905c6](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/3f905c6ae235f3aabfa2ba0590dfcf3f5e6f9873))
+
 ## [1.0.0-beta.39](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.38...v1.0.0-beta.39) (2026-03-01)
 
 ### 🏗️ Build System
