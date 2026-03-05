@@ -1,6 +1,7 @@
 import { createAnthropic } from '@ai-sdk/anthropic';
 import { createAzure } from '@ai-sdk/azure';
 import { createDeepSeek } from '@ai-sdk/deepseek';
+import { createMCPClient } from '@ai-sdk/mcp';
 import { createXai } from '@ai-sdk/xai';
 import {
   consumeStream,
@@ -9,6 +10,7 @@ import {
   generateId,
   type LanguageModelUsage,
   smoothStream,
+  stepCountIs,
   streamText,
   type UIMessage,
   wrapLanguageModel,
@@ -85,6 +87,7 @@ const {
   AZURE_XAI_GROK_4_1_FAST_NON_REASONING_DEPLOYMENT,
   AZURE_XAI_GROK_4_1_FAST_REASONING_DEPLOYMENT,
   AZURE_XAI_GROK_CODE_FAST_1_DEPLOYMENT,
+  MCP_SERVER_SSE_URL,
 } = process.env;
 
 // tell next.js to use the nodejs runtime
@@ -240,38 +243,54 @@ export async function POST(req: Request) {
     const baseStreamTextOptions = {
       model: azureModel,
       messages: convertedMessages,
-      experimental_transform: smoothStream(),
       abortSignal: req.signal,
+    };
+
+    // set useMcpServer to true if MCP_SERVER_SSE_URL is provided, otherwise false
+    const useMcpServer = Boolean(MCP_SERVER_SSE_URL);
+
+    let mcpClient: Awaited<ReturnType<typeof createMCPClient>> | undefined;
+    let mcpTools = {};
+
+    if (useMcpServer) {
+      mcpClient = await createMCPClient({
+        transport: {
+          type: 'sse',
+          url: MCP_SERVER_SSE_URL as string,
+        },
+      });
+
+      mcpTools = await mcpClient.tools();
+    }
+
+    // console.log(JSON.stringify(mcpTools, null, 2));
+
+    const tools = {
+      ...(useMcpServer ? mcpTools : {}),
+      ...(webSearch
+        ? {
+            web_search_preview: azure.tools.webSearchPreview({
+              searchContextSize: 'medium',
+            }),
+          }
+        : {}),
+      ...(useImageTool
+        ? {
+            image_generation: azure.tools.imageGeneration({
+              outputFormat: 'png',
+            }),
+          }
+        : {}),
     };
 
     const response = streamText({
       ...baseStreamTextOptions,
-      ...(webSearch
-        ? {
-            tools: {
-              web_search_preview: azure.tools.webSearchPreview({
-                searchContextSize: 'medium',
-              }),
-              ...(useImageTool
-                ? {
-                    image_generation: azure.tools.imageGeneration({
-                      outputFormat: 'png',
-                    }),
-                  }
-                : {}),
-            },
-            toolChoice: 'auto',
-          }
-        : {}),
-      ...(useImageTool && !webSearch
-        ? {
-            tools: {
-              image_generation: azure.tools.imageGeneration({
-                outputFormat: 'png',
-              }),
-            },
-          }
-        : {}),
+      tools,
+      experimental_transform: smoothStream(),
+      stopWhen: stepCountIs(5), // enable server-side loop: tool call -> tool result -> final text
+      onFinish: async () => {
+        await mcpClient?.close();
+      },
     });
 
     // Return streaming response using native AI SDK pattern
@@ -283,6 +302,7 @@ export async function POST(req: Request) {
       consumeSseStream: consumeStream,
       messageMetadata: ({ part }) => {
         // Attach metadata at message start
+        // console.log(JSON.stringify(part, null, 2));
         if (part.type === 'start') {
           return {
             model,
