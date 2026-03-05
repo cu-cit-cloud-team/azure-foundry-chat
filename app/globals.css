@@ -126,4 +126,8 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  button[data-streamdown="link"] {
+    @apply cursor-pointer;
+  }
 }
