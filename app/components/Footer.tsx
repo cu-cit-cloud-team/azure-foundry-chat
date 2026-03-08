@@ -42,7 +42,8 @@ import { modelFromName, modelStringFromName, models } from '@/app/utils/models';
 // Dynamically generate accepted MIME types from mediaTypeMap
 // Using Set to deduplicate (e.g., .jpg and .jpeg both map to image/jpeg)
 const acceptedMimeTypes = Array.from(
-  new Set(['image/*', ...Object.values(mediaTypeMap)])
+  // new Set(['image/*', ...Object.values(mediaTypeMap)])
+  new Set([...Object.values(mediaTypeMap)])
 ).join(',');
 
 interface FooterProps {
