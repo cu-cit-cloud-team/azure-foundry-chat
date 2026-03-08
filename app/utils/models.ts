@@ -100,7 +100,7 @@ export const models: Models = [
     modelVersion: '2026-03-05',
     maxInputTokens: 200000,
     maxOutputTokens: 100000,
-    name: 'gpt-5.4',
+    name: 'gpt-5.4-pro',
     provider: 'openai',
     capabilities: ['tools', 'web-search', 'reasoning'],
   },
