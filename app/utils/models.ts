@@ -96,6 +96,15 @@ export const models: Models = [
     capabilities: ['tools', 'web-search'],
   },
   {
+    displayName: 'GPT 5.4 Pro',
+    modelVersion: '2026-03-05',
+    maxInputTokens: 200000,
+    maxOutputTokens: 100000,
+    name: 'gpt-5.4',
+    provider: 'openai',
+    capabilities: ['tools', 'web-search', 'reasoning'],
+  },
+  {
     displayName: 'o3',
     modelVersion: '2025-04-16',
     maxInputTokens: 200000,
