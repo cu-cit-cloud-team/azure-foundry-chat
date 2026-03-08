@@ -10,7 +10,7 @@ import type { UIMessage } from 'ai';
 
 export const mediaTypeMap: Record<string, string> = {
   json: 'application/json',
-  pdf: 'application/pdf',
+  // pdf: 'application/pdf',
   ts: 'application/typescript',
   sh: 'application/x-sh',
   xml: 'application/xml',
