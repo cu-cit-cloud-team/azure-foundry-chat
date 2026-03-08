@@ -1,3 +1,39 @@
+## [1.0.0-beta.41](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.40...v1.0.0-beta.41) (2026-03-08)
+
+### 🏗️ Build System
+
+* **changelog.config:** update for latest version of conventional-changelog ([74b4047](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/74b4047e2d6da975fb9bd2f2e7e209bf7f1222de))
+
+### 🛠️ Code Refactoring
+
+* disable image attachments temporarily ([d9b84f7](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/d9b84f7112c72c02e4656c516fcc647a21902b69))
+
+### 🔧 Chores
+
+* **deps-dev:** bump @biomejs/biome from 2.4.5 to 2.4.6 (#2377) ([175c744](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/175c7445dbf99526abd31e2db163a5df8af8c703)), closes [#2377](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2377)
+* **deps-dev:** bump @types/node in the types group (#2373) ([85a9253](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/85a925343337e50b7643793f6e826fb956fe41bb)), closes [#2373](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2373)
+* **deps-dev:** bump cssnano from 7.1.2 to 7.1.3 (#2374) ([450fecb](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/450fecbdd35fac47c5ec6d76666eed27105ab501)), closes [#2374](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2374)
+* **deps-dev:** bump eslint to 10.0.3 ([7fce498](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/7fce4989356129622f4848112ce1f32eba42c9f7))
+* **deps:** bump @streamdown/code from 1.0.3 to 1.1.0 (#2380) ([ebdbc72](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/ebdbc726d2e1294b8ee65c36ecb06c7ea698c35c)), closes [#2380](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2380)
+* **deps:** bump motion from 12.35.0 to 12.35.1 (#2381) ([0ce9bdc](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/0ce9bdc0ba3b8c023165cbff41b59850b56c6e4d)), closes [#2381](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2381)
+* **deps:** bump openai from 6.25.0 to 6.27.0 (#2379) ([6aa4d13](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/6aa4d13eab42b8723dfe1afcd9256334c5ffd9df)), closes [#2379](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2379)
+* **deps:** bump remend from 1.2.1 to 1.2.2 (#2375) ([2c4f26f](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/2c4f26f1638822dcf944c07194876e7ba9cd0a2a)), closes [#2375](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2375)
+* **deps:** bump streamdown from 2.3.0 to 2.4.0 (#2382) ([8103fde](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/8103fde7ac63c45559bc5029f30aa68288150c71)), closes [#2382](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2382)
+
+### 🐛 Fixes
+
+* **al-elements/reasoning:** type mismatch after upgrade to streamdown 2.4.0 ([fa81a2b](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/fa81a2b83729a9c05a405e9fd7e414ae2799ace4))
+* **utils/models:** model name ([eadaef8](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/eadaef8b499eaee83171ca85efe058da9a8d8acb))
+
+### ✨ Features
+
+* **api/chat:** add/enable gpt 5.4 pro ([dfca765](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/dfca7654405d4e361da1c7ce06f99963022b9873))
+* **api/chat:** enable gpt 5.4 ([19aa943](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/19aa9430971e1416ba0beaeeb3cffea1de62dae9))
+* **env.local.example:** add var for gpt 5.4 ([16b027d](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/16b027dec0f00dc339b2b75d60d9fe02da57aeb3))
+* **env.local.example:** add var for gpt 5.5 pro ([f7e4bf8](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/f7e4bf851adddb3f94058094fed1fa05c3e57884))
+* **utils/models:** add gpt 5.4 ([5335f57](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/5335f57cff69363a17631792766c4e135cc7d416))
+* **utils/models:** add gpt 5.4 pro ([7d03711](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/7d03711ca08bec72db20816143de8faa2809c568))
+
 ## [1.0.0-beta.40](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.39...v1.0.0-beta.40) (2026-03-05)
 
 ### ✨ Features
