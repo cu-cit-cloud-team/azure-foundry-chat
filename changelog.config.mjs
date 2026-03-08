@@ -1,4 +1,3 @@
-import { t } from 'shiki/bundle/full';
 import { mainTemplate } from './node_modules/conventional-changelog-conventionalcommits/src/templates.js';
 
 // Changelog section mapping by Conventional Commit type.
