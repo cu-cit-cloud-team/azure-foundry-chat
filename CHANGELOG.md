@@ -1,3 +1,40 @@
+## [1.0.0-beta.42](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.41...v1.0.0-beta.42) (2026-03-12)
+
+### 🛠️ Code Refactoring
+
+* **ai-elements/shadcn:** update components to latest versions ([62632f0](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/62632f0828717290e2b0cbf8acd4c460c76d1254))
+* **api/chat:** fix/improve image and pdf attachment handlinng ([526cf7a](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/526cf7aa485839f8b4e918f1d465325a0c8b8c31))
+* improve/tighten attachment handling ([4212509](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/42125090d31d40eeabc04d021562e110ac9a9a2f))
+* **Messages:** improve/streamline tool support ([85c98ca](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/85c98ca2b6552f694ff21e060a7dd8e361866d00))
+* **providers:** add tooltip provider ([0c25375](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/0c25375ca5461635c629e62929053c80989595d2))
+* updates to better align attachments with latest ai-elements ([5fb8820](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/5fb8820ee755663c7b1d1be5c1fd1915da774634))
+* **utils/messageHekpers:** disable pdf attachments temporarily ([f067e6b](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/f067e6bc6b6f1e0b95eefb3d8a98d8d9ca18a680))
+
+### 🏗️ Build System
+
+* **changelog.config:** remove unused import added my mistake ([881cf6f](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/881cf6f10bb38559a4cdaa6c9a2fc88b5c6b5b99))
+* **npm:** bump packageManager ([ffe6d07](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/ffe6d073b4a1aef8c28b6300db430bb610f36ec5))
+* **skills:** add ai-elements skill ([80cda89](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/80cda893308fa6a4ef87ecdab3f1298a8c21e178))
+* **skills:** add lockfile from `npx skills add vercel/ai-elements` ([dc5f245](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/dc5f2453ea6d1cf7fabd6124fd6e111385308e25))
+
+### 🔧 Chores
+
+* **deps-dev:** bump @types/node in the types group (#2386) ([f60a75c](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/f60a75c9b2dd6cdfbfb7112ebc4d73d343e44245)), closes [#2386](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2386)
+* **deps:** add @ai-sdk/mcp ([fd3325e](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/fd3325e04391e2f5a4d2e1a5ee7ea37749d4c963))
+* **deps:** bump dayjs from 1.11.19 to 1.11.20 (#2388) ([0c80325](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/0c803259354de1956fa9da3e8f1bf93a1b37c809)), closes [#2388](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2388)
+* **deps:** bump jotai from 2.18.0 to 2.18.1 (#2385) ([be4af33](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/be4af33cd5846ace227149c99e9c3ef47475ab00)), closes [#2385](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2385)
+* **deps:** bump motion from 12.35.1 to 12.35.2 (#2383) ([4353743](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/4353743cf2599ed094ed478a33c23f14cf75c455)), closes [#2383](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2383)
+* **deps:** bump shiki from 4.0.1 to 4.0.2 (#2384) ([c1dab45](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/c1dab451120b000077c216001e7b0391d5eacecc)), closes [#2384](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2384)
+* **deps:** update ai-elements (and related) ([e805594](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/e805594571006ec63b9f772cf3c997b76b6041d9))
+
+### ✨ Features
+
+* **api/chat:** add support for an MCP server ([fd5de4e](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/fd5de4eacb29831c53952a1fa7779511dc03c229))
+
+### 🎨 Style
+
+* give external links in chat expected cursor ([1ed6fd1](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/1ed6fd1e808cbf0a882860336eb5ca3d153dcd89))
+
 ## [1.0.0-beta.41](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.40...v1.0.0-beta.41) (2026-03-08)
 
 ### 🏗️ Build System
