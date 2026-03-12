@@ -9,6 +9,7 @@ import {
   extractReasoningMiddleware,
   generateId,
   type LanguageModelUsage,
+  type ModelMessage,
   smoothStream,
   stepCountIs,
   streamText,
@@ -105,6 +106,151 @@ const defaults = {
   model: DEFAULT_MODEL_NAME, // see utils/models.ts for available models
   user: 'Cloud Team Chat User',
 };
+
+type InlineUiFilePart = {
+  type: 'file';
+  url: string;
+  mediaType: string;
+  filename?: string;
+};
+
+type UserContentPart =
+  | { type: 'text'; text: string }
+  | { type: 'image'; image: string; mediaType?: string }
+  | { type: 'file'; data: string; mediaType: string; filename?: string };
+
+function isInlineUiFilePart(part: unknown): part is InlineUiFilePart {
+  return (
+    typeof part === 'object' &&
+    part !== null &&
+    'type' in part &&
+    part.type === 'file' &&
+    'url' in part &&
+    typeof part.url === 'string' &&
+    'mediaType' in part &&
+    typeof part.mediaType === 'string' &&
+    (part.url.startsWith('data:') || part.url.startsWith('blob:'))
+  );
+}
+
+function extractBase64FromDataUrl(dataUrl: string): {
+  data: string;
+  mediaType: string;
+} {
+  const match = dataUrl.match(
+    /^data:([^;,]+)?(?:;charset=[^;,]+)?;base64,(.+)$/
+  );
+
+  if (!match) {
+    throw new Error(
+      'Attachment format is invalid. Please remove the file and add it again.'
+    );
+  }
+
+  const [, mediaType = 'application/octet-stream', data] = match;
+
+  return {
+    data,
+    mediaType,
+  };
+}
+
+function convertInlineUiFilePartToModelPart(
+  part: InlineUiFilePart
+): UserContentPart {
+  if (part.url.startsWith('blob:')) {
+    throw new Error(
+      'Attachment upload could not be serialized for the server. Please remove the file and add it again.'
+    );
+  }
+
+  const { data, mediaType } = extractBase64FromDataUrl(part.url);
+
+  if (mediaType.startsWith('image/')) {
+    return {
+      type: 'image',
+      image: data,
+      mediaType,
+    };
+  }
+
+  return {
+    type: 'file',
+    data,
+    mediaType,
+    filename: part.filename,
+  };
+}
+
+function normalizeUserMessageContent(
+  content: ModelMessage['content']
+): UserContentPart[] {
+  if (typeof content === 'string') {
+    return [{ type: 'text', text: content }];
+  }
+
+  return content as UserContentPart[];
+}
+
+async function convertUserMessageWithInlineUploads(
+  message: UIMessage
+): Promise<ModelMessage> {
+  const content: UserContentPart[] = [];
+
+  for (const part of message.parts) {
+    if (isInlineUiFilePart(part)) {
+      content.push(convertInlineUiFilePartToModelPart(part));
+      continue;
+    }
+
+    const [convertedMessage] = await convertToModelMessages([
+      {
+        ...message,
+        parts: [part],
+      },
+    ]);
+
+    if (!convertedMessage) {
+      continue;
+    }
+
+    if (convertedMessage.role !== 'user') {
+      throw new Error(
+        'Expected a user model message during attachment conversion.'
+      );
+    }
+
+    content.push(...normalizeUserMessageContent(convertedMessage.content));
+  }
+
+  return {
+    role: 'user',
+    content,
+  };
+}
+
+async function convertUiMessagesForModel(
+  messages: UIMessage[]
+): Promise<ModelMessage[]> {
+  return Promise.all(
+    messages.map(async (message) => {
+      const hasInlineUploads =
+        message.role === 'user' && message.parts.some(isInlineUiFilePart);
+
+      if (!hasInlineUploads) {
+        const [convertedMessage] = await convertToModelMessages([message]);
+
+        if (!convertedMessage) {
+          throw new Error('Failed to convert chat message for the model.');
+        }
+
+        return convertedMessage;
+      }
+
+      return convertUserMessageWithInlineUploads(message);
+    })
+  );
+}
 
 // main route handler
 export async function POST(req: Request) {
@@ -242,7 +388,7 @@ export async function POST(req: Request) {
           : azure(deploymentName);
 
     // set up streaming options
-    const convertedMessages = await convertToModelMessages(uiMessages);
+    const convertedMessages = await convertUiMessagesForModel(uiMessages);
 
     const baseStreamTextOptions = {
       model: azureModel,
