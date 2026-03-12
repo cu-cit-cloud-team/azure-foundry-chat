@@ -1,9 +1,9 @@
 "use client";
 
 import { Badge } from "@/app/components/ui/badge";
+import type { CarouselApi } from "@/app/components/ui/carousel";
 import {
   Carousel,
-  type CarouselApi,
   CarouselContent,
   CarouselItem,
 } from "@/app/components/ui/carousel";
@@ -14,8 +14,8 @@ import {
 } from "@/app/components/ui/hover-card";
 import { cn } from "@/app/utils/utils";
 import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
+import type { ComponentProps } from "react";
 import {
-  type ComponentProps,
   createContext,
   useCallback,
   useContext,
@@ -158,18 +158,27 @@ export const InlineCitationCarouselIndex = ({
   const [current, setCurrent] = useState(0);
   const [count, setCount] = useState(0);
 
+  const syncState = useCallback(() => {
+    if (!api) {
+      return;
+    }
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap() + 1);
+  }, [api]);
+
   useEffect(() => {
     if (!api) {
       return;
     }
 
-    setCount(api.scrollSnapList().length);
-    setCurrent(api.selectedScrollSnap() + 1);
+    syncState();
 
-    api.on("select", () => {
-      setCurrent(api.selectedScrollSnap() + 1);
-    });
-  }, [api]);
+    api.on("select", syncState);
+
+    return () => {
+      api.off("select", syncState);
+    };
+  }, [api, syncState]);
 
   return (
     <div
