@@ -14,6 +14,12 @@ import {
 } from 'lucide-react';
 import { Fragment, memo, useCallback, useMemo } from 'react';
 import {
+  Attachment,
+  AttachmentInfo,
+  AttachmentPreview,
+  Attachments,
+} from '@/app/components/ai-elements/attachments';
+import {
   Message,
   MessageAction,
   MessageActions,
@@ -39,14 +45,17 @@ import {
   ToolOutput,
 } from '@/app/components/ai-elements/tool';
 import { Avatar, AvatarFallback } from '@/app/components/ui/avatar';
-import { Button } from '@/app/components/ui/button';
 import type {
-  FileUIPart,
+  MessageFileAttachment,
   ReasoningUIPart,
   ToolUIPart,
   UserMeta,
 } from '@/app/types';
-import { getSourceTitle } from '@/app/utils/messageHelpers';
+import {
+  getMessageFiles,
+  getMessageText,
+  getSourceTitle,
+} from '@/app/utils/messageHelpers';
 import { DEFAULT_MODEL_NAME, modelStringFromName } from '@/app/utils/models';
 
 // Extend dayjs plugins for time helpers
@@ -175,7 +184,7 @@ export interface MessagesProps {
   onCopy: (messageId: string, text: string) => void;
   onRegenerate: (messageId: string) => void;
   onDelete: (messageId: string) => void;
-  onFileClick: (file: FileUIPart) => void;
+  onFileClick: (file: MessageFileAttachment) => void;
 }
 
 export const Messages = ({
@@ -217,8 +226,66 @@ interface MessageRowProps {
   onCopy: (messageId: string, text: string) => void;
   onRegenerate: (messageId: string) => void;
   onDelete: (messageId: string) => void;
-  onFileClick: (file: FileUIPart) => void;
+  onFileClick: (file: MessageFileAttachment) => void;
 }
+
+interface MessageAttachmentsProps {
+  files: MessageFileAttachment[];
+  isUser: boolean;
+  onFileClick: (file: MessageFileAttachment) => void;
+}
+
+const MessageAttachments = memo(
+  ({ files, isUser, onFileClick }: MessageAttachmentsProps) => {
+    if (files.length === 0) {
+      return null;
+    }
+
+    const imageCount = files.filter((file) =>
+      file.mediaType.startsWith('image/')
+    ).length;
+
+    const variant = imageCount > 0 ? 'grid' : 'list';
+
+    return (
+      <Attachments
+        variant={variant}
+        className={
+          isUser ? 'ml-auto max-w-2/5 justify-end' : 'max-w-2/5 justify-start'
+        }
+      >
+        {files.map((file) => {
+          const handleClick = () => onFileClick(file);
+
+          return (
+            <button
+              key={file.id}
+              type="button"
+              className="text-left"
+              onClick={handleClick}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                  event.preventDefault();
+                  handleClick();
+                }
+              }}
+            >
+              <Attachment
+                data={file}
+                className="cursor-pointer hover:opacity-80 transition-opacity"
+              >
+                <AttachmentPreview />
+                <AttachmentInfo showMediaType={variant === 'list'} />
+              </Attachment>
+            </button>
+          );
+        })}
+      </Attachments>
+    );
+  }
+);
+
+MessageAttachments.displayName = 'MessageAttachments';
 
 const MessageRow = memo(
   ({
@@ -236,63 +303,9 @@ const MessageRow = memo(
     const isStreamingState =
       chatStatus === 'streaming' || chatStatus === 'submitted';
 
-    // Collect file parts and text files for rendering before message content
-    const fileParts = useMemo(() => {
-      const files: Array<{
-        type: string;
-        mediaType: string;
-        url: string;
-        name?: string;
-        textContent?: string;
-      }> = [];
+    const fileParts = useMemo(() => getMessageFiles(message), [message]);
 
-      message.parts.forEach((part) => {
-        if (part.type === 'file') {
-          const filePart = part as FileUIPart;
-          files.push({
-            type: part.type,
-            mediaType: filePart.mediaType,
-            url: filePart.url || '',
-            name: filePart.filename,
-          });
-        } else if (part.type === 'text' && part.text.startsWith('[File: ')) {
-          const match = part.text.match(/^\[File: (.+?)\]\n([\s\S]*)$/);
-          if (match) {
-            const filename = match[1];
-            const ext = filename.split('.').pop()?.toLowerCase();
-            const mediaTypeMap: Record<string, string> = {
-              json: 'application/json',
-              pdf: 'application/pdf',
-              jpg: 'image/jpeg',
-              jpeg: 'image/jpeg',
-              png: 'image/png',
-              webp: 'image/webp',
-              txt: 'text/plain',
-            };
-            files.push({
-              type: 'file',
-              mediaType: mediaTypeMap[ext || ''] || 'text/plain',
-              url: '',
-              name: filename,
-              textContent: match[2],
-            });
-          }
-        }
-      });
-
-      return files;
-    }, [message.parts]);
-
-    // Extract text content for copy functionality
-    const messageText = useMemo(() => {
-      const textParts = message.parts
-        .filter(
-          (part): part is { type: 'text'; text: string } =>
-            part.type === 'text' && !part.text.startsWith('[File: ')
-        )
-        .map((part) => part.text);
-      return textParts.join('');
-    }, [message.parts]);
+    const messageText = useMemo(() => getMessageText(message), [message]);
 
     const storedMessage = message as StoredMessage;
     // Check metadata.model (for live messages from API) OR top-level model (for persisted messages from IndexedDB)
@@ -320,7 +333,7 @@ const MessageRow = memo(
     }, [message.id, onDelete]);
 
     const handleFileClick = useCallback(
-      (file: FileUIPart) => onFileClick(file),
+      (file: MessageFileAttachment) => onFileClick(file),
       [onFileClick]
     );
 
@@ -385,8 +398,9 @@ const MessageRow = memo(
                     };
                     const dataUrl = `data:image/png;base64,${output.result}`;
                     const filePart = {
+                      id: `${message.id}-${key}-image`,
                       type: 'file' as const,
-                      name: `${message.id}.png`,
+                      filename: `${message.id}.png`,
                       mediaType: 'image/png',
                       url: dataUrl,
                       title: `${message.id}.png`,
@@ -438,44 +452,11 @@ const MessageRow = memo(
           </Avatar>
 
           <div className="flex-1 flex flex-col gap-2">
-            {/* Render file attachments first (before text) */}
-            {fileParts.length > 0 && (
-              <div
-                className={`gap-4 ${isUser ? 'ml-auto max-w-2/5' : 'max-w-2/5'} ${fileParts.filter((f) => f.mediaType.startsWith('image/')).length === 1 ? 'flex flex-col' : 'grid grid-cols-1 sm:grid-cols-2'}`}
-              >
-                {fileParts.map((file, idx) =>
-                  file.mediaType.startsWith('image/') ? (
-                    <div
-                      key={`${message.id}-file-${idx}`}
-                      className="rounded-lg border p-2 bg-muted/50 h-auto"
-                    >
-                      <button
-                        type="button"
-                        onClick={() => handleFileClick(file as FileUIPart)}
-                        className="cursor-pointer hover:opacity-80 transition-opacity w-full"
-                      >
-                        {/* biome-ignore lint/performance/noImgElement: data URL from file upload */}
-                        <img
-                          src={file.url}
-                          alt={file.name}
-                          className="w-full h-auto rounded"
-                        />
-                      </button>
-                    </div>
-                  ) : (
-                    <Button
-                      key={`${message.id}-file-${idx}`}
-                      variant="outline"
-                      size="lg"
-                      className="h-auto gap-2"
-                      onClick={() => handleFileClick(file as FileUIPart)}
-                    >
-                      <span>📄 {file.name || 'File'}</span>
-                    </Button>
-                  )
-                )}
-              </div>
-            )}
+            <MessageAttachments
+              files={fileParts}
+              isUser={isUser}
+              onFileClick={handleFileClick}
+            />
 
             <MessageContent>
               {/* Render Sources if available (before all other content) */}

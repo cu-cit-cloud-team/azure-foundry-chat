@@ -3,6 +3,7 @@
  */
 
 import type { UIMessage } from 'ai';
+import type { MessageFileAttachment } from '@/app/types';
 
 /**
  *  Mapping of common file extensions to media types
@@ -10,16 +11,16 @@ import type { UIMessage } from 'ai';
 
 export const mediaTypeMap: Record<string, string> = {
   json: 'application/json',
-  // pdf: 'application/pdf',
+  pdf: 'application/pdf',
   ts: 'application/typescript',
   sh: 'application/x-sh',
   xml: 'application/xml',
   yaml: 'application/yaml',
   yml: 'application/yaml',
-  // jpg: 'image/jpeg',
-  // jpeg: 'image/jpeg',
-  // png: 'image/png',
-  // webp: 'image/webp',
+  jpg: 'image/jpeg',
+  jpeg: 'image/jpeg',
+  png: 'image/png',
+  webp: 'image/webp',
   css: 'text/css',
   csv: 'text/csv',
   html: 'text/html',
@@ -88,4 +89,69 @@ export function getSourceTitle(url: string): string {
     // If URL parsing fails, return the original URL
     return url;
   }
+}
+
+function getFileAttachmentId(messageId: string, index: number): string {
+  return `${messageId}-file-${index}`;
+}
+
+function inferMediaTypeFromFilename(filename: string): string {
+  const ext = filename.split('.').pop()?.toLowerCase();
+
+  const attachmentMediaTypeMap: Record<string, string> = {
+    ...mediaTypeMap,
+    jpeg: 'image/jpeg',
+    jpg: 'image/jpeg',
+    pdf: 'application/pdf',
+    png: 'image/png',
+    webp: 'image/webp',
+  };
+
+  return attachmentMediaTypeMap[ext || ''] || 'text/plain';
+}
+
+export function getMessageText(message: UIMessage): string {
+  return message.parts
+    .filter(
+      (part): part is { type: 'text'; text: string } =>
+        part.type === 'text' && !part.text.startsWith('[File: ')
+    )
+    .map((part) => part.text)
+    .join('');
+}
+
+export function getMessageFiles(message: UIMessage): MessageFileAttachment[] {
+  const attachments: MessageFileAttachment[] = [];
+
+  message.parts.forEach((part, index) => {
+    if (part.type === 'file') {
+      attachments.push({
+        id: getFileAttachmentId(message.id, index),
+        type: 'file',
+        mediaType: part.mediaType,
+        url: part.url || '',
+        filename: part.filename,
+      });
+      return;
+    }
+
+    if (part.type === 'text' && part.text.startsWith('[File: ')) {
+      const match = part.text.match(/^\[File: (.+?)\]\n([\s\S]*)$/);
+      if (!match) {
+        return;
+      }
+
+      const [, filename, textContent] = match;
+      attachments.push({
+        id: getFileAttachmentId(message.id, index),
+        type: 'file',
+        mediaType: inferMediaTypeFromFilename(filename),
+        url: '',
+        filename,
+        textContent,
+      });
+    }
+  });
+
+  return attachments;
 }

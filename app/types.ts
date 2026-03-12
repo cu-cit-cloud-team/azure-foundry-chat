@@ -1,3 +1,5 @@
+import type { FileUIPart as AIFileUIPart } from 'ai';
+
 export interface UserMeta {
   email?: string;
   name?: string;
@@ -10,6 +12,12 @@ export type {
   SourceUrlUIPart,
   ToolUIPart,
 } from 'ai';
+
+export type MessageFileAttachment = AIFileUIPart & {
+  id: string;
+  textContent?: string;
+  title?: string;
+};
 
 // Message part types
 export interface TextPart {

@@ -1,6 +1,19 @@
 import { useAtom } from 'jotai';
 import { CheckIcon, GlobeIcon, PlusIcon } from 'lucide-react';
+import Image from 'next/image';
 import React, { memo, useCallback, useEffect, useState } from 'react';
+import {
+  Attachment,
+  AttachmentHoverCard,
+  AttachmentHoverCardContent,
+  AttachmentHoverCardTrigger,
+  AttachmentInfo,
+  AttachmentPreview,
+  AttachmentRemove,
+  Attachments,
+  getAttachmentLabel,
+  getMediaCategory,
+} from '@/app/components/ai-elements/attachments';
 import {
   ModelSelector,
   ModelSelectorContent,
@@ -15,8 +28,6 @@ import {
 } from '@/app/components/ai-elements/model-selector';
 import {
   PromptInput,
-  PromptInputAttachment,
-  PromptInputAttachments,
   PromptInputBody,
   PromptInputButton,
   PromptInputFooter,
@@ -85,6 +96,75 @@ const AttachmentButton = memo(
 );
 
 AttachmentButton.displayName = 'AttachmentButton';
+
+const PromptInputAttachmentsDisplay = memo(() => {
+  const attachments = usePromptInputAttachments();
+
+  if (attachments.files.length === 0) {
+    return null;
+  }
+
+  return (
+    <Attachments variant="inline">
+      {attachments.files.map((attachment) => {
+        const mediaCategory = getMediaCategory(attachment);
+        const label = getAttachmentLabel(attachment);
+
+        return (
+          <AttachmentHoverCard key={attachment.id}>
+            <AttachmentHoverCardTrigger asChild>
+              <Attachment
+                data={attachment}
+                onRemove={() => attachments.remove(attachment.id)}
+              >
+                <div className="relative size-5 shrink-0">
+                  <div className="absolute inset-0 transition-opacity group-hover:opacity-0">
+                    <AttachmentPreview />
+                  </div>
+                  <AttachmentRemove
+                    className="absolute inset-0"
+                    label="Remove attachment"
+                  />
+                </div>
+                <AttachmentInfo />
+              </Attachment>
+            </AttachmentHoverCardTrigger>
+            <AttachmentHoverCardContent>
+              <div className="space-y-3">
+                {mediaCategory === 'image' &&
+                  attachment.type === 'file' &&
+                  attachment.url && (
+                    <div className="flex max-h-96 w-80 items-center justify-center overflow-hidden rounded-md border">
+                      <Image
+                        alt={label}
+                        className="max-h-full max-w-full object-contain"
+                        height={384}
+                        src={attachment.url}
+                        unoptimized
+                        width={320}
+                      />
+                    </div>
+                  )}
+                <div className="space-y-1 px-0.5">
+                  <h4 className="font-semibold text-sm leading-none">
+                    {label}
+                  </h4>
+                  {attachment.mediaType && (
+                    <p className="font-mono text-muted-foreground text-xs">
+                      {attachment.mediaType}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </AttachmentHoverCardContent>
+          </AttachmentHoverCard>
+        );
+      })}
+    </Attachments>
+  );
+});
+
+PromptInputAttachmentsDisplay.displayName = 'PromptInputAttachmentsDisplay';
 
 export const Footer = memo(
   ({
@@ -193,9 +273,7 @@ export const Footer = memo(
             onError={handleFileError}
           >
             <PromptInputHeader>
-              <PromptInputAttachments>
-                {(attachment) => <PromptInputAttachment data={attachment} />}
-              </PromptInputAttachments>
+              <PromptInputAttachmentsDisplay />
             </PromptInputHeader>
 
             <PromptInputBody>

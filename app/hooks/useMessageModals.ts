@@ -1,4 +1,5 @@
 import { useCallback, useState } from 'react';
+import type { MessageFileAttachment } from '@/app/types';
 
 export type ModalImage = {
   url: string;
@@ -17,37 +18,28 @@ export const useMessageModals = () => {
   const [modalTextFile, setModalTextFile] = useState<ModalTextFile>(null);
   const [modalPdfFile, setModalPdfFile] = useState<ModalPdf>(null);
 
-  const handleFileClick = useCallback(
-    (file: {
-      type: string;
-      mediaType: string;
-      url?: string;
-      textContent?: string;
-      name?: string;
-      filename?: string;
-      title?: string;
-    }) => {
-      if (file.mediaType.startsWith('image/')) {
-        setModalImageUrl({
-          url: file.url || '',
-          filename: file.name || 'image',
-          title: file.title,
-        });
-      } else if (file.mediaType === 'application/pdf') {
-        setModalPdfFile({
-          url: file.url || '',
-          filename: file.name || 'file.pdf',
-        });
-      } else if (file.textContent) {
-        setModalTextFile({
-          content: file.textContent,
-          filename: file.name || 'file.txt',
-          mediaType: file.mediaType,
-        });
-      }
-    },
-    []
-  );
+  const handleFileClick = useCallback((file: MessageFileAttachment) => {
+    const filename = file.filename || 'attachment';
+
+    if (file.mediaType.startsWith('image/')) {
+      setModalImageUrl({
+        url: file.url || '',
+        filename,
+        title: file.title,
+      });
+    } else if (file.mediaType === 'application/pdf') {
+      setModalPdfFile({
+        url: file.url || '',
+        filename,
+      });
+    } else if (file.textContent) {
+      setModalTextFile({
+        content: file.textContent,
+        filename,
+        mediaType: file.mediaType,
+      });
+    }
+  }, []);
 
   const closeImage = useCallback(() => setModalImageUrl(null), []);
   const closeText = useCallback(() => setModalTextFile(null), []);
