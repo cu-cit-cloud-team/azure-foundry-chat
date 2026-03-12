@@ -90,7 +90,7 @@ const {
   AZURE_XAI_GROK_4_1_FAST_NON_REASONING_DEPLOYMENT,
   AZURE_XAI_GROK_4_1_FAST_REASONING_DEPLOYMENT,
   AZURE_XAI_GROK_CODE_FAST_1_DEPLOYMENT,
-  MCP_SERVER_SSE_URL,
+  MCP_SERVER_URL,
 } = process.env;
 
 // tell next.js to use the nodejs runtime
@@ -396,8 +396,8 @@ export async function POST(req: Request) {
       abortSignal: req.signal,
     };
 
-    // set useMcpServer to true if MCP_SERVER_SSE_URL is provided, otherwise false
-    const useMcpServer = Boolean(MCP_SERVER_SSE_URL);
+    // set useMcpServer to true if MCP_SERVER_URL is provided, otherwise false
+    const useMcpServer = Boolean(MCP_SERVER_URL);
 
     let mcpClient: Awaited<ReturnType<typeof createMCPClient>> | undefined;
     let mcpTools = {};
@@ -405,8 +405,8 @@ export async function POST(req: Request) {
     if (useMcpServer) {
       mcpClient = await createMCPClient({
         transport: {
-          type: 'sse',
-          url: MCP_SERVER_SSE_URL as string,
+          type: 'http',
+          url: MCP_SERVER_URL as string,
         },
       });
 
