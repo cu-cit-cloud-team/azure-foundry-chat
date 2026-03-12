@@ -119,6 +119,12 @@ type UserContentPart =
   | { type: 'image'; image: string; mediaType?: string }
   | { type: 'file'; data: string; mediaType: string; filename?: string };
 
+type ToolUiPartState =
+  | 'input-streaming'
+  | 'input-available'
+  | 'output-available'
+  | 'output-error';
+
 function isInlineUiFilePart(part: unknown): part is InlineUiFilePart {
   return (
     typeof part === 'object' &&
@@ -131,6 +137,56 @@ function isInlineUiFilePart(part: unknown): part is InlineUiFilePart {
     typeof part.mediaType === 'string' &&
     (part.url.startsWith('data:') || part.url.startsWith('blob:'))
   );
+}
+
+function getToolUiPartState(part: unknown): ToolUiPartState | null {
+  if (!part || typeof part !== 'object') {
+    return null;
+  }
+
+  const toolPart = part as Record<string, unknown>;
+  const type = toolPart.type;
+
+  const isToolPart =
+    type === 'dynamic-tool' ||
+    (typeof type === 'string' && type.startsWith('tool-'));
+
+  if (!isToolPart) {
+    return null;
+  }
+
+  const state = toolPart.state;
+  return state === 'input-streaming' ||
+    state === 'input-available' ||
+    state === 'output-available' ||
+    state === 'output-error'
+    ? state
+    : null;
+}
+
+function hasIncompleteToolParts(message: UIMessage): boolean {
+  return message.parts.some((part) => {
+    const state = getToolUiPartState(part);
+    return state === 'input-streaming' || state === 'input-available';
+  });
+}
+
+function pruneTrailingIncompleteToolMessages(
+  messages: UIMessage[]
+): UIMessage[] {
+  let endIndex = messages.length;
+
+  while (endIndex > 0) {
+    const message = messages[endIndex - 1];
+
+    if (message.role !== 'assistant' || !hasIncompleteToolParts(message)) {
+      break;
+    }
+
+    endIndex -= 1;
+  }
+
+  return endIndex === messages.length ? messages : messages.slice(0, endIndex);
 }
 
 function extractBase64FromDataUrl(dataUrl: string): {
@@ -232,24 +288,26 @@ async function convertUserMessageWithInlineUploads(
 async function convertUiMessagesForModel(
   messages: UIMessage[]
 ): Promise<ModelMessage[]> {
-  return Promise.all(
+  const convertedMessageGroups = await Promise.all(
     messages.map(async (message) => {
       const hasInlineUploads =
         message.role === 'user' && message.parts.some(isInlineUiFilePart);
 
       if (!hasInlineUploads) {
-        const [convertedMessage] = await convertToModelMessages([message]);
+        const convertedMessages = await convertToModelMessages([message]);
 
-        if (!convertedMessage) {
+        if (convertedMessages.length === 0) {
           throw new Error('Failed to convert chat message for the model.');
         }
 
-        return convertedMessage;
+        return convertedMessages;
       }
 
-      return convertUserMessageWithInlineUploads(message);
+      return [await convertUserMessageWithInlineUploads(message)];
     })
   );
+
+  return convertedMessageGroups.flat();
 }
 
 // main route handler
@@ -271,7 +329,7 @@ export async function POST(req: Request) {
     // const max_tokens = defaults.max_tokens;
 
     // v5 UIMessage system prompt part
-    const systemPrompt = {
+    const systemPrompt: UIMessage = {
       id: `system-${generateId()}`,
       role: 'system',
       parts: [
@@ -286,7 +344,10 @@ export async function POST(req: Request) {
     const hasSystemPrompt = messages.some(
       (m: UIMessage) => m.role === 'system'
     );
-    const uiMessages = hasSystemPrompt ? messages : [systemPrompt, ...messages];
+    const sanitizedMessages = pruneTrailingIncompleteToolMessages(messages);
+    const uiMessages = hasSystemPrompt
+      ? sanitizedMessages
+      : [systemPrompt, ...sanitizedMessages];
 
     // determine if the model supports the images tool
     const useImageTool =
