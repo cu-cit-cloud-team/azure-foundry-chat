@@ -52,9 +52,11 @@ import type {
   UserMeta,
 } from '@/app/types';
 import {
+  createBase64FileAttachment,
   getMessageFiles,
   getMessageText,
   getSourceTitle,
+  splitMessageFiles,
 } from '@/app/utils/messageHelpers';
 import { DEFAULT_MODEL_NAME, modelStringFromName } from '@/app/utils/models';
 
@@ -235,24 +237,22 @@ interface MessageAttachmentsProps {
   onFileClick: (file: MessageFileAttachment) => void;
 }
 
-const MessageAttachments = memo(
-  ({ files, isUser, onFileClick }: MessageAttachmentsProps) => {
-    if (files.length === 0) {
-      return null;
-    }
+type MessageAttachmentGroupProps = MessageAttachmentsProps & {
+  variant: 'grid' | 'list';
+};
 
-    const imageCount = files.filter((file) =>
-      file.mediaType.startsWith('image/')
-    ).length;
-
-    const variant = imageCount > 0 ? 'grid' : 'list';
+const MessageAttachmentGroup = memo(
+  ({ files, isUser, onFileClick, variant }: MessageAttachmentGroupProps) => {
+    const alignmentClass = isUser ? 'ml-auto justify-end' : 'justify-start';
+    const widthClass =
+      variant === 'list'
+        ? 'w-full max-w-full sm:max-w-[40%]'
+        : 'max-w-full sm:max-w-[40%]';
 
     return (
       <Attachments
         variant={variant}
-        className={
-          isUser ? 'ml-auto max-w-2/5 justify-end' : 'max-w-2/5 justify-start'
-        }
+        className={`${alignmentClass} ${widthClass} min-w-0`}
       >
         {files.map((file) => {
           const handleClick = () => onFileClick(file);
@@ -261,7 +261,11 @@ const MessageAttachments = memo(
             <button
               key={file.id}
               type="button"
-              className="text-left"
+              className={
+                variant === 'list'
+                  ? 'block w-full max-w-full min-w-0 text-left'
+                  : 'block max-w-full min-w-0 text-left'
+              }
               onClick={handleClick}
               onKeyDown={(event) => {
                 if (event.key === 'Enter' || event.key === ' ') {
@@ -272,7 +276,7 @@ const MessageAttachments = memo(
             >
               <Attachment
                 data={file}
-                className="cursor-pointer hover:opacity-80 transition-opacity"
+                className="max-w-full min-w-0 cursor-pointer transition-opacity hover:opacity-80"
               >
                 <AttachmentPreview />
                 <AttachmentInfo showMediaType={variant === 'list'} />
@@ -281,6 +285,46 @@ const MessageAttachments = memo(
           );
         })}
       </Attachments>
+    );
+  }
+);
+
+MessageAttachmentGroup.displayName = 'MessageAttachmentGroup';
+
+const MessageAttachments = memo(
+  ({ files, isUser, onFileClick }: MessageAttachmentsProps) => {
+    if (files.length === 0) {
+      return null;
+    }
+
+    const { imageFiles, otherFiles } = splitMessageFiles(files);
+
+    if (imageFiles.length > 0 && otherFiles.length > 0) {
+      return (
+        <div className="flex flex-col gap-2">
+          <MessageAttachmentGroup
+            files={imageFiles}
+            isUser={isUser}
+            onFileClick={onFileClick}
+            variant="grid"
+          />
+          <MessageAttachmentGroup
+            files={otherFiles}
+            isUser={isUser}
+            onFileClick={onFileClick}
+            variant="list"
+          />
+        </div>
+      );
+    }
+
+    return (
+      <MessageAttachmentGroup
+        files={files}
+        isUser={isUser}
+        onFileClick={onFileClick}
+        variant={imageFiles.length > 0 ? 'grid' : 'list'}
+      />
     );
   }
 );
@@ -388,41 +432,24 @@ const MessageRow = memo(
               </ToolContent>
             </Tool>
 
-            {part.hasImageOutput ? (
-              <div className="mt-4 rounded-lg border p-2 bg-muted/50 max-w-2/5 h-auto">
-                <button
-                  type="button"
-                  onClick={() => {
-                    const output = part.output as {
-                      result: string;
-                    };
-                    const dataUrl = `data:image/png;base64,${output.result}`;
-                    const filePart = {
-                      id: `${message.id}-${key}-image`,
-                      type: 'file' as const,
-                      filename: `${message.id}.png`,
-                      mediaType: 'image/png',
-                      url: dataUrl,
-                      title: `${message.id}.png`,
-                    };
-                    onFileClick(filePart);
-                  }}
-                  className="cursor-pointer hover:opacity-80 transition-opacity w-full"
-                >
-                  {/* biome-ignore lint/performance/noImgElement: base64 from tool output */}
-                  <img
-                    src={`data:image/png;base64,${(part.output as { result: string }).result}`}
-                    alt={
-                      typeof part.input === 'object' &&
-                      part.input &&
-                      'prompt' in part.input
-                        ? String(part.input.prompt)
-                        : 'AI-generated content'
-                    }
-                    className="object-cover rounded-md w-full"
-                  />
-                </button>
-              </div>
+            {part.hasImageOutput &&
+            part.output &&
+            typeof part.output === 'object' &&
+            'result' in part.output &&
+            typeof (part.output as { result?: unknown }).result === 'string' ? (
+              <MessageAttachments
+                files={[
+                  createBase64FileAttachment({
+                    id: `${message.id}-${key}-image`,
+                    base64Data: (part.output as { result: string }).result,
+                    filename: `${message.id}.png`,
+                    mediaType: 'image/png',
+                    title: `${message.id}.png`,
+                  }),
+                ]}
+                isUser={false}
+                onFileClick={onFileClick}
+              />
             ) : null}
           </Fragment>
         );

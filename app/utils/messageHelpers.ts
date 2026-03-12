@@ -1,9 +1,12 @@
 /**
- * Simple helpers for working with AI SDK v5 messages
+ * App-level helpers for working with AI SDK v6 UI messages.
  */
 
 import type { UIMessage } from 'ai';
 import type { MessageFileAttachment } from '@/app/types';
+
+const FILE_TEXT_PREFIX = '[File: ';
+const FILE_TEXT_REGEX = /^\[File: (.+?)\]\n([\s\S]*)$/;
 
 /**
  *  Mapping of common file extensions to media types
@@ -114,10 +117,58 @@ export function getMessageText(message: UIMessage): string {
   return message.parts
     .filter(
       (part): part is { type: 'text'; text: string } =>
-        part.type === 'text' && !part.text.startsWith('[File: ')
+        part.type === 'text' && !part.text.startsWith(FILE_TEXT_PREFIX)
     )
     .map((part) => part.text)
     .join('');
+}
+
+export function isImageAttachment(file: MessageFileAttachment): boolean {
+  return file.mediaType.startsWith('image/');
+}
+
+export function splitMessageFiles(files: MessageFileAttachment[]): {
+  imageFiles: MessageFileAttachment[];
+  otherFiles: MessageFileAttachment[];
+} {
+  return files.reduce(
+    (groups, file) => {
+      if (isImageAttachment(file)) {
+        groups.imageFiles.push(file);
+      } else {
+        groups.otherFiles.push(file);
+      }
+
+      return groups;
+    },
+    {
+      imageFiles: [] as MessageFileAttachment[],
+      otherFiles: [] as MessageFileAttachment[],
+    }
+  );
+}
+
+export function createBase64FileAttachment({
+  id,
+  base64Data,
+  mediaType,
+  filename,
+  title,
+}: {
+  id: string;
+  base64Data: string;
+  mediaType: string;
+  filename: string;
+  title?: string;
+}): MessageFileAttachment {
+  return {
+    id,
+    type: 'file',
+    filename,
+    mediaType,
+    title,
+    url: `data:${mediaType};base64,${base64Data}`,
+  };
 }
 
 export function getMessageFiles(message: UIMessage): MessageFileAttachment[] {
@@ -135,8 +186,8 @@ export function getMessageFiles(message: UIMessage): MessageFileAttachment[] {
       return;
     }
 
-    if (part.type === 'text' && part.text.startsWith('[File: ')) {
-      const match = part.text.match(/^\[File: (.+?)\]\n([\s\S]*)$/);
+    if (part.type === 'text' && part.text.startsWith(FILE_TEXT_PREFIX)) {
+      const match = part.text.match(FILE_TEXT_REGEX);
       if (!match) {
         return;
       }
