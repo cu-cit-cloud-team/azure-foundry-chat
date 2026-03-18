@@ -346,6 +346,7 @@ const MessageRow = memo(
     const isUser = message.role === 'user';
     const isStreamingState =
       chatStatus === 'streaming' || chatStatus === 'submitted';
+    const actionsLocked = isStreamingState;
 
     const fileParts = useMemo(() => getMessageFiles(message), [message]);
 
@@ -363,18 +364,30 @@ const MessageRow = memo(
       new Date().toISOString();
 
     const handleCopy = useCallback(() => {
+      if (actionsLocked) {
+        return;
+      }
+
       if (messageText) {
         onCopy(message.id, messageText);
       }
-    }, [message.id, messageText, onCopy]);
+    }, [actionsLocked, message.id, messageText, onCopy]);
 
     const handleRegenerate = useCallback(() => {
+      if (actionsLocked) {
+        return;
+      }
+
       onRegenerate(message.id);
-    }, [message.id, onRegenerate]);
+    }, [actionsLocked, message.id, onRegenerate]);
 
     const handleDelete = useCallback(() => {
+      if (actionsLocked) {
+        return;
+      }
+
       onDelete(message.id);
-    }, [message.id, onDelete]);
+    }, [actionsLocked, message.id, onDelete]);
 
     const handleFileClick = useCallback(
       (file: MessageFileAttachment) => onFileClick(file),
@@ -697,6 +710,7 @@ const MessageRow = memo(
                   tooltip={
                     copiedMessageId === message.id ? 'Copied!' : 'Copy message'
                   }
+                  disabled={actionsLocked}
                   onClick={handleCopy}
                 >
                   {copiedMessageId === message.id ? (
@@ -708,6 +722,7 @@ const MessageRow = memo(
 
                 {isLastMessage && (
                   <MessageAction
+                    disabled={actionsLocked}
                     tooltip="Regenerate response"
                     onClick={handleRegenerate}
                   >
@@ -715,7 +730,11 @@ const MessageRow = memo(
                   </MessageAction>
                 )}
 
-                <MessageAction tooltip="Delete message" onClick={handleDelete}>
+                <MessageAction
+                  disabled={actionsLocked}
+                  tooltip="Delete message"
+                  onClick={handleDelete}
+                >
                   <Trash2 className="size-4" />
                 </MessageAction>
               </MessageActions>
