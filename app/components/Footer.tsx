@@ -1,7 +1,8 @@
 import { useAtom } from 'jotai';
-import { CheckIcon, GlobeIcon, PlusIcon } from 'lucide-react';
+import { CheckIcon, GlobeIcon } from 'lucide-react';
 import Image from 'next/image';
-import React, { memo, useCallback, useEffect, useState } from 'react';
+import { memo, useCallback, useEffect, useRef, useState } from 'react';
+
 import {
   Attachment,
   AttachmentHoverCard,
@@ -28,6 +29,11 @@ import {
 } from '@/app/components/ai-elements/model-selector';
 import {
   PromptInput,
+  PromptInputActionAddAttachments,
+  PromptInputActionAddScreenshot,
+  PromptInputActionMenu,
+  PromptInputActionMenuContent,
+  PromptInputActionMenuTrigger,
   PromptInputBody,
   PromptInputButton,
   PromptInputFooter,
@@ -68,101 +74,99 @@ interface FooterProps {
   onStop?: () => void;
 }
 
-// Component that accesses attachments context and monitors file changes
-const AttachmentButton = memo(
-  ({ onFilesAdded }: { onFilesAdded: () => void }) => {
+const PromptInputAttachmentFocus = memo(
+  ({ focusTextarea }: { focusTextarea: () => void }) => {
     const attachments = usePromptInputAttachments();
-    const prevFileCountRef = React.useRef(attachments.files.length);
+    const previousCountRef = useRef(attachments.files.length);
 
-    // Detect when files are added
     useEffect(() => {
+      const previousCount = previousCountRef.current;
       const currentCount = attachments.files.length;
-      const prevCount = prevFileCountRef.current;
 
-      // If file count increased, files were added
-      if (currentCount > prevCount) {
-        onFilesAdded();
+      if (currentCount > previousCount) {
+        focusTextarea();
       }
 
-      prevFileCountRef.current = currentCount;
-    }, [attachments.files.length, onFilesAdded]);
+      previousCountRef.current = currentCount;
+    }, [attachments.files.length, focusTextarea]);
 
-    return (
-      <PromptInputButton onClick={attachments.openFileDialog}>
-        <PlusIcon className="size-4" />
-      </PromptInputButton>
-    );
+    return null;
   }
 );
 
-AttachmentButton.displayName = 'AttachmentButton';
+PromptInputAttachmentFocus.displayName = 'PromptInputAttachmentFocus';
 
-const PromptInputAttachmentsDisplay = memo(() => {
-  const attachments = usePromptInputAttachments();
+const PromptInputAttachmentsDisplay = memo(
+  ({ focusTextarea }: { focusTextarea: () => void }) => {
+    const attachments = usePromptInputAttachments();
 
-  if (attachments.files.length === 0) {
-    return null;
-  }
+    if (attachments.files.length === 0) {
+      return null;
+    }
 
-  return (
-    <Attachments variant="inline">
-      {attachments.files.map((attachment) => {
-        const mediaCategory = getMediaCategory(attachment);
-        const label = getAttachmentLabel(attachment);
+    return (
+      <Attachments variant="inline">
+        {attachments.files.map((attachment) => {
+          const mediaCategory = getMediaCategory(attachment);
+          const label = getAttachmentLabel(attachment);
 
-        return (
-          <AttachmentHoverCard key={attachment.id}>
-            <AttachmentHoverCardTrigger asChild>
-              <Attachment
-                data={attachment}
-                onRemove={() => attachments.remove(attachment.id)}
-              >
-                <div className="relative size-5 shrink-0">
-                  <div className="absolute inset-0 transition-opacity group-hover:opacity-0">
-                    <AttachmentPreview />
-                  </div>
-                  <AttachmentRemove
-                    className="absolute inset-0"
-                    label="Remove attachment"
-                  />
-                </div>
-                <AttachmentInfo />
-              </Attachment>
-            </AttachmentHoverCardTrigger>
-            <AttachmentHoverCardContent>
-              <div className="space-y-3">
-                {mediaCategory === 'image' &&
-                  attachment.type === 'file' &&
-                  attachment.url && (
-                    <div className="flex max-h-96 w-80 items-center justify-center overflow-hidden rounded-md border">
-                      <Image
-                        alt={label}
-                        className="max-h-full max-w-full object-contain"
-                        height={384}
-                        src={attachment.url}
-                        unoptimized
-                        width={320}
-                      />
+          return (
+            <AttachmentHoverCard key={attachment.id}>
+              <AttachmentHoverCardTrigger asChild>
+                <Attachment
+                  data={attachment}
+                  onRemove={() => {
+                    attachments.remove(attachment.id);
+                    focusTextarea();
+                  }}
+                >
+                  <div className="relative size-5 shrink-0">
+                    <div className="absolute inset-0 transition-opacity group-hover:opacity-0">
+                      <AttachmentPreview />
                     </div>
-                  )}
-                <div className="space-y-1 px-0.5">
-                  <h4 className="font-semibold text-sm leading-none">
-                    {label}
-                  </h4>
-                  {attachment.mediaType && (
-                    <p className="font-mono text-muted-foreground text-xs">
-                      {attachment.mediaType}
-                    </p>
-                  )}
+                    <AttachmentRemove
+                      className="absolute inset-0"
+                      label="Remove attachment"
+                    />
+                  </div>
+                  <AttachmentInfo />
+                </Attachment>
+              </AttachmentHoverCardTrigger>
+              <AttachmentHoverCardContent>
+                <div className="space-y-3">
+                  {mediaCategory === 'image' &&
+                    attachment.type === 'file' &&
+                    attachment.url && (
+                      <div className="flex max-h-96 w-80 items-center justify-center overflow-hidden rounded-md border">
+                        <Image
+                          alt={label}
+                          className="max-h-full max-w-full object-contain"
+                          height={384}
+                          src={attachment.url}
+                          unoptimized
+                          width={320}
+                        />
+                      </div>
+                    )}
+                  <div className="space-y-1 px-0.5">
+                    <h4 className="font-semibold text-sm leading-none">
+                      {label}
+                    </h4>
+                    {attachment.mediaType && (
+                      <p className="font-mono text-muted-foreground text-xs">
+                        {attachment.mediaType}
+                      </p>
+                    )}
+                  </div>
                 </div>
-              </div>
-            </AttachmentHoverCardContent>
-          </AttachmentHoverCard>
-        );
-      })}
-    </Attachments>
-  );
-});
+              </AttachmentHoverCardContent>
+            </AttachmentHoverCard>
+          );
+        })}
+      </Attachments>
+    );
+  }
+);
 
 PromptInputAttachmentsDisplay.displayName = 'PromptInputAttachmentsDisplay';
 
@@ -273,7 +277,8 @@ export const Footer = memo(
             onError={handleFileError}
           >
             <PromptInputHeader>
-              <PromptInputAttachmentsDisplay />
+              <PromptInputAttachmentFocus focusTextarea={focusTextarea} />
+              <PromptInputAttachmentsDisplay focusTextarea={focusTextarea} />
             </PromptInputHeader>
 
             <PromptInputBody>
@@ -290,16 +295,13 @@ export const Footer = memo(
 
             <PromptInputFooter>
               <PromptInputTools>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <span className="inline-flex" role="presentation">
-                      <AttachmentButton onFilesAdded={focusTextarea} />
-                    </span>
-                  </TooltipTrigger>
-                  <TooltipContent side="top" align="start">
-                    Add photos or files
-                  </TooltipContent>
-                </Tooltip>
+                <PromptInputActionMenu>
+                  <PromptInputActionMenuTrigger />
+                  <PromptInputActionMenuContent>
+                    <PromptInputActionAddAttachments />
+                    <PromptInputActionAddScreenshot />
+                  </PromptInputActionMenuContent>
+                </PromptInputActionMenu>
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <span className="inline-flex" role="presentation">
