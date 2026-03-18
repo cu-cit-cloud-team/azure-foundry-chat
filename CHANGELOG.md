@@ -1,3 +1,39 @@
+## [1.0.0-beta.43](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.42...v1.0.0-beta.43) (2026-03-18)
+
+### 🛠️ Code Refactoring
+
+* **api/chat:** deprecate/remove gpt-5-mini and gpt-5-nano ([8d3a074](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/8d3a074a88b679ef899fed62eeb6a940e4f6ea23))
+* **api/chat:** prune incomplete tool messages ([1c935f1](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/1c935f1c4e91a9d00ffc816789d2f9f38943e92d))
+* **api/chat:** rename env var; change mcp server protocol ([47f85c3](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/47f85c3163bf2e5c89884c43da3a481f17d8f69b))
+* **env.local.example:** deprecate/remove gpt-5-mini and gpt-5-nano ([649b497](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/649b49745a99257289ed17156995cd16bcf8cce4))
+* **utils/models:** remove gpt 5 mini ([3c8bc4c](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/3c8bc4c6bef4f3cb721363f2973958b582cc652a))
+
+### ✨ Features
+
+* **api/chat:** add/enable gpt-5-mini and gpt-5-nano ([ad657b3](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/ad657b32c880c2e25fa65cbca6a101f5eb6003ba))
+* **env.local.example:** add vars for gpt 5.4 mini/nano ([55aafe3](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/55aafe3cc4f7e8b6ceb3e5caa9647a51bd911425))
+* **utils/models:** add gpt 5.4 mini and gpt 5.4 nano ([b9d1d07](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/b9d1d07176ecdb971594d32ca808acd050b74716))
+
+### 🔧 Chores
+
+* **deps-dev:** bump @biomejs/biome from 2.4.6 to 2.4.7 (#2392) ([b81c0f7](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/b81c0f720f5cc6fa1b7d0a9823660286f47655ec)), closes [#2392](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2392)
+* **deps-dev:** bump @types/node in the types group (#2389) ([3ceac36](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/3ceac3600d520b11eec873eef229687bcfc5342a)), closes [#2389](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2389)
+* **deps-dev:** bump eslint-config-next in the eslint group (#2398) ([07c6797](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/07c67970de363deee328c43e45203a476a5dc867)), closes [#2398](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2398)
+* **deps:** bump @rive-app/react-webgl2 from 4.27.1 to 4.27.2 (#2395) ([f887910](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/f88791008ee7dd65d50958b59105774bf1b163a6)), closes [#2395](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2395)
+* **deps:** bump @streamdown/cjk from 1.0.2 to 1.0.3 (#2406) ([f57724c](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/f57724ce069103b64d3fd2d86d3156938bca697c)), closes [#2406](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2406)
+* **deps:** bump @streamdown/code from 1.1.0 to 1.1.1 (#2401) ([7675341](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/7675341c1ffd3cba1f342175aa9cabf7f4979544)), closes [#2401](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2401)
+* **deps:** bump media-chrome from 4.18.0 to 4.18.1 (#2405) ([388e2da](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/388e2da0c17bff2900648c8e090d3e6d9cb8d6b0)), closes [#2405](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2405)
+* **deps:** bump motion from 12.35.2 to 12.36.0 (#2390) ([68605af](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/68605af73a451ce353250c42fdffb3feb303066e)), closes [#2390](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2390)
+* **deps:** bump motion from 12.36.0 to 12.37.0 (#2394) ([71350f0](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/71350f0ec6f32a3a34be7db0729c193287d00031)), closes [#2394](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2394)
+* **deps:** bump motion from 12.37.0 to 12.38.0 (#2399) ([252f466](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/252f466a7850bcec781e8c9fe32df83a6fdd65e9)), closes [#2399](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2399)
+* **deps:** bump nanoid from 5.1.6 to 5.1.7 (#2393) ([0e2e380](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/0e2e380d2edb64602498b3a76129553cfe6ff457)), closes [#2393](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2393)
+* **deps:** bump next from 16.1.6 to 16.1.7 in the next group (#2397) ([1a10b20](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/1a10b20ae3b8918ff802c4ff996b163b7a1d9c83)), closes [#2397](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2397)
+* **deps:** bump openai from 6.27.0 to 6.29.0 (#2391) ([d905006](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/d9050063922f0dcab91664a19ebfeb345f298977)), closes [#2391](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2391)
+* **deps:** bump openai from 6.29.0 to 6.31.0 (#2396) ([220fcd1](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/220fcd1247a0f28d87cb0619e56c175077637688)), closes [#2396](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2396)
+* **deps:** bump openai from 6.31.0 to 6.32.0 (#2403) ([048f168](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/048f168cd41d4689115e4f81ececcc2565d72f15)), closes [#2403](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2403)
+* **deps:** bump remend from 1.2.2 to 1.3.0 (#2402) ([5e5fa68](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/5e5fa681a3a88cfbf351d0149d45e6c8bfa3143a)), closes [#2402](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2402)
+* **deps:** bump streamdown from 2.4.0 to 2.5.0 (#2404) ([3b40f10](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/3b40f1064cabd7072cdd64f22f0185c3b771c857)), closes [#2404](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2404)
+
 ## [1.0.0-beta.42](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.41...v1.0.0-beta.42) (2026-03-12)
 
 ### 🛠️ Code Refactoring
