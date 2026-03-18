@@ -32,15 +32,6 @@ export const models: Models = [
     capabilities: ['tools', 'reasoning', 'web-search'],
   },
   {
-    displayName: 'GPT 5 Mini',
-    modelVersion: '2025-08-07',
-    maxInputTokens: 272000,
-    maxOutputTokens: 128000,
-    name: 'gpt-5-mini',
-    provider: 'openai',
-    capabilities: ['tools', 'reasoning', 'web-search'],
-  },
-  {
     displayName: 'GPT 5.2',
     modelVersion: '2025-12-11',
     maxInputTokens: 272000,
