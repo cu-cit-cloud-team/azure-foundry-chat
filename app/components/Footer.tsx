@@ -235,23 +235,19 @@ export const Footer = memo(
 
     const handleSubmit = useCallback(
       (message: PromptInputMessage) => {
-        const isStreaming =
-          chatStatus === 'streaming' || chatStatus === 'submitted';
+        const hasText = message.text.trim().length > 0;
+        const hasFiles = message.files.length > 0;
 
-        if (isStreaming && onStop) {
-          onStop();
+        if (!(hasText || hasFiles)) {
+          setLocalSubmitting(false);
           return;
         }
 
+        setLocalSubmitting(true);
         onSubmit(message);
       },
-      [chatStatus, onStop, onSubmit]
+      [onSubmit]
     );
-
-    // When the form begins submitting (capture phase), show immediate feedback
-    const handleSubmitCapture = useCallback(() => {
-      setLocalSubmitting(true);
-    }, []);
 
     // Clear the local submitting indicator when loading starts or when chat returns to ready
     useEffect(() => {
@@ -273,7 +269,6 @@ export const Footer = memo(
             maxFiles={3}
             maxFileSize={25 * 1024 * 1024}
             onSubmit={handleSubmit}
-            onSubmitCapture={handleSubmitCapture}
             onError={handleFileError}
           >
             <PromptInputHeader>
@@ -388,7 +383,7 @@ export const Footer = memo(
               <PromptInputSubmit
                 status={localSubmitting ? 'submitted' : chatStatus}
                 disabled={chatStatus === 'error'}
-                onClick={handleSubmitCapture}
+                onStop={onStop}
               />
             </PromptInputFooter>
           </PromptInput>
