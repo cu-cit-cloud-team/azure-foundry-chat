@@ -1,3 +1,30 @@
+## [1.0.0-beta.44](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.43...v1.0.0-beta.44) (2026-03-22)
+
+### 🔧 Chores
+
+* **deps-dev/overrides:** bump eslint ([5464cab](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/5464cabf2d7943a20ffd9dc078c3fc8b7531c6bb))
+* **deps-dev:** bump @biomejs/biome from 2.4.7 to 2.4.8 (#2410) ([db75c33](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/db75c3387ca2e33b6c547523fc5206b7563656ef)), closes [#2410](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2410)
+* **deps-dev:** bump eslint-config-next in the eslint group (#2409) ([c86f33e](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/c86f33e2ec58fd259e5c60d71ca76201edbe4204)), closes [#2409](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2409)
+* **deps-dev:** bump eslint-config-next in the eslint group (#2414) ([178ba2e](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/178ba2e0292c9ff43425e9180f45d50721a38c07)), closes [#2414](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2414)
+* **deps-dev:** bump the tailwindcss group with 2 updates (#2408) ([fb164b8](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/fb164b8680af6a4f79c6f8b256d86da726fb4e1a)), closes [#2408](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2408)
+* **deps:** bump media-chrome from 4.18.1 to 4.18.2 (#2411) ([5e6648c](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/5e6648c7e83741e6ef6b84919221723d8e68e915)), closes [#2411](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2411)
+* **deps:** bump next from 16.1.7 to 16.2.0 in the next group (#2407) ([64fc855](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/64fc855302255f036625ee8e1f33cefb825f8e34)), closes [#2407](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2407)
+* **deps:** bump next from 16.2.0 to 16.2.1 in the next group (#2413) ([47168ac](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/47168ac4b6e00c179d086cd064225112c2c3daca)), closes [#2413](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2413)
+* **deps:** bump the ai group with 7 updates (#2412) ([114ba33](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/114ba33b91f2d2e7e5128b2c30ccdb202a359bc3)), closes [#2412](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2412)
+
+### 🏗️ Build System
+
+* **npm:** bump packageManager ([1da3e92](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/1da3e92a6b5d17457d70251bb9a597dc93edd242))
+
+### 🛠️ Code Refactoring
+
+* **Footer:** improve submit behavior ([250c6b8](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/250c6b8daed559f2889ea38af32423c1361325f0))
+* **Messages:** disable message action buttons while processing ([2c52f0b](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/2c52f0b6b6e3032c8117c7714b5af2bc9029f76b))
+
+### ✨ Features
+
+* **Footer:** add take screenshot option to attachments ([cf7b3b4](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/cf7b3b47a8fe5cbdbd47d096fc339a7ac3d3a175))
+
 ## [1.0.0-beta.43](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.42...v1.0.0-beta.43) (2026-03-18)
 
 ### 🛠️ Code Refactoring
