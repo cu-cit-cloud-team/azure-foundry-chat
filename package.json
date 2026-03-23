@@ -35,7 +35,7 @@
     "@ai-sdk/deepseek": "2.0.26",
     "@ai-sdk/mcp": "1.0.30",
     "@ai-sdk/react": "3.0.136",
-    "@ai-sdk/xai": "3.0.72",
+    "@ai-sdk/xai": "3.0.73",
     "@radix-ui/react-alert-dialog": "1.1.15",
     "@radix-ui/react-avatar": "1.1.11",
     "@radix-ui/react-collapsible": "1.1.12",
