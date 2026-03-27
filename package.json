@@ -67,7 +67,7 @@
     "cmdk": "1.1.1",
     "dayjs": "1.11.20",
     "dexie": "4.4.1",
-    "dexie-react-hooks": "4.2.0",
+    "dexie-react-hooks": "4.4.0",
     "embla-carousel-react": "8.6.0",
     "gpt-tokenizer": "3.4.0",
     "jotai": "2.19.0",
