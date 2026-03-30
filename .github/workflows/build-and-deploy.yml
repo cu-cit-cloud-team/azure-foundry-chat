@@ -38,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 📤 Notify Teams
-        uses: mikesprague/teams-incoming-webhook-action@v2
+        uses: mikesprague/teams-incoming-webhook-action@b181ad6d1d24c2b5e31211b9ebe481a26f8b58ea # v2.0.3
         with:
           github-token: ${{ github.token }}
           webhook-url: ${{ env.MS_TEAMS_WEBHOOK_URL }}
@@ -47,17 +47,17 @@ jobs:
           color: info
 
       - name: 👷 Checkout Repo
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - name: 🏗️ Setup Node.js ${{ vars.NODE_VERSION }} environment
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
         with:
           node-version: ${{ vars.NODE_VERSION }}
           check-latest: true
 
       - name: ⚡  Cache node_modules and .next folder
         id: cache
-        uses: actions/cache@v5
+        uses: actions/cache@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
         with:
           path: |
             ~/.npm
@@ -82,7 +82,7 @@ jobs:
 
       - name: 🚀 Deploy to Azure App Service
         id: deploy-to-webapp
-        uses: azure/webapps-deploy@v3
+        uses: azure/webapps-deploy@02a81bead70021f5284939794bcec79c271ab383 # v3.0.8
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ env.AZURE_WEBAPP_PUBLISH_PROFILE }}
@@ -91,7 +91,7 @@ jobs:
 
       - name: ⚠️ Cancelled Notification
         if: ${{ cancelled() }}
-        uses: mikesprague/teams-incoming-webhook-action@v2
+        uses: mikesprague/teams-incoming-webhook-action@b181ad6d1d24c2b5e31211b9ebe481a26f8b58ea # v2.0.3
         with:
           github-token: ${{ github.token }}
           webhook-url: ${{ env.MS_TEAMS_WEBHOOK_URL }}
@@ -101,7 +101,7 @@ jobs:
 
       - name: ⛔ Failure Notification
         if: ${{ failure() }}
-        uses: mikesprague/teams-incoming-webhook-action@v2
+        uses: mikesprague/teams-incoming-webhook-action@b181ad6d1d24c2b5e31211b9ebe481a26f8b58ea # v2.0.3
         with:
           github-token: ${{ github.token }}
           webhook-url: ${{ env.MS_TEAMS_WEBHOOK_URL }}
@@ -111,7 +111,7 @@ jobs:
 
       - name: 🎉 Success Notification
         if: ${{ success() }}
-        uses: mikesprague/teams-incoming-webhook-action@v2
+        uses: mikesprague/teams-incoming-webhook-action@b181ad6d1d24c2b5e31211b9ebe481a26f8b58ea # v2.0.3
         with:
           github-token: ${{ github.token }}
           webhook-url: ${{ env.MS_TEAMS_WEBHOOK_URL }}
