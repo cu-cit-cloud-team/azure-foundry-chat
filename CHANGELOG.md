@@ -1,3 +1,92 @@
+## [1.0.0-beta.45](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.44...v1.0.0-beta.45) (2026-04-16)
+
+### ✨ Features
+
+* **api/chat:** enable claude opus 4.7 ([f0995ec](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/f0995ec591854a05055c455ad78d97b5c3feef4e))
+* **utils/models:** add claude opus 4.7 ([8c870df](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/8c870df81446d2cbb49d565356851d14bd001d66))
+
+### 🎨 Style
+
+* **env.local.example:** add claude opus 4.7 var ([fe79ff9](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/fe79ff9436752b85ed98337718c80d392b4b928c))
+
+### 🔧 Chores
+
+* **deps-dev:** bump @biomejs/biome from 2.4.10 to 2.4.11 (#2466) ([537b550](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/537b55082f01023f9cceac5de3e2c49f299ebda8)), closes [#2466](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2466)
+* **deps-dev:** bump @biomejs/biome from 2.4.11 to 2.4.12 (#2476) ([36406f0](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/36406f059f315c1b5781d5374115f255d1b2a6df)), closes [#2476](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2476)
+* **deps-dev:** bump @biomejs/biome from 2.4.8 to 2.4.9 (#2427) ([8cb45ac](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/8cb45aca63c9307ddcf4822a2ce634ba3ca0e640)), closes [#2427](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2427)
+* **deps-dev:** bump @biomejs/biome from 2.4.9 to 2.4.10 (#2439) ([e5984c7](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/e5984c7955971df14b5b213e87338790d7081210)), closes [#2439](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2439)
+* **deps-dev:** bump @types/node in the types group (#2449) ([e145f5e](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/e145f5ea1ccb23c10932428da5dcc369ce613fbe)), closes [#2449](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2449)
+* **deps-dev:** bump @types/node in the types group (#2463) ([007063b](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/007063b59802ad48dfb5f5517822721c53847052)), closes [#2463](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2463)
+* **deps-dev:** bump autoprefixer in the postcss group (#2471) ([877e555](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/877e5552dfd3141d2c54a1c26b5511d7e78d5c81)), closes [#2471](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2471)
+* **deps-dev:** bump conventional-changelog-conventionalcommits (#2437) ([7962cf6](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/7962cf6895435604ade089cd798cd660eedf8e1d)), closes [#2437](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2437)
+* **deps-dev:** bump cssnano from 7.1.3 to 7.1.4 (#2438) ([b72e9ea](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/b72e9ea9abb01c2b59cffa72443cff20eb78278e)), closes [#2438](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2438)
+* **deps-dev:** bump cssnano from 7.1.4 to 7.1.5 (#2472) ([a7f9634](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/a7f9634a5ca6697e096ea1356ca9a0780ffe9017)), closes [#2472](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2472)
+* **deps-dev:** bump eslint from 10.1.0 to 10.2.0 in the eslint group (#2451) ([30d93fd](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/30d93fdf15b8a58206e098450c8bbc5e8a345354)), closes [#2451](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2451)
+* **deps-dev:** bump eslint-config-next in the eslint group (#2444) ([de2db1d](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/de2db1d26016f2dfdf4c52ecaeebb3e3f1e95654)), closes [#2444](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2444)
+* **deps-dev:** bump eslint-config-next in the eslint group (#2459) ([c49aa96](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/c49aa967c818d52486c2273e696ee6a0657f5afd)), closes [#2459](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2459)
+* **deps-dev:** bump eslint-config-next in the eslint group (#2480) ([11e3690](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/11e36908909968c07b530854011a03d45fb9f787)), closes [#2480](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2480)
+* **deps-dev:** bump postcss from 8.5.8 to 8.5.9 in the postcss group (#2454) ([b0dacea](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/b0daceafc2522552abf46b0c8b8e47dfcd95b378)), closes [#2454](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2454)
+* **deps-dev:** bump postcss from 8.5.9 to 8.5.10 in the postcss group (#2481) ([e50cc1b](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/e50cc1bc83d3ebe14cf13396a972b77da9367181)), closes [#2481](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2481)
+* **deps-dev:** bump prettier from 3.8.1 to 3.8.2 in the prettier group (#2464) ([562491f](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/562491faa77d6a3ff06f67febf4c382e5558be9d)), closes [#2464](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2464)
+* **deps-dev:** bump prettier from 3.8.2 to 3.8.3 in the prettier group (#2475) ([be0fa09](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/be0fa09bb5bab5f1654b9899f5f7bfec1e24150c)), closes [#2475](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2475)
+* **deps-dev:** bump typescript from 5.9.3 to 6.0.2 (#2419) ([4eb4b37](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/4eb4b371eaf80fed2acb7d7f55d7fc24d8229a53)), closes [#2419](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2419)
+* **deps:** bump @ai-sdk/anthropic in the ai group (#2447) ([d8728a0](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/d8728a0541a31c9c7e23c08b8d9a1116d7561021)), closes [#2447](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2447)
+* **deps:** bump @ai-sdk/xai from 3.0.72 to 3.0.73 in the ai group (#2415) ([dd2d5aa](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/dd2d5aa6efd03a1d9ec701d06f1de989a677bbad)), closes [#2415](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2415)
+* **deps:** bump @rive-app/react-webgl2 from 4.27.2 to 4.27.3 (#2423) ([35bdf48](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/35bdf48a6c0681211e507118ac3e3664b351f6dc)), closes [#2423](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2423)
+* **deps:** bump @rive-app/react-webgl2 from 4.27.3 to 4.28.0 (#2465) ([d5ea9a1](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/d5ea9a1950200987762f64a8d3e7c0a09a53a421)), closes [#2465](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2465)
+* **deps:** bump @xyflow/react from 12.10.1 to 12.10.2 (#2436) ([3090f53](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/3090f53a70b0b5f61b618d9deca3936a809f5fe9)), closes [#2436](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2436)
+* **deps:** bump actions/cache from 5.0.4 to 5.0.5 (#2469) ([ef691aa](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/ef691aa5a2ca2552db6ac2fcbee581290925f556)), closes [#2469](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2469)
+* **deps:** bump dexie from 4.3.0 to 4.4.1 (#2433) ([492f442](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/492f4422b8939c7d6c4b8d52bf2533f3c8d58d52)), closes [#2433](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2433)
+* **deps:** bump dexie from 4.4.1 to 4.4.2 (#2441) ([819d0e6](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/819d0e6602deec350285d3c9a63c520d6f473fdc)), closes [#2441](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2441)
+* **deps:** bump dexie-react-hooks from 4.2.0 to 4.4.0 (#2434) ([fcea9a7](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/fcea9a79e32452a5a485197755ba876540d64e02)), closes [#2434](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2434)
+* **deps:** bump jotai from 2.18.1 to 2.19.0 (#2421) ([ba8728f](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/ba8728f9be56f62ae6afb8eff65efc5e916ee6ec)), closes [#2421](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2421)
+* **deps:** bump jotai from 2.19.0 to 2.19.1 (#2455) ([e78ea69](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/e78ea698d4f8eafe6e644c8407a298235a217a74)), closes [#2455](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2455)
+* **deps:** bump lodash from 4.17.23 to 4.18.1 (#2446) ([4352aa5](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/4352aa55e1957e28a2338607f2ccb746c39fecf7)), closes [#2446](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2446)
+* **deps:** bump lucide-react from 0.577.0 to 1.0.0 (#2416) ([ce6316d](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/ce6316d2b7429b4f0c6c657e0bd4bd85118be4a1)), closes [#2416](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2416)
+* **deps:** bump lucide-react from 1.0.0 to 1.0.1 (#2418) ([dd668e4](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/dd668e4d2888edee016d4e78fcc01b92b08a90f9)), closes [#2418](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2418)
+* **deps:** bump lucide-react from 1.0.1 to 1.6.0 (#2424) ([cc9fb29](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/cc9fb29326c122b01c9a4de4a209de39d4580deb)), closes [#2424](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2424)
+* **deps:** bump lucide-react from 1.6.0 to 1.7.0 (#2426) ([5404923](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/5404923d907b5fac406deadb0040519acab5bce2)), closes [#2426](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2426)
+* **deps:** bump lucide-react from 1.7.0 to 1.8.0 (#2460) ([f189d7a](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/f189d7aa70032402eb3b5c3412a9cbb3ca4a9879)), closes [#2460](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2460)
+* **deps:** bump media-chrome from 4.18.2 to 4.18.3 (#2428) ([9936996](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/9936996eb534a0309dab99ccbad4c40f509b28db)), closes [#2428](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2428)
+* **deps:** bump media-chrome from 4.18.3 to 4.19.0 (#2473) ([8d08462](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/8d0846267ee679ab1632153b79581910bacb80a8)), closes [#2473](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2473)
+* **deps:** bump nanoid from 5.1.7 to 5.1.9 (#2482) ([a16f33d](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/a16f33dce74cf96517f717f9f901451823eb462c)), closes [#2482](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2482)
+* **deps:** bump next from 16.2.1 to 16.2.2 in the next group (#2443) ([758a4bb](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/758a4bb87630ed23481e71a39c1f71a46eab4874)), closes [#2443](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2443)
+* **deps:** bump next from 16.2.2 to 16.2.3 in the next group (#2457) ([68f8553](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/68f85534a539758afa7f76d25e325e726aa0b419)), closes [#2457](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2457)
+* **deps:** bump next from 16.2.3 to 16.2.4 in the next group (#2479) ([9bddb72](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/9bddb720c0985be4de9812362d414ea60bc4e89e)), closes [#2479](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2479)
+* **deps:** bump openai from 6.32.0 to 6.33.0 (#2425) ([64fda12](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/64fda12a0ea8b836c8c4bda1314aef1b1e24dd04)), closes [#2425](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2425)
+* **deps:** bump openai from 6.33.0 to 6.34.0 (#2461) ([086f2c7](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/086f2c7279fce549e63221b8ce1b8de98a997e89)), closes [#2461](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2461)
+* **deps:** bump the ai group with 2 updates (#2417) ([a8b09a7](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/a8b09a7a027391e855d20dfe424db382ef951a36)), closes [#2417](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2417)
+* **deps:** bump the ai group with 2 updates (#2422) ([5598cab](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/5598cab0ed4b7b7ee916b8ffd74500f83a3d645c)), closes [#2422](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2422)
+* **deps:** bump the ai group with 2 updates (#2432) ([4e6e0cb](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/4e6e0cb64ca961a5a91e0fcee5d1c8369fe10d5b)), closes [#2432](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2432)
+* **deps:** bump the ai group with 2 updates (#2435) ([937c8ec](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/937c8ec5b37852a74f5e6de8b76bb13f2d0d9309)), closes [#2435](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2435)
+* **deps:** bump the ai group with 2 updates (#2440) ([b7bfd71](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/b7bfd7131e13f5b31af3de1ccd006fa8788a075e)), closes [#2440](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2440)
+* **deps:** bump the ai group with 2 updates (#2442) ([9d34c8e](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/9d34c8eaa45aa323a67b2a0e7e39394f2e0bd550)), closes [#2442](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2442)
+* **deps:** bump the ai group with 2 updates (#2445) ([89ce361](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/89ce361e3be781b81c9cec7471a91a0b6c9d2a44)), closes [#2445](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2445)
+* **deps:** bump the ai group with 2 updates (#2450) ([eb9e6aa](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/eb9e6aa177ef88eccc290b19cfaf57840ff278ee)), closes [#2450](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2450)
+* **deps:** bump the ai group with 2 updates (#2462) ([1f5b749](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/1f5b7491730ab08a01c1f9d2758cd56ca7d5f7c3)), closes [#2462](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2462)
+* **deps:** bump the ai group with 2 updates (#2470) ([ba10bd6](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/ba10bd6dee4ce360c8aad0ebe01a0803fccb2413)), closes [#2470](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2470)
+* **deps:** bump the ai group with 3 updates (#2456) ([e555222](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/e5552226d99e63d2e42baed709c72605141a4fd0)), closes [#2456](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2456)
+* **deps:** bump the ai group with 3 updates (#2474) ([6c0a458](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/6c0a45851ee015ed5a259be99b9bb4a09a5217f2)), closes [#2474](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2474)
+* **deps:** bump the ai group with 3 updates (#2478) ([5d7ba15](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/5d7ba159206c5ad2edbf5f8656990381f460a03b)), closes [#2478](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2478)
+* **deps:** bump the ai group with 3 updates (#2483) ([8020515](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/8020515bfde4e8b58986a19fd5eb26b935115ead)), closes [#2483](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2483)
+* **deps:** bump the ai group with 4 updates (#2468) ([4a1b681](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/4a1b6811f0243e0f826db4cdab384570e5c2f6fa)), closes [#2468](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2468)
+* **deps:** bump the ai group with 5 updates (#2420) ([6fed749](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/6fed749e7f316b7e0883339bfe579b1087d24341)), closes [#2420](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2420)
+* **deps:** bump the ai group with 6 updates (#2453) ([2715588](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/271558865e9dc303ec09b219913e022edb5533e7)), closes [#2453](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2453)
+* **deps:** bump the ai group with 7 updates (#2448) ([aa5b41f](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/aa5b41f44ec91a94a910614aea6c5780b3ec0f80)), closes [#2448](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2448)
+* **deps:** bump the ai group with 7 updates (#2452) ([b40919a](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/b40919a8574ef8bf244a7e5706b4264417600487)), closes [#2452](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2452)
+* **deps:** bump the react group with 2 updates (#2458) ([0b0590d](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/0b0590d5939b1af07685cdaf50456be568dacc83)), closes [#2458](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2458)
+* **overrides:** add brace-expansion ([5e3fe16](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/5e3fe166565c884c4ff7ad247118edd9706fd7a6))
+* **overrides:** add lodash-es to close two dependabot alerts ([5c2c4d6](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/5c2c4d6947288a26533eda754f3574cf46af78fc))
+* **overrides:** update ([7d12ab1](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/7d12ab10497e86dc15579dd5cf0a327d972ee8c0))
+
+### 🔄 Continuous Integration
+
+* **ations:** pin action versions to SHAs ([95d338f](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/95d338f97c6d7db5da053f87075291c428b21f18))
+
+### 🏗️ Build System
+
+* **npm:** bump packageManager ([0340f27](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/0340f27c22757090821d3215e724230dee62500c))
+
 ## [1.0.0-beta.44](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.43...v1.0.0-beta.44) (2026-03-22)
 
 ### 🔧 Chores
