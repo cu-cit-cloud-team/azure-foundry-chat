@@ -186,6 +186,15 @@ export const models: Models = [
     capabilities: ['tools', 'reasoning'],
   },
   {
+    displayName: 'Claude Opus 4.7',
+    modelVersion: '1',
+    maxInputTokens: 1000000,
+    maxOutputTokens: 128000,
+    name: 'claude-opus-4-7',
+    provider: 'anthropic',
+    capabilities: ['tools', 'reasoning'],
+  },
+  {
     displayName: 'DeepSeek V3.1',
     modelVersion: '1',
     maxInputTokens: 131072,
