@@ -1,3 +1,24 @@
+## [1.0.0-beta.46](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.45...v1.0.0-beta.46) (2026-04-25)
+
+### ✨ Features
+
+* add/enable gpt-5.5, grok-4-20-fast-reasoning, grok-4-20-fast-non-reasoning ([36625c3](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/36625c31f9d8cdb8faa4d6eac807279b38ec4280))
+
+### 🔧 Chores
+
+* **deps-dev:** bump @biomejs/biome from 2.4.12 to 2.4.13 (#2494) ([03ed5a4](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/03ed5a40f4d3a4ea7072583f23ed50205966ae5a)), closes [#2494](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2494)
+* **deps-dev:** bump cssnano from 7.1.5 to 7.1.7 (#2490) ([e4b5d46](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/e4b5d4680eefa3a00b777b2e11ef5691d15834e2)), closes [#2490](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2490)
+* **deps-dev:** bump eslint from 10.2.0 to 10.2.1 in the eslint group (#2487) ([3210cdd](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/3210cdda75068e8d2ef36cb9b2b6958c6f0cb4cd)), closes [#2487](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2487)
+* **deps-dev:** bump prettier-plugin-tailwindcss in the prettier group (#2492) ([956bf37](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/956bf37f08b2a929e28aef97d1b9b7ce93beeea3)), closes [#2492](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2492)
+* **deps-dev:** bump the tailwindcss group with 2 updates (#2489) ([7d8fce3](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/7d8fce365ecc309bb45cce801a0a856b64d39fe2)), closes [#2489](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2489)
+* **deps-dev:** bump the tailwindcss group with 2 updates (#2491) ([7dac204](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/7dac20462dfb8b29f029ad6668f7fed2b4f8d2aa)), closes [#2491](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2491)
+* **deps-dev:** bump typescript from 6.0.2 to 6.0.3 (#2485) ([edfab19](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/edfab19006f506b65f85f007f30b2fa3512d09e0)), closes [#2485](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2485)
+* **deps:** bump @rive-app/react-webgl2 from 4.28.0 to 4.28.1 (#2488) ([0052a74](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/0052a74d14006e207bfea967e3636ed97a5a388b)), closes [#2488](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2488)
+* **deps:** bump actions/setup-node from 6.3.0 to 6.4.0 (#2486) ([0ed4147](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/0ed414730ea39b1df329d17c4b0084ea5b3e3968)), closes [#2486](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2486)
+* **deps:** bump lucide-react from 1.8.0 to 1.9.0 (#2493) ([3300cd8](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/3300cd878ec8775aa697a30278dfb6022a237223)), closes [#2493](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2493)
+* **deps:** bump the ai group with 3 updates (#2484) ([b41c56e](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/b41c56e199480f5bf12820d3592ed5833c026cb3)), closes [#2484](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2484)
+* **overrides:** add uuid and postcss to close dependabot alerts ([0aed4a3](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/0aed4a3b1eefa0fea4ab0de76848ef6ad03ac736))
+
 ## [1.0.0-beta.45](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.44...v1.0.0-beta.45) (2026-04-16)
 
 ### ✨ Features
