@@ -31,8 +31,8 @@
   "license": "MIT",
   "dependencies": {
     "@ai-sdk/anthropic": "3.0.75",
-    "@ai-sdk/azure": "3.0.62",
-    "@ai-sdk/deepseek": "2.0.32",
+    "@ai-sdk/azure": "3.0.63",
+    "@ai-sdk/deepseek": "2.0.33",
     "@ai-sdk/mcp": "1.0.40",
     "@ai-sdk/react": "3.0.177",
     "@ai-sdk/xai": "3.0.88",
