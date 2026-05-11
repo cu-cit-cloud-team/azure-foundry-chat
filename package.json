@@ -7,7 +7,7 @@
     "node": ">= 24.x",
     "npm": ">= 11.x"
   },
-  "packageManager": "npm@11.13.0",
+  "packageManager": "npm@11.14.1",
   "scripts": {
     "biome": "biome check ./app",
     "build": "next build",
@@ -34,7 +34,7 @@
     "@ai-sdk/azure": "3.0.64",
     "@ai-sdk/deepseek": "2.0.34",
     "@ai-sdk/mcp": "1.0.41",
-    "@ai-sdk/react": "3.0.178",
+    "@ai-sdk/react": "3.0.179",
     "@ai-sdk/xai": "3.0.89",
     "@radix-ui/react-alert-dialog": "1.1.15",
     "@radix-ui/react-avatar": "1.1.11",
@@ -52,13 +52,13 @@
     "@radix-ui/react-slot": "1.2.4",
     "@radix-ui/react-tooltip": "1.2.8",
     "@radix-ui/react-use-controllable-state": "1.2.2",
-    "@rive-app/react-webgl2": "4.28.3",
+    "@rive-app/react-webgl2": "4.28.4",
     "@streamdown/cjk": "1.0.3",
     "@streamdown/code": "1.1.1",
     "@streamdown/math": "1.0.2",
     "@streamdown/mermaid": "1.0.2",
     "@xyflow/react": "12.10.2",
-    "ai": "6.0.176",
+    "ai": "6.0.177",
     "ai-elements": "1.9.0",
     "ansi-to-react": "6.2.6",
     "babel-plugin-react-compiler": "1.0.0",
@@ -88,13 +88,13 @@
     "remend": "1.3.0",
     "shiki": "4.0.2",
     "streamdown": "2.5.0",
-    "tailwind-merge": "3.5.0",
+    "tailwind-merge": "3.6.0",
     "tokenlens": "1.3.1",
     "use-stick-to-bottom": "1.1.4"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.14",
-    "@tailwindcss/postcss": "4.2.4",
+    "@biomejs/biome": "2.4.15",
+    "@tailwindcss/postcss": "4.3.0",
     "@tailwindcss/typography": "0.5.19",
     "@types/node": "25.6.2",
     "@types/react": "19.2.14",
@@ -102,8 +102,8 @@
     "autoprefixer": "10.5.0",
     "conventional-changelog": "7.2.0",
     "conventional-changelog-conventionalcommits": "9.3.1",
-    "cssnano": "8.0.0",
-    "cz-git": "1.13.0",
+    "cssnano": "8.0.1",
+    "cz-git": "1.13.1",
     "eslint": "10.3.0",
     "eslint-config-next": "16.2.6",
     "eslint-config-prettier": "10.1.8",
@@ -112,7 +112,7 @@
     "postcss-cli": "11.0.1",
     "prettier": "3.8.3",
     "prettier-plugin-tailwindcss": "0.8.0",
-    "tailwindcss": "4.2.4",
+    "tailwindcss": "4.3.0",
     "tw-animate-css": "1.4.0",
     "typescript": "6.0.3",
     "zod-validation-error": "5.0.0"
@@ -120,7 +120,7 @@
   "overrides": {
     "@conventional-changelog/git-client": "^2.7.0",
     "ajv": "^8.20.0",
-    "brace-expansion": "^5.0.5",
+    "brace-expansion": "^5.0.6",
     "lodash-es": "^4.18.1",
     "minimatch": "^10.2.5",
     "postcss": "8.5.14",
@@ -146,6 +146,6 @@
   },
   "volta": {
     "node": "24.15.0",
-    "npm": "11.13.0"
+    "npm": "11.14.1"
   }
 }
