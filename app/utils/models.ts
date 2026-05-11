@@ -14,52 +14,6 @@ export type Models = Model[];
 
 export const models: Models = [
   {
-    displayName: 'GPT 4.1',
-    modelVersion: '2025-04-14',
-    maxInputTokens: 1047576,
-    maxOutputTokens: 32768,
-    name: 'gpt-41',
-    provider: 'openai',
-    capabilities: ['tools', 'reasoning', 'web-search'],
-  },
-  {
-    displayName: 'GPT 4.1 Mini',
-    modelVersion: '2025-04-14',
-    maxInputTokens: 1047576,
-    maxOutputTokens: 32768,
-    name: 'gpt-41-mini',
-    provider: 'openai',
-    capabilities: ['tools', 'reasoning', 'web-search'],
-  },
-  {
-    displayName: 'GPT 5.2',
-    modelVersion: '2025-12-11',
-    maxInputTokens: 272000,
-    maxOutputTokens: 128000,
-    name: 'gpt-5.2',
-    default: true,
-    provider: 'openai',
-    capabilities: ['tools', 'reasoning', 'web-search'],
-  },
-  {
-    displayName: 'GPT 5.2 Chat',
-    modelVersion: '2025-12-11',
-    maxInputTokens: 200000,
-    maxOutputTokens: 100000,
-    name: 'gpt-5.2-chat',
-    provider: 'openai',
-    capabilities: ['tools', 'web-search'],
-  },
-  {
-    displayName: 'GPT 5.2 Codex',
-    modelVersion: '2025-12-11',
-    maxInputTokens: 272000,
-    maxOutputTokens: 128000,
-    name: 'gpt-5.2-codex',
-    provider: 'openai',
-    capabilities: ['tools', 'reasoning', 'web-search'],
-  },
-  {
     displayName: 'GPT 5.3 Chat',
     modelVersion: '2026-03-03',
     maxInputTokens: 200000,
@@ -88,6 +42,7 @@ export const models: Models = [
   },
   {
     displayName: 'GPT 5.4 Mini',
+    default: true,
     modelVersion: '2026-03-17',
     maxInputTokens: 272000,
     maxOutputTokens: 128000,
@@ -222,6 +177,15 @@ export const models: Models = [
     capabilities: ['tools', 'reasoning'],
   },
   {
+    displayName: 'DeepSeek V4 Flash',
+    modelVersion: '1',
+    maxInputTokens: 128000,
+    maxOutputTokens: 128000,
+    name: 'DeepSeek-V4-Flash',
+    provider: 'deepseek',
+    capabilities: ['tools', 'reasoning'],
+  },
+  {
     displayName: 'DeepSeek R1-0528',
     modelVersion: '1',
     maxInputTokens: 163840,
@@ -236,15 +200,6 @@ export const models: Models = [
     maxInputTokens: 128000,
     maxOutputTokens: 8192,
     name: 'grok-4',
-    provider: 'xai',
-    capabilities: ['tools', 'reasoning'],
-  },
-  {
-    displayName: 'Grok Code Fast 1',
-    modelVersion: '1',
-    maxInputTokens: 128000,
-    maxOutputTokens: 8192,
-    name: 'grok-code-fast-1',
     provider: 'xai',
     capabilities: ['tools', 'reasoning'],
   },
@@ -285,27 +240,27 @@ export const models: Models = [
     capabilities: ['tools', 'reasoning'],
   },
   {
-    displayName: 'Grok 4.20 Fast Non-Reasoning',
+    displayName: 'Grok 4.2 Non-Reasoning',
     modelVersion: '1',
     maxInputTokens: 262144,
     maxOutputTokens: 8192,
-    name: 'grok-4-20-fast-non-reasoning',
+    name: 'grok-4-20-non-reasoning',
     provider: 'xai',
     capabilities: ['tools'],
   },
   {
-    displayName: 'Grok 4.20 Fast Reasoning',
+    displayName: 'Grok 4.2 Reasoning',
     modelVersion: '1',
     maxInputTokens: 262144,
     maxOutputTokens: 8192,
-    name: 'grok-4-20-fast-reasoning',
+    name: 'grok-4-20-reasoning',
     provider: 'xai',
     capabilities: ['tools', 'reasoning'],
   },
 ];
 
 // constants to use as fallbacks when no model is found
-export const DEFAULT_MODEL_NAME = 'gpt-5.2';
+export const DEFAULT_MODEL_NAME = 'gpt-5.4-mini';
 export const DEFAULT_MAX_INPUT_TOKENS = 272000;
 export const DEFAULT_MAX_OUTPUT_TOKENS = 128000;
 
