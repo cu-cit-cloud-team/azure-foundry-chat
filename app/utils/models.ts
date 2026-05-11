@@ -42,7 +42,6 @@ export const models: Models = [
   },
   {
     displayName: 'GPT 5.4 Mini',
-    default: true,
     modelVersion: '2026-03-17',
     maxInputTokens: 272000,
     maxOutputTokens: 128000,
@@ -78,31 +77,13 @@ export const models: Models = [
     capabilities: ['tools', 'web-search', 'reasoning'],
   },
   {
-    displayName: 'o3',
-    modelVersion: '2025-04-16',
+    displayName: 'GPT Chat Latest',
+    modelVersion: '2026-05-05',
     maxInputTokens: 200000,
-    maxOutputTokens: 100000,
-    name: 'o3',
+    maxOutputTokens: 128000,
+    name: 'gpt-chat-latest',
     provider: 'openai',
-    capabilities: ['reasoning'],
-  },
-  {
-    displayName: 'o3 Mini',
-    modelVersion: '2025-01-31',
-    maxInputTokens: 200000,
-    maxOutputTokens: 100000,
-    name: 'o3-mini',
-    provider: 'openai',
-    capabilities: ['reasoning'],
-  },
-  {
-    displayName: 'o4 Mini',
-    modelVersion: '2025-04-16',
-    maxInputTokens: 200000,
-    maxOutputTokens: 100000,
-    name: 'o4-mini',
-    provider: 'openai',
-    capabilities: ['reasoning'],
+    capabilities: ['tools', 'web-search', 'reasoning'],
   },
   {
     displayName: 'Claude Haiku 4.5',
@@ -110,15 +91,6 @@ export const models: Models = [
     maxInputTokens: 136000,
     maxOutputTokens: 64000,
     name: 'claude-haiku-4-5',
-    provider: 'anthropic',
-    capabilities: ['tools', 'reasoning'],
-  },
-  {
-    displayName: 'Claude Opus 4.5',
-    modelVersion: '2025-11-01',
-    maxInputTokens: 136000,
-    maxOutputTokens: 64000,
-    name: 'claude-opus-4-5',
     provider: 'anthropic',
     capabilities: ['tools', 'reasoning'],
   },
@@ -159,15 +131,6 @@ export const models: Models = [
     capabilities: ['tools', 'reasoning'],
   },
   {
-    displayName: 'DeepSeek V3.1',
-    modelVersion: '1',
-    maxInputTokens: 131072,
-    maxOutputTokens: 131072,
-    name: 'DeepSeek-V3.1',
-    provider: 'deepseek',
-    capabilities: ['tools', 'reasoning'],
-  },
-  {
     displayName: 'DeepSeek V3.2',
     modelVersion: '1',
     maxInputTokens: 128000,
@@ -192,33 +155,6 @@ export const models: Models = [
     maxOutputTokens: 163840,
     name: 'DeepSeek-R1-0528',
     provider: 'deepseek',
-    capabilities: ['tools', 'reasoning'],
-  },
-  {
-    displayName: 'Grok 4',
-    modelVersion: '1',
-    maxInputTokens: 128000,
-    maxOutputTokens: 8192,
-    name: 'grok-4',
-    provider: 'xai',
-    capabilities: ['tools', 'reasoning'],
-  },
-  {
-    displayName: 'Grok 4 Fast Non-Reasoning',
-    modelVersion: '1',
-    maxInputTokens: 128000,
-    maxOutputTokens: 8192,
-    name: 'grok-4-fast-non-reasoning',
-    provider: 'xai',
-    capabilities: ['tools'],
-  },
-  {
-    displayName: 'Grok 4 Fast Reasoning',
-    modelVersion: '1',
-    maxInputTokens: 256000,
-    maxOutputTokens: 8192,
-    name: 'grok-4-fast-reasoning',
-    provider: 'xai',
     capabilities: ['tools', 'reasoning'],
   },
   {
@@ -260,7 +196,7 @@ export const models: Models = [
 ];
 
 // constants to use as fallbacks when no model is found
-export const DEFAULT_MODEL_NAME = 'gpt-5.4-mini';
+export const DEFAULT_MODEL_NAME = 'gpt-chat-latest';
 export const DEFAULT_MAX_INPUT_TOKENS = 272000;
 export const DEFAULT_MAX_OUTPUT_TOKENS = 128000;
 
