@@ -411,7 +411,7 @@ export async function POST(req: Request) {
       'grok-4-1-fast-reasoning': AZURE_XAI_GROK_4_1_FAST_REASONING_DEPLOYMENT,
       'grok-4-20-fast-non-reasoning': AZURE_XAI_GROK_4_20_NON_REASONING_DEPLOYMENT,
       'grok-4-20-fast-reasoning': AZURE_XAI_GROK_4_20_REASONING_DEPLOYMENT,
-      'grok-4-3': AZURE_XAI_GROK_4_3_DEPLOYMENT,
+      'grok-4.3': AZURE_XAI_GROK_4_3_DEPLOYMENT,
     };
 
     const deploymentName = modelDeploymentMap[model];
