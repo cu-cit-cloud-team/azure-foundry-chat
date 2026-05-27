@@ -1,3 +1,15 @@
+## [1.0.0-beta.48](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.47...v1.0.0-beta.48) (2026-05-27)
+
+### ✨ Features
+
+* add/enable gpt-chat-latest (and set default); deprecate more models ([cdb43b9](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/cdb43b92e8440deb552ce8e44318afda86c3c985))
+* add/enable grok-4.3 and deepseek-v4-pro ([0699a8d](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/0699a8dcc8e35c06be502d87be13ae0b32d8d05c))
+
+### 🔧 Chores
+
+* **deps:** bump mermaid in the npm_and_yarn group across 1 directory (#2526) ([bdd0554](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/bdd0554a62ae925f63c3017bd2325ae225e58d48)), closes [#2526](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2526)
+* **deps:** update several dependencies ([313801b](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/313801bc2d77c4922f1af3063204397e64a3619f))
+
 ## [1.0.0-beta.47](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.46...v1.0.0-beta.47) (2026-05-11)
 
 ### 🔧 Chores
