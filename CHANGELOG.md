@@ -1,3 +1,25 @@
+## [1.0.0-beta.49](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.48...v1.0.0-beta.49) (2026-05-28)
+
+### ✨ Features
+
+* add/enable claude opus 4.8 ([39f0280](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/39f0280d9535921c25dcd53974a58f84433d9c7a))
+
+### 🏗️ Build System
+
+* **npm:** update packageManager (and several deps) ([6ddd95a](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/6ddd95a6b2154c6a934e261093993128e2207fb1))
+
+### 🔧 Chores
+
+* **deps-dev:** bump @biomejs/biome from 2.4.15 to 2.4.16 (#2557) ([5c16ce9](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/5c16ce933ad0268385652b64c03c4ebb667fc8f6)), closes [#2557](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2557)
+* **deps:** bump dexie from 4.4.2 to 4.4.3 (#2555) ([cc9e209](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/cc9e2097e043e14b61bcad48db12fb42d80a6b45)), closes [#2555](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2555)
+* **deps:** bump lucide-react from 1.16.0 to 1.17.0 (#2556) ([db6befd](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/db6befd38b6882d23c4ef34723788aa24fce3b4a)), closes [#2556](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2556)
+* **deps:** bump mikesprague/teams-incoming-webhook-action (#2553) ([6504252](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/6504252337cd523dd28265fdedb62a0d92dcdd81)), closes [#2553](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2553)
+* **deps:** bump the ai group with 3 updates (#2554) ([d0c4574](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/d0c4574df5af180524228a70d5adfde894a1b4dd)), closes [#2554](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2554)
+
+### 🐛 Fixes
+
+* **api/chat:** grok-4.3 mapping ([868aac0](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/868aac04cf9383dc5dc75e354a7b65851db368da))
+
 ## [1.0.0-beta.48](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.47...v1.0.0-beta.48) (2026-05-27)
 
 ### ✨ Features
