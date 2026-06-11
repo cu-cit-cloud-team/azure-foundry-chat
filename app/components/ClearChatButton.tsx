@@ -2,6 +2,7 @@ import type { UIMessage } from 'ai';
 import { useAtomValue } from 'jotai';
 import { Eraser } from 'lucide-react';
 import { memo, useCallback, useState } from 'react';
+
 import { ConfirmDialog } from '@/app/components/ConfirmDialog';
 import { Button } from '@/app/components/ui/button';
 import {
@@ -22,9 +23,7 @@ interface ClearChatButtonProps {
 export const ClearChatButton = memo(
   ({ isLoading, setMessages, focusTextarea }: ClearChatButtonProps) => {
     const userMeta = useAtomValue(userMetaAtom);
-    const chatId = userMeta?.email
-      ? `${btoa(userMeta?.email)}-chat`
-      : 'local-chat';
+    const chatId = userMeta?.email ? `${btoa(userMeta?.email)}-chat` : 'local-chat';
     const clearMessages = useClearMessages(setMessages, chatId);
     const [showDialog, setShowDialog] = useState(false);
 
@@ -40,14 +39,14 @@ export const ClearChatButton = memo(
           <Tooltip>
             <TooltipTrigger asChild>
               <Button
-                type="button"
-                variant="ghost"
-                size="icon"
+                type='button'
+                variant='ghost'
+                size='icon'
                 onClick={() => setShowDialog(true)}
                 disabled={isLoading}
-                aria-label="Clear chat"
+                aria-label='Clear chat'
               >
-                <Eraser className="size-5" />
+                <Eraser className='size-5' />
               </Button>
             </TooltipTrigger>
             <TooltipContent>
@@ -59,11 +58,11 @@ export const ClearChatButton = memo(
         <ConfirmDialog
           open={showDialog}
           onOpenChange={setShowDialog}
-          title="Clear Chat History?"
-          description="Are you sure you want to clear the chat history? This action cannot be undone."
-          confirmText="Clear"
+          title='Clear Chat History?'
+          description='Are you sure you want to clear the chat history? This action cannot be undone.'
+          confirmText='Clear'
           onConfirm={handleClearConfirm}
-          variant="destructive"
+          variant='destructive'
         />
       </>
     );

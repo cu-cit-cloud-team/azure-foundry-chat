@@ -2,6 +2,7 @@ import type { UIMessage } from 'ai';
 import { useAtomValue, useSetAtom } from 'jotai';
 import { Upload } from 'lucide-react';
 import { memo, useCallback, useEffect, useRef, useState } from 'react';
+
 import { ConfirmDialog } from '@/app/components/ConfirmDialog';
 import { Button } from '@/app/components/ui/button';
 import {
@@ -22,21 +23,14 @@ interface ImportChatButtonProps {
 }
 
 export const ImportChatButton = memo(
-  ({
-    isLoading,
-    setMessages,
-    focusTextarea,
-    messages,
-  }: ImportChatButtonProps) => {
+  ({ isLoading, setMessages, focusTextarea, messages }: ImportChatButtonProps) => {
     const [showDialog, setShowDialog] = useState(false);
     const [importData, setImportData] = useState<StoredMessage[] | null>(null);
     const [importError, setImportError] = useState<string | null>(null);
     const [shouldAutoImport, setShouldAutoImport] = useState(false);
     const fileInputRef = useRef<HTMLInputElement>(null);
     const userMeta = useAtomValue(userMetaAtom);
-    const chatId = userMeta?.email
-      ? `${btoa(userMeta?.email)}-chat`
-      : 'local-chat';
+    const chatId = userMeta?.email ? `${btoa(userMeta?.email)}-chat` : 'local-chat';
     const clearMessages = useClearMessages(setMessages, chatId);
     const setSystemMessage = useSetAtom(systemMessageAtom);
 
@@ -109,9 +103,7 @@ export const ImportChatButton = memo(
         } catch (error) {
           console.error('Failed to import messages:', error);
           setImportError(
-            error instanceof Error
-              ? error.message
-              : 'Failed to import chat history'
+            error instanceof Error ? error.message : 'Failed to import chat history'
           );
         }
       },
@@ -201,14 +193,14 @@ export const ImportChatButton = memo(
           <Tooltip>
             <TooltipTrigger asChild>
               <Button
-                type="button"
-                variant="ghost"
-                size="icon"
+                type='button'
+                variant='ghost'
+                size='icon'
                 onClick={handleButtonClick}
                 disabled={isLoading}
-                aria-label="Import chat"
+                aria-label='Import chat'
               >
-                <Upload className="size-5" />
+                <Upload className='size-5' />
               </Button>
             </TooltipTrigger>
             <TooltipContent>
@@ -219,26 +211,26 @@ export const ImportChatButton = memo(
 
         <input
           ref={fileInputRef}
-          type="file"
-          accept=".json,application/json"
+          type='file'
+          accept='.json,application/json'
           onChange={handleFileSelect}
-          className="hidden"
-          aria-label="Select chat history file"
+          className='hidden'
+          aria-label='Select chat history file'
         />
 
         <ConfirmDialog
           open={showDialog}
           onOpenChange={setShowDialog}
-          title="Import Chat History?"
+          title='Import Chat History?'
           description={
             importError ||
             'This will replace your current chat session with the imported chat history. Your current chat will be permanently deleted. This action cannot be undone.'
           }
-          confirmText="Import"
-          cancelText="Cancel"
+          confirmText='Import'
+          cancelText='Cancel'
           onConfirm={handleImportConfirm}
           onCancel={handleCancelImport}
-          variant="destructive"
+          variant='destructive'
         />
       </>
     );

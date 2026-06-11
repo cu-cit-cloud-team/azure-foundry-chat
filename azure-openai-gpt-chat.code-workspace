@@ -1,31 +1,32 @@
 {
   "folders": [
     {
-      "path": "."
-    }
+      "path": ".",
+    },
   ],
   "settings": {
     "[javascript]": {
-      "editor.defaultFormatter": "biomejs.biome"
+      "editor.defaultFormatter": "oxc.oxc-vscode",
     },
     "[json]": {
-      "editor.defaultFormatter": "biomejs.biome"
+      "editor.defaultFormatter": "oxc.oxc-vscode",
     },
     "[jsonc]": {
-      "editor.defaultFormatter": "biomejs.biome"
+      "editor.defaultFormatter": "oxc.oxc-vscode",
     },
     "[jsonl]": {
-      "editor.defaultFormatter": "biomejs.biome"
+      "editor.defaultFormatter": "oxc.oxc-vscode",
     },
     "[typescript]": {
-      "editor.defaultFormatter": "biomejs.biome"
+      "editor.defaultFormatter": "oxc.oxc-vscode",
     },
     "[typescriptreact]": {
-      "editor.defaultFormatter": "biomejs.biome"
+      "editor.defaultFormatter": "oxc.oxc-vscode",
     },
     "editor.codeActionsOnSave": {
-      "source.organizeImports.biome": "always",
-      "quickfix.biome": "never"
+      "source.organizeImports": "always",
+      "source.format.oxc": "always",
+      "source.fixAll.oxc": "explicit",
     },
     "cSpell.enabled": true,
     "cSpell.words": [
@@ -48,13 +49,13 @@
       "turbopack",
       "unitless",
       "Xmark",
-      "xyflow"
-    ]
+      "xyflow",
+    ],
   },
   "extensions": {
     "recommendations": [
-      "biomejs.biome",
-      "streetsidesoftware.code-spell-checker"
-    ]
-  }
+      "oxc.oxc-vscode",
+      "streetsidesoftware.code-spell-checker",
+    ],
+  },
 }

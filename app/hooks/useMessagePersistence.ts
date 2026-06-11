@@ -1,5 +1,6 @@
 import type { UIMessage } from 'ai';
 import { useCallback, useEffect, useRef } from 'react';
+
 import { database } from '@/app/database/database.config';
 import { hasMessageContent } from '@/app/utils/messageHelpers';
 

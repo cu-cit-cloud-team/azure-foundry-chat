@@ -13,13 +13,12 @@ import {
   smoothStream,
   stepCountIs,
   streamText,
+  type ToolSet,
   type UIMessage,
   wrapLanguageModel,
 } from 'ai';
-import {
-  DEFAULT_MAX_OUTPUT_TOKENS,
-  DEFAULT_MODEL_NAME,
-} from '@/app/utils/models';
+
+import { DEFAULT_MAX_OUTPUT_TOKENS, DEFAULT_MODEL_NAME } from '@/app/utils/models';
 
 // Helper to validate required environment variables
 function validateEnvVars() {
@@ -162,9 +161,7 @@ function hasIncompleteToolParts(message: UIMessage): boolean {
   });
 }
 
-function pruneTrailingIncompleteToolMessages(
-  messages: UIMessage[]
-): UIMessage[] {
+function pruneTrailingIncompleteToolMessages(messages: UIMessage[]): UIMessage[] {
   let endIndex = messages.length;
 
   while (endIndex > 0) {
@@ -184,9 +181,7 @@ function extractBase64FromDataUrl(dataUrl: string): {
   data: string;
   mediaType: string;
 } {
-  const match = dataUrl.match(
-    /^data:([^;,]+)?(?:;charset=[^;,]+)?;base64,(.+)$/
-  );
+  const match = dataUrl.match(/^data:([^;,]+)?(?:;charset=[^;,]+)?;base64,(.+)$/);
 
   if (!match) {
     throw new Error(
@@ -332,9 +327,7 @@ export async function POST(req: Request) {
     };
 
     // ensure system prompt included once
-    const hasSystemPrompt = messages.some(
-      (m: UIMessage) => m.role === 'system'
-    );
+    const hasSystemPrompt = messages.some((m: UIMessage) => m.role === 'system');
     const sanitizedMessages = pruneTrailingIncompleteToolMessages(messages);
     const uiMessages = hasSystemPrompt
       ? sanitizedMessages
@@ -441,7 +434,7 @@ export async function POST(req: Request) {
     const useMcpServer = Boolean(MCP_SERVER_URL);
 
     let mcpClient: Awaited<ReturnType<typeof createMCPClient>> | undefined;
-    let mcpTools = {};
+    let mcpTools: ToolSet = {};
 
     if (useMcpServer) {
       mcpClient = await createMCPClient({
@@ -451,28 +444,24 @@ export async function POST(req: Request) {
         },
       });
 
-      mcpTools = await mcpClient.tools();
+      mcpTools = (await mcpClient.tools()) as ToolSet;
     }
 
     // console.log(JSON.stringify(mcpTools, null, 2));
 
-    const tools = {
-      ...(useMcpServer ? mcpTools : {}),
-      ...(webSearch
-        ? {
-            web_search_preview: azure.tools.webSearchPreview({
-              searchContextSize: 'medium',
-            }),
-          }
-        : {}),
-      ...(useImageTool
-        ? {
-            image_generation: azure.tools.imageGeneration({
-              outputFormat: 'png',
-            }),
-          }
-        : {}),
-    };
+    const tools: ToolSet = { ...mcpTools };
+
+    if (webSearch) {
+      tools.web_search_preview = azure.tools.webSearchPreview({
+        searchContextSize: 'medium',
+      }) as ToolSet[string];
+    }
+
+    if (useImageTool) {
+      tools.image_generation = azure.tools.imageGeneration({
+        outputFormat: 'png',
+      }) as ToolSet[string];
+    }
 
     const response = streamText({
       ...baseStreamTextOptions,
@@ -532,9 +521,7 @@ export async function POST(req: Request) {
     return new Response(
       JSON.stringify({
         error:
-          error instanceof Error
-            ? error.message
-            : 'An unexpected error occurred',
+          error instanceof Error ? error.message : 'An unexpected error occurred',
       }),
       {
         status: 500,

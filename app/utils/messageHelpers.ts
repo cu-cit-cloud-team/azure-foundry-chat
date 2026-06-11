@@ -3,6 +3,7 @@
  */
 
 import type { UIMessage } from 'ai';
+
 import type { MessageFileAttachment } from '@/app/types';
 
 const FILE_TEXT_PREFIX = '[File: ';

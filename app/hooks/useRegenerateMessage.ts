@@ -1,6 +1,7 @@
 import type { UseChatHelpers } from '@ai-sdk/react';
 import type { UIMessage } from 'ai';
 import { type Dispatch, type SetStateAction, useCallback } from 'react';
+
 import { database } from '@/app/database/database.config';
 
 export const useRegenerateMessage = (
@@ -22,9 +23,7 @@ export const useRegenerateMessage = (
 
         if (isUserMessage) {
           const messagesToKeep = messages.slice(0, messageIndex);
-          const messageIdsToDelete = messages
-            .slice(messageIndex)
-            .map((m) => m.id);
+          const messageIdsToDelete = messages.slice(messageIndex).map((m) => m.id);
           if (chatId) {
             // Filter to IDs that belong to this chatId
             const toDelete: string[] = [];
@@ -61,9 +60,7 @@ export const useRegenerateMessage = (
 
           const messagesToKeep = messages.slice(0, lastUserIndex);
           const userMessage = messages[lastUserIndex];
-          const messageIdsToDelete = messages
-            .slice(lastUserIndex)
-            .map((m) => m.id);
+          const messageIdsToDelete = messages.slice(lastUserIndex).map((m) => m.id);
           if (chatId) {
             const toDelete: string[] = [];
             for (const id of messageIdsToDelete) {

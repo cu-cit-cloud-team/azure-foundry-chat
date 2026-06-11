@@ -193,9 +193,7 @@ export const DEFAULT_MAX_OUTPUT_TOKENS = 128000;
 
 export const defaultModel = models.find((model) => model.default);
 
-export const modelStringFromName = (
-  name: string | null | undefined
-): string => {
+export const modelStringFromName = (name: string | null | undefined): string => {
   if (!name) {
     return defaultModel?.displayName || 'Unknown Model';
   }

@@ -1,6 +1,7 @@
 import { useAtom } from 'jotai';
 import { LogOut, UserCircle } from 'lucide-react';
 import { memo, useCallback, useEffect, useMemo, useState } from 'react';
+
 import { Avatar, AvatarFallback } from '@/app/components/ui/avatar';
 import {
   DropdownMenu,
@@ -19,7 +20,6 @@ export const UserAvatar = memo(() => {
 
   const [userMeta, setUserMeta] = useAtom(userMetaAtom);
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: this is intended to run only once to fetch user metadata
   useEffect(() => {
     if (userMeta?.email && userMeta?.name) {
       return;
@@ -61,6 +61,7 @@ export const UserAvatar = memo(() => {
         });
     };
     getUserMeta();
+    // oxlint-disable-next-line react-hooks/exhaustive-deps - intentional, so it only runs once
   }, [setUserMeta]);
 
   useEffect(() => {
@@ -103,43 +104,41 @@ export const UserAvatar = memo(() => {
 
   if (!hasData) {
     return (
-      <Avatar className="size-9">
-        <AvatarFallback className="bg-primary text-primary-foreground">
-          <UserCircle className="size-5" />
+      <Avatar className='size-9'>
+        <AvatarFallback className='bg-primary text-primary-foreground'>
+          <UserCircle className='size-5' />
         </AvatarFallback>
       </Avatar>
     );
   }
 
   return (
-    <div className="flex items-center gap-2">
-      <span className="hidden text-sm lg:block">{email}</span>
+    <div className='flex items-center gap-2'>
+      <span className='hidden text-sm lg:block'>{email}</span>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <button
-            type="button"
-            className="focus:outline-none focus:ring-2 focus:ring-ring rounded-full"
+            type='button'
+            className='focus:outline-none focus:ring-2 focus:ring-ring rounded-full'
           >
-            <Avatar className="size-9 cursor-pointer">
-              <AvatarFallback className="bg-primary text-primary-foreground font-semibold">
+            <Avatar className='size-9 cursor-pointer'>
+              <AvatarFallback className='bg-primary text-primary-foreground font-semibold'>
                 {initials}
               </AvatarFallback>
             </Avatar>
           </button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" className="w-56">
+        <DropdownMenuContent align='end' className='w-56'>
           <DropdownMenuLabel>
-            <div className="flex flex-col space-y-1">
-              <p className="text-sm font-medium leading-none">{name}</p>
-              <p className="text-xs leading-none text-muted-foreground">
-                {email}
-              </p>
+            <div className='flex flex-col space-y-1'>
+              <p className='text-sm font-medium leading-none'>{name}</p>
+              <p className='text-xs leading-none text-muted-foreground'>{email}</p>
             </div>
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem asChild>
-            <a href="/.auth/logout" className="cursor-pointer">
-              <LogOut className="size-4 mr-2" />
+            <a href='/.auth/logout' className='cursor-pointer'>
+              <LogOut className='size-4 mr-2' />
               Logout
             </a>
           </DropdownMenuItem>

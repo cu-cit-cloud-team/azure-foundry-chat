@@ -11,6 +11,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/app/components/ui/tooltip';
+
 import pkg from '../../package.json';
 
 dayjs.extend(utc);
@@ -122,7 +123,7 @@ export const UpdateCheck = () => {
         clearTimeout(timerRef.current);
       }
     };
-  }, []);
+  }, [MAX_INTERVAL]);
 
   const handleUpdate = () => {
     // Clear all caches and reload
@@ -145,12 +146,12 @@ export const UpdateCheck = () => {
       <Tooltip>
         <TooltipTrigger asChild>
           <Button
-            variant="outline"
-            size="sm"
+            variant='outline'
+            size='sm'
             onClick={handleUpdate}
-            className="gap-2 bg-orange-500/10 text-orange-600 hover:bg-orange-500/20 hover:text-orange-700 dark:text-orange-400 dark:hover:text-orange-300"
+            className='gap-2 bg-orange-500/10 text-orange-600 hover:bg-orange-500/20 hover:text-orange-700 dark:text-orange-400 dark:hover:text-orange-300'
           >
-            <ArrowUpCircle className="size-4" />
+            <ArrowUpCircle className='size-4' />
             Update available
           </Button>
         </TooltipTrigger>

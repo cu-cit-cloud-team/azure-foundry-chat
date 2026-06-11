@@ -2,6 +2,7 @@ import type { UIMessage } from 'ai';
 import { useAtom } from 'jotai';
 import { Bot, RotateCcw, Save, X } from 'lucide-react';
 import { memo, useCallback, useEffect, useState } from 'react';
+
 // import { TokenCount } from '@/app/components/TokenCount';
 import { ConfirmDialog } from '@/app/components/ConfirmDialog';
 import { Button } from '@/app/components/ui/button';
@@ -85,12 +86,12 @@ export const SystemMessage = memo(
               <PopoverTrigger asChild>
                 <TooltipTrigger asChild>
                   <Button
-                    variant="ghost"
-                    size="icon"
+                    variant='ghost'
+                    size='icon'
                     disabled={isLoading}
-                    aria-label="System message"
+                    aria-label='System message'
                   >
-                    <Bot className="size-5" />
+                    <Bot className='size-5' />
                   </Button>
                 </TooltipTrigger>
               </PopoverTrigger>
@@ -99,11 +100,11 @@ export const SystemMessage = memo(
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
-          <PopoverContent className="w-[500px] p-0" align="end">
-            <div className="space-y-4 p-4">
-              <div className="space-y-2">
-                <h4 className="font-medium leading-none">System Message</h4>
-                <p className="text-sm text-muted-foreground">
+          <PopoverContent className='w-[500px] p-0' align='end'>
+            <div className='space-y-4 p-4'>
+              <div className='space-y-2'>
+                <h4 className='font-medium leading-none'>System Message</h4>
+                <p className='text-sm text-muted-foreground'>
                   Configure the AI assistant's behavior and personality
                 </p>
               </div>
@@ -112,8 +113,8 @@ export const SystemMessage = memo(
                 ref={systemMessageRef}
                 value={localSystemMessage}
                 onChange={(e) => setLocalSystemMessage(e.target.value)}
-                className="min-h-[200px] font-mono text-sm"
-                placeholder="You are a helpful AI assistant."
+                className='min-h-[200px] font-mono text-sm'
+                placeholder='You are a helpful AI assistant.'
               />
 
               {/* <TokenCount
@@ -123,30 +124,30 @@ export const SystemMessage = memo(
               useLocalCalculation={true}
             /> */}
 
-              <div className="flex items-center justify-end gap-2">
-                <Button variant="outline" size="sm" onClick={handleClose}>
-                  <X className="size-4 mr-2" />
+              <div className='flex items-center justify-end gap-2'>
+                <Button variant='outline' size='sm' onClick={handleClose}>
+                  <X className='size-4 mr-2' />
                   Close
                 </Button>
                 <Button
-                  variant="destructive"
-                  size="sm"
+                  variant='destructive'
+                  size='sm'
                   onClick={handleReset}
                   disabled={
                     localSystemMessage.trim() === originalSystemMessage.trim()
                   }
                 >
-                  <RotateCcw className="size-4 mr-2" />
+                  <RotateCcw className='size-4 mr-2' />
                   Reset
                 </Button>
                 <Button
-                  size="sm"
+                  size='sm'
                   onClick={handleSave}
                   disabled={
                     localSystemMessage.trim() === originalSystemMessage.trim()
                   }
                 >
-                  <Save className="size-4 mr-2" />
+                  <Save className='size-4 mr-2' />
                   Save
                 </Button>
               </div>
@@ -158,20 +159,20 @@ export const SystemMessage = memo(
         <ConfirmDialog
           open={showResetDialog}
           onOpenChange={setShowResetDialog}
-          title="Reset Changes?"
-          description="Are you sure you want to reset your unsaved changes?"
-          confirmText="Reset"
+          title='Reset Changes?'
+          description='Are you sure you want to reset your unsaved changes?'
+          confirmText='Reset'
           onConfirm={confirmReset}
-          variant="destructive"
+          variant='destructive'
         />
 
         {/* Save confirmation dialog */}
         <ConfirmDialog
           open={showSaveDialog}
           onOpenChange={setShowSaveDialog}
-          title="Change System Message?"
-          description="Are you sure you want to change the system message?\n\nNOTE: This will also clear your chat history and reload the app."
-          confirmText="Save"
+          title='Change System Message?'
+          description='Are you sure you want to change the system message?\n\nNOTE: This will also clear your chat history and reload the app.'
+          confirmText='Save'
           onConfirm={confirmSave}
         />
       </>

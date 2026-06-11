@@ -3,7 +3,6 @@ import type React from 'react';
 const { NEXT_PUBLIC_WEBSITE_TITLE_PREFIX } = process.env;
 
 import './globals.css';
-
 import { Providers } from '@/app/providers';
 
 const titlePrefix = NEXT_PUBLIC_WEBSITE_TITLE_PREFIX?.trim()?.length
@@ -15,15 +14,11 @@ export const metadata = {
   description: 'Powered by Azure OpenAI Service',
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang='en' suppressHydrationWarning>
       <body suppressHydrationWarning>
-        <div className="page-wrapper">
+        <div className='page-wrapper'>
           <Providers>{children}</Providers>
         </div>
       </body>

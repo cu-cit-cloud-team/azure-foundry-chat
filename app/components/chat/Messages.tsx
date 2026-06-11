@@ -3,16 +3,9 @@ import type { UIMessage } from 'ai';
 import dayjs from 'dayjs';
 import isToday from 'dayjs/plugin/isToday';
 import relativeTime from 'dayjs/plugin/relativeTime';
-import {
-  Bot,
-  Check,
-  Copy,
-  Loader2,
-  RefreshCw,
-  Trash2,
-  User,
-} from 'lucide-react';
+import { Bot, Check, Copy, Loader2, RefreshCw, Trash2, User } from 'lucide-react';
 import { Fragment, memo, useCallback, useMemo } from 'react';
+
 import {
   Attachment,
   AttachmentInfo,
@@ -260,7 +253,7 @@ const MessageAttachmentGroup = memo(
           return (
             <button
               key={file.id}
-              type="button"
+              type='button'
               className={
                 variant === 'list'
                   ? 'block w-full max-w-full min-w-0 text-left'
@@ -276,7 +269,7 @@ const MessageAttachmentGroup = memo(
             >
               <Attachment
                 data={file}
-                className="max-w-full min-w-0 cursor-pointer transition-opacity hover:opacity-80"
+                className='max-w-full min-w-0 cursor-pointer transition-opacity hover:opacity-80'
               >
                 <AttachmentPreview />
                 <AttachmentInfo showMediaType={variant === 'list'} />
@@ -301,18 +294,18 @@ const MessageAttachments = memo(
 
     if (imageFiles.length > 0 && otherFiles.length > 0) {
       return (
-        <div className="flex flex-col gap-2">
+        <div className='flex flex-col gap-2'>
           <MessageAttachmentGroup
             files={imageFiles}
             isUser={isUser}
             onFileClick={onFileClick}
-            variant="grid"
+            variant='grid'
           />
           <MessageAttachmentGroup
             files={otherFiles}
             isUser={isUser}
             onFileClick={onFileClick}
-            variant="list"
+            variant='list'
           />
         </div>
       );
@@ -416,7 +409,7 @@ const MessageRow = memo(
 
         return (
           <Fragment key={key}>
-            <Tool className="w-full">
+            <Tool className='w-full'>
               <ToolHeader
                 title={part.toolName}
                 type={part.type}
@@ -426,7 +419,7 @@ const MessageRow = memo(
                 <ToolInput input={part.input} />
                 {part.state === 'output-available' && mcpTextOutput ? (
                   <MessageResponse
-                    mode="streaming"
+                    mode='streaming'
                     parseIncompleteMarkdown
                     isAnimating={false}
                     shikiTheme={['github-light', 'github-dark']}
@@ -436,10 +429,7 @@ const MessageRow = memo(
                   </MessageResponse>
                 ) : (
                   part.output !== undefined && (
-                    <ToolOutput
-                      output={displayOutput}
-                      errorText={part.errorText}
-                    />
+                    <ToolOutput output={displayOutput} errorText={part.errorText} />
                   )
                 )}
               </ToolContent>
@@ -472,10 +462,8 @@ const MessageRow = memo(
 
     return (
       <Message from={message.role}>
-        <div
-          className={`flex gap-3 ${isUser ? 'flex-row-reverse' : 'flex-row'}`}
-        >
-          <Avatar className="size-8">
+        <div className={`flex gap-3 ${isUser ? 'flex-row-reverse' : 'flex-row'}`}>
+          <Avatar className='size-8'>
             <AvatarFallback
               className={
                 isUser
@@ -483,15 +471,11 @@ const MessageRow = memo(
                   : 'bg-secondary text-secondary-foreground'
               }
             >
-              {isUser ? (
-                <User className="size-4" />
-              ) : (
-                <Bot className="size-4" />
-              )}
+              {isUser ? <User className='size-4' /> : <Bot className='size-4' />}
             </AvatarFallback>
           </Avatar>
 
-          <div className="flex-1 flex flex-col gap-2">
+          <div className='flex-1 flex flex-col gap-2'>
             <MessageAttachments
               files={fileParts}
               isUser={isUser}
@@ -500,53 +484,51 @@ const MessageRow = memo(
 
             <MessageContent>
               {/* Render Sources if available (before all other content) */}
-              {!isUser &&
-                message.parts.some((p) => p.type === 'source-url') && (
-                  <Sources>
-                    <SourcesTrigger
-                      count={
-                        message.parts.filter((p) => p.type === 'source-url')
-                          .length
-                      }
-                    />
-                    <SourcesContent>
-                      {message.parts
-                        .filter((p) => p.type === 'source-url')
-                        .map((part, idx) => {
-                          const sourcePart = part as unknown as Record<
-                            string,
-                            unknown
-                          >;
-                          const url = (
-                            typeof sourcePart.url === 'string'
-                              ? sourcePart.url
-                              : typeof sourcePart.href === 'string'
-                                ? sourcePart.href
-                                : ''
-                          ) as string;
-                          const title = (
-                            typeof sourcePart.title === 'string'
-                              ? sourcePart.title
-                              : getSourceTitle(url)
-                          ) as string;
-                          const sourceId = (
-                            typeof sourcePart.sourceId === 'string'
-                              ? sourcePart.sourceId
-                              : typeof sourcePart.id === 'string'
-                                ? sourcePart.id
-                                : undefined
-                          ) as string | undefined;
-                          return (
-                            <Source
-                              key={sourceId || `${message.id}-source-${idx}`}
-                              href={url}
-                              title={title}
-                            />
-                          );
-                        })}
-                    </SourcesContent>
-                  </Sources>
-                )}
+              {!isUser && message.parts.some((p) => p.type === 'source-url') && (
+                <Sources>
+                  <SourcesTrigger
+                    count={
+                      message.parts.filter((p) => p.type === 'source-url').length
+                    }
+                  />
+                  <SourcesContent>
+                    {message.parts
+                      .filter((p) => p.type === 'source-url')
+                      .map((part, idx) => {
+                        const sourcePart = part as unknown as Record<
+                          string,
+                          unknown
+                        >;
+                        const url = (
+                          typeof sourcePart.url === 'string'
+                            ? sourcePart.url
+                            : typeof sourcePart.href === 'string'
+                              ? sourcePart.href
+                              : ''
+                        ) as string;
+                        const title = (
+                          typeof sourcePart.title === 'string'
+                            ? sourcePart.title
+                            : getSourceTitle(url)
+                        ) as string;
+                        const sourceId = (
+                          typeof sourcePart.sourceId === 'string'
+                            ? sourcePart.sourceId
+                            : typeof sourcePart.id === 'string'
+                              ? sourcePart.id
+                              : undefined
+                        ) as string | undefined;
+                        return (
+                          <Source
+                            key={sourceId || `${message.id}-source-${idx}`}
+                            href={url}
+                            title={title}
+                          />
+                        );
+                      })}
+                  </SourcesContent>
+                </Sources>
+              )}
 
               {/* Render message parts using switch-based pattern */}
               {message.parts.map((part, i) => {
@@ -559,8 +541,8 @@ const MessageRow = memo(
                   case 'step-start': {
                     // Show step boundaries for multi-step tool calls
                     return i > 0 ? (
-                      <div key={`${message.id}-${i}`} className="text-gray-500">
-                        <hr className="my-2 border-gray-300" />
+                      <div key={`${message.id}-${i}`} className='text-gray-500'>
+                        <hr className='my-2 border-gray-300' />
                       </div>
                     ) : null;
                   }
@@ -590,9 +572,7 @@ const MessageRow = memo(
                       >
                         <ReasoningTrigger />
                         <ReasoningContent>
-                          {hasReasoningText
-                            ? reasoningPart.text
-                            : '_Reasoning..._'}
+                          {hasReasoningText ? reasoningPart.text : '_Reasoning..._'}
                         </ReasoningContent>
                       </Reasoning>
                     );
@@ -626,7 +606,7 @@ const MessageRow = memo(
                     return (
                       <span
                         key={`${message.id}-${i}`}
-                        className="text-xs text-muted-foreground"
+                        className='text-xs text-muted-foreground'
                       >
                         [{title}]
                       </span>
@@ -659,7 +639,7 @@ const MessageRow = memo(
                 <MessageResponse
                   // Use component props (not key) so the message body isn't remounted
                   // when streaming status changes to ready.
-                  mode="streaming"
+                  mode='streaming'
                   parseIncompleteMarkdown
                   isAnimating={isLastMessage && isStreamingState && !isUser}
                   shikiTheme={['github-light', 'github-dark']}
@@ -671,9 +651,9 @@ const MessageRow = memo(
 
               {/* Loading indicator */}
               {!isUser && isStreamingState && isLastMessage && !messageText && (
-                <div className="flex items-center gap-2 text-muted-foreground">
-                  <Loader2 className="size-4 animate-spin" />
-                  <span className="text-sm">Thinking...</span>
+                <div className='flex items-center gap-2 text-muted-foreground'>
+                  <Loader2 className='size-4 animate-spin' />
+                  <span className='text-sm'>Thinking...</span>
                 </div>
               )}
             </MessageContent>
@@ -685,15 +665,12 @@ const MessageRow = memo(
                 title={
                   dayjs(messageCreatedAt).isToday()
                     ? dayjs(messageCreatedAt).format('h:mm a')
-                    : dayjs(messageCreatedAt).format(
-                        'ddd MMM DD YYYY [at] h:mm a'
-                      )
+                    : dayjs(messageCreatedAt).format('ddd MMM DD YYYY [at] h:mm a')
                 }
               >
                 {isUser ? (
                   <>
-                    {userMeta?.name || 'User'} •{' '}
-                    {dayjs(messageCreatedAt).fromNow()}
+                    {userMeta?.name || 'User'} • {dayjs(messageCreatedAt).fromNow()}
                   </>
                 ) : (
                   <>
@@ -714,28 +691,28 @@ const MessageRow = memo(
                   onClick={handleCopy}
                 >
                   {copiedMessageId === message.id ? (
-                    <Check className="size-4" />
+                    <Check className='size-4' />
                   ) : (
-                    <Copy className="size-4" />
+                    <Copy className='size-4' />
                   )}
                 </MessageAction>
 
                 {isLastMessage && (
                   <MessageAction
                     disabled={actionsLocked}
-                    tooltip="Regenerate response"
+                    tooltip='Regenerate response'
                     onClick={handleRegenerate}
                   >
-                    <RefreshCw className="size-4" />
+                    <RefreshCw className='size-4' />
                   </MessageAction>
                 )}
 
                 <MessageAction
                   disabled={actionsLocked}
-                  tooltip="Delete message"
+                  tooltip='Delete message'
                   onClick={handleDelete}
                 >
-                  <Trash2 className="size-4" />
+                  <Trash2 className='size-4' />
                 </MessageAction>
               </MessageActions>
             )}

@@ -19,26 +19,18 @@ import {
 } from '@/app/components/ai-elements/conversation';
 import { DeleteMessageDialog } from '@/app/components/chat/DeleteMessageDialog';
 import { Messages } from '@/app/components/chat/Messages';
-import {
-  ImageModal,
-  PdfModal,
-  TextFileModal,
-} from '@/app/components/chat/Modals';
+import { ImageModal, PdfModal, TextFileModal } from '@/app/components/chat/Modals';
 import { ErrorFallback } from '@/app/components/ErrorFallback';
 import { Footer } from '@/app/components/Footer';
 import { Header } from '@/app/components/Header';
-
 import { database } from '@/app/database/database.config';
-
 import { useClipboardFeedback } from '@/app/hooks/useClipboardFeedback';
 import { useDeleteMessage } from '@/app/hooks/useDeleteMessage';
 import { useMessageModals } from '@/app/hooks/useMessageModals';
 import type { StoredMessage } from '@/app/hooks/useMessagePersistence';
 import { useMessagePersistence } from '@/app/hooks/useMessagePersistence';
 import { useRegenerateMessage } from '@/app/hooks/useRegenerateMessage';
-
 import type { FileUIPart } from '@/app/types';
-
 import {
   isLoadingAtom,
   modelAtom,
@@ -77,12 +69,12 @@ export default function App() {
   const systemMessageRef = useRef<HTMLTextAreaElement>(null);
   const promptInputRef = useRef<HTMLTextAreaElement>(null);
 
-  const [initialMessages, setInitialMessages] = useState<
-    StoredMessage[] | null
-  >(null);
-  const [initialMessagesError, setInitialMessagesError] = useState<
-    string | null
-  >(null);
+  const [initialMessages, setInitialMessages] = useState<StoredMessage[] | null>(
+    null
+  );
+  const [initialMessagesError, setInitialMessagesError] = useState<string | null>(
+    null
+  );
 
   // One-time Dexie load to hydrate initial messages for useChat
   useEffect(() => {
@@ -135,10 +127,10 @@ export default function App() {
           messages={[]}
         />
 
-        <div className="flex flex-col h-screen pt-14 pb-40">
-          <Conversation className="flex-1">
-            <ConversationContent className="max-w-5xl mx-auto px-4">
-              <div className="mt-8 text-sm text-muted-foreground">
+        <div className='flex flex-col h-screen pt-14 pb-40'>
+          <Conversation className='flex-1'>
+            <ConversationContent className='max-w-5xl mx-auto px-4'>
+              <div className='mt-8 text-sm text-muted-foreground'>
                 Loading chat interface...
               </div>
             </ConversationContent>
@@ -152,7 +144,7 @@ export default function App() {
           promptInputRef={promptInputRef}
           useWebSearch={false}
           onToggleWebSearch={() => {}}
-          chatStatus="ready"
+          chatStatus='ready'
           onStop={() => {}}
         />
       </ErrorBoundary>
@@ -227,9 +219,7 @@ function ChatInner({
     () => (userMeta?.email ? btoa(userMeta?.email) : undefined),
     [userMeta]
   );
-  const [chatError, setChatError] = useState<string | null>(
-    initialError ?? null
-  );
+  const [chatError, setChatError] = useState<string | null>(initialError ?? null);
 
   const chatId = useMemo(
     () => (userId ? `${userId}-chat` : 'local-chat'),
@@ -238,9 +228,7 @@ function ChatInner({
 
   // Filter initial messages to the active chat (include legacy messages without chatId)
   const filteredInitialMessages = useMemo(() => {
-    return initialMessages.filter(
-      (m) => m.chatId === chatId || m.chatId == null
-    );
+    return initialMessages.filter((m) => m.chatId === chatId || m.chatId == null);
   }, [initialMessages, chatId]);
 
   // Create transport that updates when parameters change
@@ -489,13 +477,13 @@ function ChatInner({
         messages={messages}
       />
 
-      <div className="flex flex-col h-screen pt-14 pb-40">
-        <Conversation className="flex-1">
-          <ConversationContent className="max-w-5xl mx-auto px-4">
+      <div className='flex flex-col h-screen pt-14 pb-40'>
+        <Conversation className='flex-1'>
+          <ConversationContent className='max-w-5xl mx-auto px-4'>
             {messages.length === 0 ? (
               <ConversationEmptyState
-                title="Start a conversation"
-                icon={<MessageSquare className="size-12" />}
+                title='Start a conversation'
+                icon={<MessageSquare className='size-12' />}
                 description="Ask me anything, and I'll do my best to help!"
               />
             ) : (

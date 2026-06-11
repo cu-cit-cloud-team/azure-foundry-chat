@@ -60,7 +60,7 @@ import { modelFromName, modelStringFromName, models } from '@/app/utils/models';
 // Using Set to deduplicate (e.g., .jpg and .jpeg both map to image/jpeg)
 const acceptedMimeTypes = Array.from(
   // new Set(['image/*', ...Object.values(mediaTypeMap)])
-  new Set([...Object.values(mediaTypeMap)])
+  new Set(...Object.values(mediaTypeMap))
 ).join(',');
 
 interface FooterProps {
@@ -105,7 +105,7 @@ const PromptInputAttachmentsDisplay = memo(
     }
 
     return (
-      <Attachments variant="inline">
+      <Attachments variant='inline'>
         {attachments.files.map((attachment) => {
           const mediaCategory = getMediaCategory(attachment);
           const label = getAttachmentLabel(attachment);
@@ -120,27 +120,27 @@ const PromptInputAttachmentsDisplay = memo(
                     focusTextarea();
                   }}
                 >
-                  <div className="relative size-5 shrink-0">
-                    <div className="absolute inset-0 transition-opacity group-hover:opacity-0">
+                  <div className='relative size-5 shrink-0'>
+                    <div className='absolute inset-0 transition-opacity group-hover:opacity-0'>
                       <AttachmentPreview />
                     </div>
                     <AttachmentRemove
-                      className="absolute inset-0"
-                      label="Remove attachment"
+                      className='absolute inset-0'
+                      label='Remove attachment'
                     />
                   </div>
                   <AttachmentInfo />
                 </Attachment>
               </AttachmentHoverCardTrigger>
               <AttachmentHoverCardContent>
-                <div className="space-y-3">
+                <div className='space-y-3'>
                   {mediaCategory === 'image' &&
                     attachment.type === 'file' &&
                     attachment.url && (
-                      <div className="flex max-h-96 w-80 items-center justify-center overflow-hidden rounded-md border">
+                      <div className='flex max-h-96 w-80 items-center justify-center overflow-hidden rounded-md border'>
                         <Image
                           alt={label}
-                          className="max-h-full max-w-full object-contain"
+                          className='max-h-full max-w-full object-contain'
                           height={384}
                           src={attachment.url}
                           unoptimized
@@ -148,12 +148,10 @@ const PromptInputAttachmentsDisplay = memo(
                         />
                       </div>
                     )}
-                  <div className="space-y-1 px-0.5">
-                    <h4 className="font-semibold text-sm leading-none">
-                      {label}
-                    </h4>
+                  <div className='space-y-1 px-0.5'>
+                    <h4 className='font-semibold text-sm leading-none'>{label}</h4>
                     {attachment.mediaType && (
-                      <p className="font-mono text-muted-foreground text-xs">
+                      <p className='font-mono text-muted-foreground text-xs'>
                         {attachment.mediaType}
                       </p>
                     )}
@@ -261,8 +259,8 @@ export const Footer = memo(
     }, [isLoading, chatStatus]);
 
     return (
-      <footer className="fixed bottom-0 left-0 right-0 z-40 border-t bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
-        <div className="container max-w-5xl mx-auto px-4 py-3">
+      <footer className='fixed bottom-0 left-0 right-0 z-40 border-t bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60'>
+        <div className='container max-w-5xl mx-auto px-4 py-3'>
           <PromptInput
             accept={acceptedMimeTypes}
             multiple
@@ -280,9 +278,7 @@ export const Footer = memo(
               <PromptInputTextarea
                 ref={promptInputRef}
                 placeholder={
-                  isLoading
-                    ? 'Loading response...'
-                    : 'What would you like to know?'
+                  isLoading ? 'Loading response...' : 'What would you like to know?'
                 }
                 disabled={isLoading}
               />
@@ -299,7 +295,7 @@ export const Footer = memo(
                 </PromptInputActionMenu>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <span className="inline-flex" role="presentation">
+                    <span className='inline-flex' role='presentation'>
                       <PromptInputButton
                         onClick={onToggleWebSearch}
                         variant={useWebSearch ? 'default' : 'ghost'}
@@ -310,7 +306,7 @@ export const Footer = memo(
                       </PromptInputButton>
                     </span>
                   </TooltipTrigger>
-                  <TooltipContent side="top" align="start">
+                  <TooltipContent side='top' align='start'>
                     {!supportsWebSearch
                       ? 'This model does not support web search'
                       : `${useWebSearch ? 'Disable' : 'Enable'} Web Search `}
@@ -323,20 +319,16 @@ export const Footer = memo(
                   <ModelSelectorTrigger asChild>
                     <PromptInputButton>
                       {selectedModelData?.provider && (
-                        <ModelSelectorLogo
-                          provider={selectedModelData.provider}
-                        />
+                        <ModelSelectorLogo provider={selectedModelData.provider} />
                       )}
                       <ModelSelectorName>
-                        {selectedModelData?.displayName ??
-                          model ??
-                          'Select model'}
+                        {selectedModelData?.displayName ?? model ?? 'Select model'}
                       </ModelSelectorName>
                     </PromptInputButton>
                   </ModelSelectorTrigger>
 
                   <ModelSelectorContent>
-                    <ModelSelectorInput placeholder="Search models..." />
+                    <ModelSelectorInput placeholder='Search models...' />
                     <ModelSelectorList>
                       <ModelSelectorEmpty>No models found.</ModelSelectorEmpty>
 
@@ -366,9 +358,9 @@ export const Footer = memo(
                                   </ModelSelectorName>
 
                                   {model === m.name ? (
-                                    <CheckIcon className="ml-auto size-4" />
+                                    <CheckIcon className='ml-auto size-4' />
                                   ) : (
-                                    <div className="ml-auto size-4" />
+                                    <div className='ml-auto size-4' />
                                   )}
                                 </ModelSelectorItem>
                               ))}
@@ -390,8 +382,8 @@ export const Footer = memo(
         </div>
 
         {fileError && (
-          <div className="fixed bottom-20 left-0 right-0 z-50 flex justify-center px-4">
-            <Alert variant="destructive" className="max-w-md">
+          <div className='fixed bottom-20 left-0 right-0 z-50 flex justify-center px-4'>
+            <Alert variant='destructive' className='max-w-md'>
               <AlertDescription>{fileError}</AlertDescription>
             </Alert>
           </div>
@@ -400,9 +392,9 @@ export const Footer = memo(
         <ConfirmDialog
           open={showConfirmDialog}
           onOpenChange={setShowConfirmDialog}
-          title="Switch Model?"
+          title='Switch Model?'
           description={`Are you sure you want to switch to ${modelStringFromName(pendingModel)}?`}
-          confirmText="Continue"
+          confirmText='Continue'
           onConfirm={confirmModelChange}
           onCancel={cancelModelChange}
         />

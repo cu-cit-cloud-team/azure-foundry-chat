@@ -7,16 +7,20 @@
     "node": ">= 24.x",
     "npm": ">= 11.x"
   },
-  "packageManager": "npm@11.16.0",
+  "packageManager": "npm@11.17.0",
   "scripts": {
-    "biome": "biome check ./app",
-    "build": "next build",
+    "build": "npx next build",
     "changelog": "npx conventional-changelog -p conventionalcommits -n changelog.config.mjs -i CHANGELOG.md -s && git add CHANGELOG.md",
     "changelog:preview": "npx conventional-changelog -p conventionalcommits -n changelog.config.mjs -u --stdout -i /dev/null",
-    "dev": "next dev -p 3001 --webpack",
-    "dev:turbo": "next dev -p 3001",
-    "lint": "eslint .",
-    "start": "next start",
+    "dev": "npx next dev -p 3001 --webpack",
+    "dev:turbo": "npx next dev -p 3001",
+    "format": "npx oxfmt app",
+    "format:check": "npx oxfmt --check app",
+    "lint": "npx oxlint app",
+    "lint:eslint": "npx eslint .",
+    "start": "npx next start",
+    "test": "npm run lint && npm run format:check && npm run typecheck",
+    "typecheck": "npx tsc --noEmit",
     "version": "npm run changelog"
   },
   "keywords": [],
@@ -30,12 +34,12 @@
   "homepage": "https://github.com/cu-cit-cloud-team/azure-foundry-chat",
   "license": "MIT",
   "dependencies": {
-    "@ai-sdk/anthropic": "3.0.82",
-    "@ai-sdk/azure": "3.0.72",
-    "@ai-sdk/deepseek": "2.0.36",
-    "@ai-sdk/mcp": "1.0.47",
-    "@ai-sdk/react": "3.0.203",
-    "@ai-sdk/xai": "3.0.93",
+    "@ai-sdk/anthropic": "3.0.83",
+    "@ai-sdk/azure": "3.0.73",
+    "@ai-sdk/deepseek": "2.0.37",
+    "@ai-sdk/mcp": "1.0.48",
+    "@ai-sdk/react": "3.0.204",
+    "@ai-sdk/xai": "3.0.94",
     "@radix-ui/react-alert-dialog": "1.1.16",
     "@radix-ui/react-avatar": "1.1.12",
     "@radix-ui/react-collapsible": "1.1.13",
@@ -93,7 +97,6 @@
     "use-stick-to-bottom": "1.1.6"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.16",
     "@tailwindcss/postcss": "4.3.0",
     "@tailwindcss/typography": "0.5.20",
     "@types/node": "25.9.3",
@@ -108,6 +111,8 @@
     "eslint-config-next": "16.2.9",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-react-compiler": "19.1.0-rc.2",
+    "oxfmt": "0.54.0",
+    "oxlint": "1.69.0",
     "postcss": "8.5.15",
     "postcss-cli": "11.0.1",
     "prettier": "3.8.4",
@@ -145,7 +150,7 @@
     }
   },
   "volta": {
-    "node": "24.16.0",
-    "npm": "11.16.0"
+    "node": "26.3.0",
+    "npm": "11.17.0"
   }
 }

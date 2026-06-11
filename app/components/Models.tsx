@@ -3,6 +3,7 @@
 import { useAtom } from 'jotai';
 import { Check, Cpu } from 'lucide-react';
 import { useCallback, useState } from 'react';
+
 import { ConfirmDialog } from '@/app/components/ConfirmDialog';
 import { Button } from '@/app/components/ui/button';
 import {
@@ -42,21 +43,21 @@ export const Models = ({ focusTextarea }: ModelsProps) => {
     <>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="ghost" size="sm" className="gap-2">
-            <Cpu className="size-4" />
+          <Button variant='ghost' size='sm' className='gap-2'>
+            <Cpu className='size-4' />
             Model
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="center" className="w-64">
-          <ScrollArea className="h-100">
+        <DropdownMenuContent align='center' className='w-64'>
+          <ScrollArea className='h-100'>
             {models.map((m) => (
               <DropdownMenuItem
                 key={m.name}
                 onClick={() => handleClick(m.name)}
-                className="flex items-center justify-between cursor-pointer"
+                className='flex items-center justify-between cursor-pointer'
               >
                 <span>{m.displayName}</span>
-                {model === m.name && <Check className="size-4 text-primary" />}
+                {model === m.name && <Check className='size-4 text-primary' />}
               </DropdownMenuItem>
             ))}
           </ScrollArea>
@@ -66,9 +67,9 @@ export const Models = ({ focusTextarea }: ModelsProps) => {
       <ConfirmDialog
         open={showDialog}
         onOpenChange={setShowDialog}
-        title="Switch Model?"
+        title='Switch Model?'
         description={`Are you sure you want to switch the model to ${selectedModel}?`}
-        confirmText="Switch"
+        confirmText='Switch'
         onConfirm={handleConfirm}
       />
     </>

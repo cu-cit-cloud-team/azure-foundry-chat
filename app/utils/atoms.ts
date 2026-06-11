@@ -1,4 +1,5 @@
 import { atomWithStorage } from 'jotai/utils';
+
 import type { UserMeta } from '@/app/types';
 import {
   DEFAULT_MAX_INPUT_TOKENS,
@@ -23,8 +24,7 @@ export const modelAtom = atomWithStorage(
 );
 
 // get tokens for default model
-const tokensRemaining =
-  defaultModel?.maxInputTokens || DEFAULT_MAX_INPUT_TOKENS;
+const tokensRemaining = defaultModel?.maxInputTokens || DEFAULT_MAX_INPUT_TOKENS;
 
 export const tokensAtom = atomWithStorage('tokens', {
   input: 0,

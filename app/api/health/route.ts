@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 
 import { isDevelopment } from '@/app/utils/utils';
-
 import pkg from '@/package.json';
 
 export const runtime = 'nodejs';

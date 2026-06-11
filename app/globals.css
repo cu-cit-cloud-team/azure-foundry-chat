@@ -1,7 +1,7 @@
 /* stylelint-disable-next-line import-notation */
-@import "tailwindcss";
+@import 'tailwindcss';
 /* stylelint-disable-next-line import-notation */
-@import "tw-animate-css";
+@import 'tw-animate-css';
 
 /* Import Streamdown styles for Tailwind CSS v4 */
 @source "../node_modules/streamdown/dist/*.js";
@@ -127,7 +127,7 @@
     @apply bg-background text-foreground;
   }
 
-  button[data-streamdown="link"] {
+  button[data-streamdown='link'] {
     @apply cursor-pointer;
   }
 }

@@ -1,0 +1,28 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "ignorePatterns": [
+    ".devcontainer/**",
+    ".git/**",
+    ".github/**",
+    ".history/**",
+    ".vscode/**",
+    "app/components/ai-elements/**",
+    "app/components/ui/**",
+    "dist/**",
+    "docs/**",
+    "node_modules/**",
+    "types/**",
+    "src/scratch*.ts"
+  ],
+  "arrowParens": "always",
+  "jsxSingleQuote": true,
+  "printWidth": 84,
+  "quoteProps": "preserve",
+  "semi": true,
+  "singleQuote": true,
+  "sortImports": true,
+  "sortPackageJson": false,
+  "tabWidth": 2,
+  "trailingComma": "es5",
+  "useTabs": false
+}

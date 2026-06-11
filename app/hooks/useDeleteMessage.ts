@@ -1,5 +1,6 @@
 import type { UIMessage } from 'ai';
 import { useCallback, useState } from 'react';
+
 import { database } from '@/app/database/database.config';
 
 export const useDeleteMessage = (

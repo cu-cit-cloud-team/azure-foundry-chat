@@ -2,11 +2,8 @@
 import clsx from 'clsx';
 import { useAtomValue } from 'jotai';
 import { memo, useMemo } from 'react';
-import {
-  modelAtom,
-  systemMessageMaxTokens,
-  tokensAtom,
-} from '@/app/utils/atoms';
+
+import { modelAtom, systemMessageMaxTokens, tokensAtom } from '@/app/utils/atoms';
 import { modelFromName } from '@/app/utils/models';
 import { getTokenCount } from '@/app/utils/tokens';
 
@@ -34,10 +31,7 @@ export const TokenCount = memo(
       () => (systemMessage ? getTokenCount(systemMessage) : 0),
       [systemMessage]
     );
-    const inputCount = useMemo(
-      () => (input ? getTokenCount(input) : 0),
-      [input]
-    );
+    const inputCount = useMemo(() => (input ? getTokenCount(input) : 0), [input]);
     const remainingFallback = maxTokens - (systemMessageCount + inputCount);
     const systemRemainingFallback = systemMessageMaxTokens - systemMessageCount;
 
@@ -55,10 +49,8 @@ export const TokenCount = memo(
               ? systemMessageCount
               : inputCount
             : (tokens[display] ??
-              (display === 'systemMessage'
-                ? systemMessageCount
-                : inputCount))}{' '}
-          <span className="font-normal">
+              (display === 'systemMessage' ? systemMessageCount : inputCount))}{' '}
+          <span className='font-normal'>
             Token{(tokens.input ?? inputCount) === 1 ? '' : 's '}
           </span>{' '}
           /{' '}
@@ -69,7 +61,7 @@ export const TokenCount = memo(
             : display === 'systemMessage'
               ? (tokens.systemMessageRemaining ?? systemRemainingFallback)
               : (tokens.remaining ?? remainingFallback)}{' '}
-          <span className="font-normal">Remaining</span>
+          <span className='font-normal'>Remaining</span>
         </strong>
       </div>
     );

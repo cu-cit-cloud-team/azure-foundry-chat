@@ -1,4 +1,5 @@
 import { useCallback, useState } from 'react';
+
 import type { MessageFileAttachment } from '@/app/types';
 
 export type ModalImage = {

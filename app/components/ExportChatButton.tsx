@@ -1,6 +1,7 @@
 import { useAtomValue } from 'jotai';
 import { Download } from 'lucide-react';
 import { memo, useCallback, useState } from 'react';
+
 import { ConfirmDialog } from '@/app/components/ConfirmDialog';
 import { Button } from '@/app/components/ui/button';
 import {
@@ -19,9 +20,7 @@ interface ExportChatButtonProps {
 export const ExportChatButton = memo(({ isLoading }: ExportChatButtonProps) => {
   const systemMessage = useAtomValue(systemMessageAtom);
   const userMeta = useAtomValue(userMetaAtom);
-  const chatId = userMeta?.email
-    ? `${btoa(userMeta?.email)}-chat`
-    : 'local-chat';
+  const chatId = userMeta?.email ? `${btoa(userMeta?.email)}-chat` : 'local-chat';
   const [showDialog, setShowDialog] = useState(false);
 
   const downloadFile = useCallback(
@@ -56,8 +55,7 @@ export const ExportChatButton = memo(({ isLoading }: ExportChatButtonProps) => {
       .toArray();
     const sortedMessages = messages
       .sort(
-        (a, b) =>
-          new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+        (a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
       )
       .map((message) => message);
     // Add system message at the beginning for export
@@ -86,14 +84,14 @@ export const ExportChatButton = memo(({ isLoading }: ExportChatButtonProps) => {
         <Tooltip>
           <TooltipTrigger asChild>
             <Button
-              type="button"
-              variant="ghost"
-              size="icon"
+              type='button'
+              variant='ghost'
+              size='icon'
               onClick={() => setShowDialog(true)}
               disabled={isLoading}
-              aria-label="Export chat"
+              aria-label='Export chat'
             >
-              <Download className="size-5" />
+              <Download className='size-5' />
             </Button>
           </TooltipTrigger>
           <TooltipContent>
@@ -105,9 +103,9 @@ export const ExportChatButton = memo(({ isLoading }: ExportChatButtonProps) => {
       <ConfirmDialog
         open={showDialog}
         onOpenChange={setShowDialog}
-        title="Download Chat History?"
-        description="This will download your chat history as a JSON file."
-        confirmText="Download"
+        title='Download Chat History?'
+        description='This will download your chat history as a JSON file.'
+        confirmText='Download'
         onConfirm={handleExportConfirm}
       />
     </>
