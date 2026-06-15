@@ -56,7 +56,7 @@
     "@radix-ui/react-slot": "1.2.5",
     "@radix-ui/react-tooltip": "1.2.9",
     "@radix-ui/react-use-controllable-state": "1.2.3",
-    "@rive-app/react-webgl2": "4.29.0",
+    "@rive-app/react-webgl2": "4.29.1",
     "@streamdown/cjk": "1.0.3",
     "@streamdown/code": "1.1.1",
     "@streamdown/math": "1.0.2",
