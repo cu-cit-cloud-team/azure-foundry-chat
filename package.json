@@ -76,7 +76,7 @@
     "gpt-tokenizer": "3.4.0",
     "jotai": "2.20.1",
     "lodash": "4.18.1",
-    "lucide-react": "1.18.0",
+    "lucide-react": "1.20.0",
     "media-chrome": "4.19.2",
     "motion": "12.40.0",
     "nanoid": "5.1.11",
