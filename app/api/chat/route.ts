@@ -11,7 +11,7 @@ import {
   type LanguageModelUsage,
   type ModelMessage,
   smoothStream,
-  stepCountIs,
+  isStepCount,
   streamText,
   type ToolSet,
   type UIMessage,
@@ -210,8 +210,8 @@ function convertInlineUiFilePartToModelPart(
 
   if (mediaType.startsWith('image/')) {
     return {
-      type: 'image',
-      image: data,
+      type: 'file',
+      data: data,
       mediaType,
     };
   }
@@ -467,8 +467,8 @@ export async function POST(req: Request) {
       ...baseStreamTextOptions,
       tools,
       experimental_transform: smoothStream(),
-      stopWhen: stepCountIs(5), // enable server-side loop: tool call -> tool result -> final text
-      onFinish: async () => {
+      stopWhen: isStepCount(5), // enable server-side loop: tool call -> tool result -> final text
+      onEnd: async () => {
         await mcpClient?.close();
       },
     });

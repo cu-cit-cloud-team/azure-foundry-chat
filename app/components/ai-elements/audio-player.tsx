@@ -6,7 +6,7 @@ import {
   ButtonGroupText,
 } from "@/app/components/ui/button-group";
 import { cn } from "@/app/utils/utils";
-import type { Experimental_SpeechResult as SpeechResult } from "ai";
+import type { SpeechResult } from "ai";
 import {
   MediaControlBar,
   MediaController,
@@ -77,7 +77,7 @@ export type AudioPlayerElementProps = Omit<ComponentProps<"audio">, "src"> &
 
 export const AudioPlayerElement = ({ ...props }: AudioPlayerElementProps) => (
   // oxlint-disable-next-line eslint-plugin-jsx-a11y(media-has-caption) -- audio player captions are provided by consumer
-  <audio
+  (<audio
     data-slot="audio-player-element"
     slot="media"
     src={
@@ -86,7 +86,7 @@ export const AudioPlayerElement = ({ ...props }: AudioPlayerElementProps) => (
         : `data:${props.data.mediaType};base64,${props.data.base64}`
     }
     {...props}
-  />
+  />)
 );
 
 export type AudioPlayerControlBarProps = ComponentProps<typeof MediaControlBar>;

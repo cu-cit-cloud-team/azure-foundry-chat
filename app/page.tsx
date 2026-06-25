@@ -300,7 +300,7 @@ function ChatInner({
         return currentMessages;
       });
     },
-    onFinish: ({ message }) => {
+    onEnd: ({ message }) => {
       // Extract model from API metadata (set by messageMetadata callback in API route)
       const model =
         (message.metadata as { model?: string } | undefined)?.model ||
