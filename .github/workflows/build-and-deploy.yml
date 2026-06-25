@@ -72,7 +72,7 @@ jobs:
       - name: ⬆️ Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
         shell: bash
-        run: npm install --legacy-peer-deps
+        run: npm install
 
       - name: 🛠️ Build app
         shell: bash
