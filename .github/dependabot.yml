@@ -13,6 +13,28 @@ updates:
       include: "scope"
   - package-ecosystem: "npm"
     directory: "/"
+    ignore:
+      - dependency-name: "ai"
+        versions:
+          - "7.x.x"
+      - dependency-name: "@ai-sdk/anthropic"
+        versions:
+          - "4.x.x"
+      - dependency-name: "@ai-sdk/azure"
+        versions:
+          - "4.x.x"
+      - dependency-name: "@ai-sdk/deepseek"
+        versions:
+          - "3.x.x"
+      - dependency-name: "@ai-sdk/mcp"
+        versions:
+          - "2.x.x"
+      - dependency-name: "@ai-sdk/react"
+        versions:
+          - "4.x.x"
+      - dependency-name: "@ai-sdk/xai"
+        versions:
+          - "4.x.x"
     groups:
       ai:
         patterns:
