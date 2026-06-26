@@ -15,26 +15,21 @@ updates:
     directory: "/"
     ignore:
       - dependency-name: "ai"
-        versions:
-          - "7.x.x"
+        # breaking changes in latest release, pausing updates until
+        # I can update any breaking changes in the codebase
+        versions: ["7.x"]
       - dependency-name: "@ai-sdk/anthropic"
-        versions:
-          - "4.x.x"
+        versions: ["4.x"]
       - dependency-name: "@ai-sdk/azure"
-        versions:
-          - "4.x.x"
+        versions: ["4.x"]
       - dependency-name: "@ai-sdk/deepseek"
-        versions:
-          - "3.x.x"
+        versions: ["3.x"]
       - dependency-name: "@ai-sdk/mcp"
-        versions:
-          - "2.x.x"
+        versions: ["2.x"]
       - dependency-name: "@ai-sdk/react"
-        versions:
-          - "4.x.x"
+        versions: ["4.x"]
       - dependency-name: "@ai-sdk/xai"
-        versions:
-          - "4.x.x"
+        versions: ["4.x"]
     groups:
       ai:
         patterns:
