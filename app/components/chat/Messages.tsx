@@ -40,6 +40,7 @@ import {
 import { Avatar, AvatarFallback } from '@/app/components/ui/avatar';
 import type {
   MessageFileAttachment,
+  ReasoningFileUIPart,
   ReasoningUIPart,
   ToolUIPart,
   UserMeta,
@@ -575,6 +576,30 @@ const MessageRow = memo(
                           {hasReasoningText ? reasoningPart.text : '_Reasoning..._'}
                         </ReasoningContent>
                       </Reasoning>
+                    );
+                  }
+
+                  case 'reasoning-file': {
+                    if (isUser) {
+                      return null;
+                    }
+
+                    const reasoningFilePart = part as ReasoningFileUIPart;
+
+                    return (
+                      <div
+                        key={`${message.id}-${i}`}
+                        className='text-xs text-muted-foreground'
+                      >
+                        <a
+                          className='underline underline-offset-2'
+                          href={reasoningFilePart.url}
+                          rel='noreferrer'
+                          target='_blank'
+                        >
+                          Reasoning file ({reasoningFilePart.mediaType})
+                        </a>
+                      </div>
                     );
                   }
 

@@ -4,15 +4,17 @@ import { createDeepSeek } from '@ai-sdk/deepseek';
 import { createMCPClient } from '@ai-sdk/mcp';
 import { createXai } from '@ai-sdk/xai';
 import {
+  createUIMessageStreamResponse,
   consumeStream,
   convertToModelMessages,
   extractReasoningMiddleware,
   generateId,
-  type LanguageModelUsage,
   type ModelMessage,
+  type UserModelMessage,
+  isStepCount,
   smoothStream,
-  stepCountIs,
   streamText,
+  toUIMessageStream,
   type ToolSet,
   type UIMessage,
   wrapLanguageModel,
@@ -43,13 +45,6 @@ function validateEnvVars() {
     );
   }
 }
-
-// Custom message type with usage metadata
-type MyMetadata = {
-  totalUsage?: LanguageModelUsage;
-};
-
-export type MyUIMessage = UIMessage<unknown, MyMetadata>;
 
 // destructure env vars we need
 const {
@@ -104,10 +99,7 @@ type InlineUiFilePart = {
   filename?: string;
 };
 
-type UserContentPart =
-  | { type: 'text'; text: string }
-  | { type: 'image'; image: string; mediaType?: string }
-  | { type: 'file'; data: string; mediaType: string; filename?: string };
+type UserContentPart = Exclude<UserModelMessage['content'], string>[number];
 
 type ToolUiPartState =
   | 'input-streaming'
@@ -177,6 +169,39 @@ function pruneTrailingIncompleteToolMessages(messages: UIMessage[]): UIMessage[]
   return endIndex === messages.length ? messages : messages.slice(0, endIndex);
 }
 
+function extractInstructionsFromMessages(messages: UIMessage[]): {
+  instructions?: string;
+  messages: UIMessage[];
+} {
+  const instructionTexts: string[] = [];
+
+  const filteredMessages = messages.filter((message) => {
+    if (message.role !== 'system') {
+      return true;
+    }
+
+    const text = message.parts
+      .filter(
+        (part): part is { type: 'text'; text: string } => part.type === 'text'
+      )
+      .map((part) => part.text.trim())
+      .filter(Boolean)
+      .join('\n\n');
+
+    if (text) {
+      instructionTexts.push(text);
+    }
+
+    return false;
+  });
+
+  return {
+    instructions:
+      instructionTexts.length > 0 ? instructionTexts.join('\n\n') : undefined,
+    messages: filteredMessages,
+  };
+}
+
 function extractBase64FromDataUrl(dataUrl: string): {
   data: string;
   mediaType: string;
@@ -207,14 +232,6 @@ function convertInlineUiFilePartToModelPart(
   }
 
   const { data, mediaType } = extractBase64FromDataUrl(part.url);
-
-  if (mediaType.startsWith('image/')) {
-    return {
-      type: 'image',
-      image: data,
-      mediaType,
-    };
-  }
 
   return {
     type: 'file',
@@ -302,7 +319,7 @@ export async function POST(req: Request) {
     // Validate environment variables first
     validateEnvVars();
 
-    // New v5 body contract: messages (UIMessage[]), systemMessage, model
+    // Request contract: messages (UIMessage[]), systemMessage, model
     const {
       messages,
       model: modelName,
@@ -310,28 +327,18 @@ export async function POST(req: Request) {
       webSearch,
     } = await req.json();
 
-    const systemMessage = systemMessageRaw || defaults.systemMessage;
+    const requestedInstructions =
+      typeof systemMessageRaw === 'string' && systemMessageRaw.trim().length > 0
+        ? systemMessageRaw
+        : undefined;
     const model = modelName || defaults.model;
     // const max_tokens = defaults.max_tokens;
 
-    // v5 UIMessage system prompt part
-    const systemPrompt: UIMessage = {
-      id: `system-${generateId()}`,
-      role: 'system',
-      parts: [
-        {
-          type: 'text',
-          text: systemMessage,
-        },
-      ],
-    };
-
-    // ensure system prompt included once
-    const hasSystemPrompt = messages.some((m: UIMessage) => m.role === 'system');
     const sanitizedMessages = pruneTrailingIncompleteToolMessages(messages);
-    const uiMessages = hasSystemPrompt
-      ? sanitizedMessages
-      : [systemPrompt, ...sanitizedMessages];
+    const { instructions: messageInstructions, messages: uiMessages } =
+      extractInstructionsFromMessages(sanitizedMessages);
+    const instructions =
+      requestedInstructions || messageInstructions || defaults.systemMessage;
 
     // determine if the model supports the images tool
     const useImageTool =
@@ -465,56 +472,51 @@ export async function POST(req: Request) {
 
     const response = streamText({
       ...baseStreamTextOptions,
+      instructions,
       tools,
       experimental_transform: smoothStream(),
-      stopWhen: stepCountIs(5), // enable server-side loop: tool call -> tool result -> final text
-      onFinish: async () => {
+      stopWhen: isStepCount(5), // enable server-side loop: tool call -> tool result -> final text
+      onEnd: async () => {
         await mcpClient?.close();
       },
     });
 
-    // Return streaming response using native AI SDK pattern
-    return response.toUIMessageStreamResponse({
-      originalMessages: uiMessages,
-      generateMessageId: () => generateId(),
-      sendSources: true,
-      sendReasoning: true,
+    return createUIMessageStreamResponse({
       consumeSseStream: consumeStream,
-      messageMetadata: ({ part }) => {
-        // Attach metadata at message start
-        // console.log(JSON.stringify(part, null, 2));
-        if (part.type === 'start') {
-          return {
+      stream: toUIMessageStream({
+        stream: response.stream,
+        generateMessageId: () => generateId(),
+        messageMetadata: ({ part }) => {
+          if (part.type === 'start') {
+            return {
+              model,
+              createdAt: new Date().toISOString(),
+            };
+          }
+        },
+        onError: (error: unknown) => {
+          const err = error as Error;
+          console.error('Chat stream error:', {
+            message: err.message,
+            name: err.name,
             model,
-            createdAt: new Date().toISOString(),
-          };
-        }
-        // Attach usage metadata at message finish
-        if (part.type === 'finish') {
-          return {
-            totalUsage: part.totalUsage,
-          };
-        }
-      },
-      onError: (error: unknown) => {
-        const err = error as Error;
-        console.error('Chat stream error:', {
-          message: err.message,
-          name: err.name,
-          model,
-          timestamp: new Date().toISOString(),
-        });
-        if (err.message?.includes('deployment')) {
-          return 'Model deployment not found. Please contact your administrator.';
-        }
-        if (err.message?.includes('quota')) {
-          return 'API quota exceeded. Please try again later.';
-        }
-        if (err.message?.includes('authentication')) {
-          return 'Authentication failed. Please contact your administrator.';
-        }
-        return 'An error occurred processing your request. Please try again.';
-      },
+            timestamp: new Date().toISOString(),
+          });
+          if (err.message?.includes('deployment')) {
+            return 'Model deployment not found. Please contact your administrator.';
+          }
+          if (err.message?.includes('quota')) {
+            return 'API quota exceeded. Please try again later.';
+          }
+          if (err.message?.includes('authentication')) {
+            return 'Authentication failed. Please contact your administrator.';
+          }
+          return 'An error occurred processing your request. Please try again.';
+        },
+        originalMessages: uiMessages,
+        sendReasoning: true,
+        sendSources: true,
+      }),
     });
   } catch (error: unknown) {
     console.error('API route error:', error);

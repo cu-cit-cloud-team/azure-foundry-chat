@@ -6,7 +6,13 @@ export interface UserMeta {
   user_id?: string;
 }
 
-export type { FileUIPart, ReasoningUIPart, SourceUrlUIPart, ToolUIPart } from 'ai';
+export type {
+  FileUIPart,
+  ReasoningFileUIPart,
+  ReasoningUIPart,
+  SourceUrlUIPart,
+  ToolUIPart,
+} from 'ai';
 
 export type MessageFileAttachment = AIFileUIPart & {
   id: string;

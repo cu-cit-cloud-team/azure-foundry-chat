@@ -10,11 +10,16 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/app/components/ui/tooltip';
-import { database } from '@/app/database/database.config';
+import { database, type StoredMessage } from '@/app/database/database.config';
 import { systemMessageAtom, userMetaAtom } from '@/app/utils/atoms';
 
 interface ExportChatButtonProps {
   isLoading: boolean;
+}
+
+interface ExportedChatFile {
+  instructions: string;
+  messages: StoredMessage[];
 }
 
 export const ExportChatButton = memo(({ isLoading }: ExportChatButtonProps) => {
@@ -58,18 +63,13 @@ export const ExportChatButton = memo(({ isLoading }: ExportChatButtonProps) => {
         (a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
       )
       .map((message) => message);
-    // Add system message at the beginning for export
-    const messagesWithSystem = [
-      {
-        id: 'system',
-        role: 'system' as const,
-        parts: [{ type: 'text' as const, text: systemMessage }],
-        createdAt: new Date().toISOString(),
-        model: 'system',
-      },
-      ...sortedMessages,
-    ];
-    return JSON.stringify(messagesWithSystem, null, 2);
+
+    const exportData: ExportedChatFile = {
+      instructions: systemMessage,
+      messages: sortedMessages,
+    };
+
+    return JSON.stringify(exportData, null, 2);
   }, [systemMessage, chatId]);
 
   const handleExportConfirm = useCallback(async () => {

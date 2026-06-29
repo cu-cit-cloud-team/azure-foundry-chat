@@ -1,5 +1,5 @@
 /**
- * App-level helpers for working with AI SDK v6 UI messages.
+ * App-level helpers for working with AI SDK UI messages.
  */
 
 import type { UIMessage } from 'ai';
@@ -60,6 +60,8 @@ export function hasMessageContent(message: UIMessage): boolean {
   const hasOtherContent = message.parts.some(
     (part) =>
       part.type === 'reasoning' ||
+      part.type === 'reasoning-file' ||
+      part.type === 'source-document' ||
       part.type.startsWith('tool-') ||
       part.type === 'source-url'
   );

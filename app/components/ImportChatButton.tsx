@@ -22,10 +22,37 @@ interface ImportChatButtonProps {
   messages: UIMessage[];
 }
 
+interface ImportedChatFile {
+  instructions?: string;
+  messages: StoredMessage[];
+}
+
+function isStoredMessageLike(
+  msg: unknown,
+  allowSystemRole: boolean
+): msg is StoredMessage {
+  return (
+    typeof msg === 'object' &&
+    msg !== null &&
+    'id' in msg &&
+    'role' in msg &&
+    'parts' in msg &&
+    Array.isArray(msg.parts) &&
+    'createdAt' in msg &&
+    'model' in msg &&
+    typeof msg.id === 'string' &&
+    (msg.role === 'user' ||
+      msg.role === 'assistant' ||
+      (allowSystemRole && msg.role === 'system')) &&
+    typeof msg.createdAt === 'string' &&
+    typeof msg.model === 'string'
+  );
+}
+
 export const ImportChatButton = memo(
   ({ isLoading, setMessages, focusTextarea, messages }: ImportChatButtonProps) => {
     const [showDialog, setShowDialog] = useState(false);
-    const [importData, setImportData] = useState<StoredMessage[] | null>(null);
+    const [importData, setImportData] = useState<ImportedChatFile | null>(null);
     const [importError, setImportError] = useState<string | null>(null);
     const [shouldAutoImport, setShouldAutoImport] = useState(false);
     const fileInputRef = useRef<HTMLInputElement>(null);
@@ -34,48 +61,70 @@ export const ImportChatButton = memo(
     const clearMessages = useClearMessages(setMessages, chatId);
     const setSystemMessage = useSetAtom(systemMessageAtom);
 
-    const validateImportedData = useCallback(
-      (data: unknown): data is StoredMessage[] => {
-        if (!Array.isArray(data)) {
-          return false;
+    const normalizeImportedData = useCallback(
+      (data: unknown): ImportedChatFile | null => {
+        if (Array.isArray(data)) {
+          if (!data.every((msg) => isStoredMessageLike(msg, true))) {
+            return null;
+          }
+
+          const legacyInstructions = data.find((msg) => msg.role === 'system');
+
+          return {
+            instructions:
+              legacyInstructions?.parts[0]?.type === 'text'
+                ? legacyInstructions.parts[0].text
+                : undefined,
+            messages: data.filter((msg) => msg.role !== 'system'),
+          };
         }
 
-        // Check that each message has required fields
-        return data.every(
-          (msg) =>
-            typeof msg === 'object' &&
-            msg !== null &&
-            'id' in msg &&
-            'role' in msg &&
-            'parts' in msg &&
-            Array.isArray(msg.parts) &&
-            'createdAt' in msg &&
-            'model' in msg &&
-            typeof msg.id === 'string' &&
-            (msg.role === 'user' ||
-              msg.role === 'assistant' ||
-              msg.role === 'system') &&
-            typeof msg.createdAt === 'string' &&
-            typeof msg.model === 'string'
+        if (typeof data !== 'object' || data === null || !('messages' in data)) {
+          return null;
+        }
+
+        const candidate = data as {
+          instructions?: unknown;
+          messages?: unknown;
+        };
+
+        if (!Array.isArray(candidate.messages)) {
+          return null;
+        }
+
+        if (!candidate.messages.every((msg) => isStoredMessageLike(msg, true))) {
+          return null;
+        }
+
+        const legacyInstructions = candidate.messages.find(
+          (msg) => msg.role === 'system'
         );
+
+        return {
+          instructions:
+            typeof candidate.instructions === 'string' &&
+            candidate.instructions.trim()
+              ? candidate.instructions
+              : legacyInstructions?.parts[0]?.type === 'text'
+                ? legacyInstructions.parts[0].text
+                : undefined,
+          messages: candidate.messages.filter((msg) => msg.role !== 'system'),
+        };
       },
       []
     );
 
     const performImport = useCallback(
-      async (data: StoredMessage[]) => {
+      async (data: ImportedChatFile) => {
         try {
           // Clear existing messages first
           await clearMessages();
 
-          // Extract system message if present (first message with role 'system')
-          const systemMsg = data.find((msg) => msg.role === 'system');
-          if (systemMsg && systemMsg.parts[0]?.type === 'text') {
-            setSystemMessage(systemMsg.parts[0].text);
+          if (data.instructions) {
+            setSystemMessage(data.instructions);
           }
 
-          // Filter out system messages and bulk-write the rest to database
-          const messagesToImport = data.filter((msg) => msg.role !== 'system');
+          const messagesToImport = data.messages;
 
           if (messagesToImport.length > 0) {
             // Ensure imported messages include chatId and write atomically
@@ -128,8 +177,9 @@ export const ImportChatButton = memo(
         try {
           const text = await file.text();
           const parsed = JSON.parse(text);
+          const normalized = normalizeImportedData(parsed);
 
-          if (!validateImportedData(parsed)) {
+          if (!normalized) {
             setImportError(
               'Invalid chat history file. Please select a valid export file.'
             );
@@ -138,12 +188,15 @@ export const ImportChatButton = memo(
           }
 
           // Sort by createdAt to ensure proper order
-          const sortedMessages = parsed.sort(
+          const sortedMessages = normalized.messages.sort(
             (a, b) =>
               new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
           );
 
-          setImportData(sortedMessages);
+          setImportData({
+            instructions: normalized.instructions,
+            messages: sortedMessages,
+          });
           setImportError(null);
 
           // If chat is empty, proceed directly without confirmation
@@ -165,7 +218,7 @@ export const ImportChatButton = memo(
           }
         }
       },
-      [validateImportedData, messages?.length]
+      [normalizeImportedData, messages?.length]
     );
 
     const handleImportConfirm = useCallback(async () => {
