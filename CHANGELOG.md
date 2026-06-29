@@ -1,3 +1,31 @@
+## [1.0.0-beta.51](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.50...v1.0.0-beta.51) (2026-06-29)
+
+### 🔄 Continuous Integration
+
+* **dependabot:** remove ai-sdk v7 (and related) ignore block ([e021ab3](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/e021ab3223865d38882775c02689810796beef59))
+
+### 🛠️ Code Refactoring
+
+* **app:** updates for ai-sdk v6 -> v7 changes ([3edd13b](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/3edd13bdc1f8e082afd39d139cf7b78048df4fbd))
+
+### 🔧 Chores
+
+* **deps-dev:** bump eslint from 10.5.0 to 10.6.0 in the eslint group (#2635) ([558840c](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/558840c3a7f83aced1182d53b3288dbff0397477)), closes [#2635](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2635)
+* **deps-dev:** bump postcss from 8.5.15 to 8.5.16 in the postcss group (#2637) ([1320885](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/1320885dd91c28ab822d59e0d64996cd0df26045)), closes [#2637](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2637)
+* **deps-dev:** bump prettier in the prettier group across 1 directory (#2636) ([06fc578](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/06fc5789adf83b8ee53192424df4b4510a95427c)), closes [#2636](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2636)
+* **deps:** bump actions/cache from 6.0.0 to 6.1.0 (#2633) ([ca0c41e](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/ca0c41e281a80f69f5630d820e9fc0b897b5ae89)), closes [#2633](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2633)
+* **deps:** bump ai-sdk to v7 (and bump related) ([10a3720](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/10a372061ed4cc3012fc7f198fbf8143b4e62586))
+* **deps:** bump lucide-react from 1.21.0 to 1.22.0 (#2639) ([f754edb](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/f754edb68c5361fefb61fd16b59eaf44da105f14)), closes [#2639](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2639)
+* **deps:** bump the ai group with 7 updates (#2634) ([fab01e6](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/fab01e69c1fec3b2092b28e9d07e4d84351b7d87)), closes [#2634](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2634)
+
+### 🏗️ Build System
+
+* update agent skills ([7f3e70b](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/7f3e70b2f0d5138f8acfb947bc8e6e3938cd970f))
+
+### 🐛 Fixes
+
+* **dependabot:** ignore syntax ([a0f32bd](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/a0f32bdbc17d068b672f06eeec9342a67c9c51fe))
+
 ## [1.0.0-beta.50](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.49...v1.0.0-beta.50) (2026-06-26)
 
 ### 🔄 Continuous Integration
