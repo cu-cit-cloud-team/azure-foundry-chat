@@ -1,3 +1,16 @@
+## [1.0.0-beta.52](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.51...v1.0.0-beta.52) (2026-06-29)
+
+### 🏗️ Build System
+
+* **changleog:** update config for v8 api changes ([0eaa725](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/0eaa7254e2e4627d9f17ddde53af19fa87e5da38))
+* **npm:** bump packageManager (and update overrides) ([f7736dd](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/f7736dd92655441648d8de9c77b1940e3149655e))
+
+### 🔧 Chores
+
+* **deps-dev:** bump the conventional-changelog group across 1 directory with 2 updates (#2638) ([2db719b](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/2db719b489d64edde46bbe379bb77a2861144104)), references [#2638](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2638)
+* **deps-dev:** bump the tailwindcss group with 2 updates (#2641) ([2f3a818](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/2f3a818f08c5b9666042374b2b105215f39271bf)), references [#2641](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2641)
+* **deps:** bump the ai group with 4 updates (#2640) ([b6164d6](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/b6164d604afe6fd1851a54c8fc29a4fc8c071e9e)), references [#2640](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2640)
+
 ## [1.0.0-beta.51](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.50...v1.0.0-beta.51) (2026-06-29)
 
 ### 🔄 Continuous Integration
