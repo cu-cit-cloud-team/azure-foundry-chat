@@ -4,20 +4,20 @@ import { createDeepSeek } from '@ai-sdk/deepseek';
 import { createMCPClient } from '@ai-sdk/mcp';
 import { createXai } from '@ai-sdk/xai';
 import {
-  createUIMessageStreamResponse,
   consumeStream,
   convertToModelMessages,
+  createUIMessageStreamResponse,
   extractReasoningMiddleware,
   generateId,
-  type ModelMessage,
-  type UserModelMessage,
   isStepCount,
   smoothStream,
   streamText,
   toUIMessageStream,
+  wrapLanguageModel,
+  type ModelMessage,
   type ToolSet,
   type UIMessage,
-  wrapLanguageModel,
+  type UserModelMessage,
 } from 'ai';
 
 import { DEFAULT_MAX_OUTPUT_TOKENS, DEFAULT_MODEL_NAME } from '@/app/utils/models';
@@ -68,7 +68,6 @@ const {
   AZURE_ANTHROPIC_CLAUDE_OPUS_47_DEPLOYMENT,
   AZURE_ANTHROPIC_CLAUDE_OPUS_48_DEPLOYMENT,
   AZURE_DEEPSEEK_API_PATH,
-  AZURE_DEEPSEEK_R1_0528_DEPLOYMENT,
   AZURE_DEEPSEEK_V32_DEPLOYMENT,
   AZURE_DEEPSEEK_V4_FLASH_DEPLOYMENT,
   AZURE_DEEPSEEK_V4_PRO_DEPLOYMENT,
@@ -402,7 +401,6 @@ export async function POST(req: Request) {
       'DeepSeek-V3.2': AZURE_DEEPSEEK_V32_DEPLOYMENT,
       'DeepSeek-V4-Flash': AZURE_DEEPSEEK_V4_FLASH_DEPLOYMENT,
       'DeepSeek-V4-Pro': AZURE_DEEPSEEK_V4_PRO_DEPLOYMENT,
-      'DeepSeek-R1-0528': AZURE_DEEPSEEK_R1_0528_DEPLOYMENT,
       'grok-4-20-fast-non-reasoning': AZURE_XAI_GROK_4_20_NON_REASONING_DEPLOYMENT,
       'grok-4-20-fast-reasoning': AZURE_XAI_GROK_4_20_REASONING_DEPLOYMENT,
       'grok-4.3': AZURE_XAI_GROK_4_3_DEPLOYMENT,

@@ -149,15 +149,6 @@ export const models: Models = [
     capabilities: ['tools', 'reasoning'],
   },
   {
-    displayName: 'DeepSeek R1-0528',
-    modelVersion: '1',
-    maxInputTokens: 163840,
-    maxOutputTokens: 163840,
-    name: 'DeepSeek-R1-0528',
-    provider: 'deepseek',
-    capabilities: ['tools', 'reasoning'],
-  },
-  {
     displayName: 'Grok 4.2 Non-Reasoning',
     modelVersion: '1',
     maxInputTokens: 262144,
