@@ -1,3 +1,30 @@
+## [1.0.0-beta.53](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.52...v1.0.0-beta.53) (2026-06-30)
+
+### 🏗️ Build System
+
+* **npm:** add fsevents to allowScripts ([713e098](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/713e0985142ea734f2e74466ba8628ca5ed1b201))
+
+### 🔧 Chores
+
+* **deps-dev:** bump oxfmt from 0.56.0 to 0.57.0 (#2646) ([c2e4d73](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/c2e4d73319c87cba2c1a2f3a42ae8aca82e106cb)), references [#2646](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2646)
+* **deps-dev:** bump oxlint from 1.71.0 to 1.72.0 (#2647) ([f92d674](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/f92d674e6f7799184d865c9a71ab08d4964805e5)), references [#2647](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2647)
+* **deps-dev:** bump prettier from 3.9.3 to 3.9.4 in the prettier group (#2645) ([41b3ec1](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/41b3ec1f98b28d10450ba443b59ce4dab4ef0878)), references [#2645](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2645)
+* **deps:** bump mikesprague/teams-incoming-webhook-action (#2642) ([58f6e03](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/58f6e03986104f5be4a6d1977798fcd43a5b8dcf)), references [#2642](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2642)
+* **deps:** bump motion from 12.42.0 to 12.42.2 (#2650) ([bed9ad6](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/bed9ad6edcc5d8e03395b710465d0c6adadc57d7)), references [#2650](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2650)
+* **deps:** bump radix-ui from 1.6.0 to 1.6.1 (#2651) ([fa92be9](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/fa92be9a83aefbe2597fbcb668e94584469b2038)), references [#2651](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2651)
+* **deps:** bump the ai group with 2 updates (#2643) ([55ce2a7](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/55ce2a79ede3117138a8910b9732271b4c2ba088)), references [#2643](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2643)
+* **deps:** bump the ai group with 3 updates (#2648) ([c82be45](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/c82be4567739fe88993fa1c5da955fcf81516893)), references [#2648](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2648)
+* **deps:** bump the ai group with 7 updates (#2644) ([1e356dd](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/1e356dd7a1e8ff72d9aac59c6c182b9ff1be579c)), references [#2644](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2644)
+* **deps:** bump the radix group with 14 updates (#2649) ([6f84b60](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/6f84b60f9798347c84d756ea9ada29730d51ebc0)), references [#2649](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2649)
+
+### ✨ Features
+
+* add/enable claude sonnet 5 ([4404d55](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/4404d5559d5dd992dae6ebcc0772b278d36cb8b1))
+
+### 🛠️ Code Refactoring
+
+* remove deprecated model ([127376b](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/127376b0c35f19d21876096fafcfa31897bfa158))
+
 ## [1.0.0-beta.52](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.51...v1.0.0-beta.52) (2026-06-29)
 
 ### 🏗️ Build System
