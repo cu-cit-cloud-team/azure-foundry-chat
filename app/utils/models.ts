@@ -87,7 +87,7 @@ export const models: Models = [
   },
   {
     displayName: 'Claude Haiku 4.5',
-    modelVersion: '2025-10-01',
+    modelVersion: '2',
     maxInputTokens: 136000,
     maxOutputTokens: 64000,
     name: 'claude-haiku-4-5',
@@ -104,6 +104,15 @@ export const models: Models = [
     capabilities: ['tools', 'reasoning'],
   },
   {
+    displayName: 'Claude Sonnet 5',
+    modelVersion: '2',
+    maxInputTokens: 128000,
+    maxOutputTokens: 128000,
+    name: 'claude-sonnet-5',
+    provider: 'anthropic',
+    capabilities: ['tools', 'reasoning'],
+  },
+  {
     displayName: 'Claude Opus 4.7',
     modelVersion: '1',
     maxInputTokens: 1000000,
@@ -114,7 +123,7 @@ export const models: Models = [
   },
   {
     displayName: 'Claude Opus 4.8',
-    modelVersion: '1',
+    modelVersion: '2',
     maxInputTokens: 1000000,
     maxOutputTokens: 128000,
     name: 'claude-opus-4-8',
@@ -132,7 +141,7 @@ export const models: Models = [
   },
   {
     displayName: 'DeepSeek V4 Flash',
-    modelVersion: '1',
+    modelVersion: '2026-04-23',
     maxInputTokens: 128000,
     maxOutputTokens: 128000,
     name: 'DeepSeek-V4-Flash',
@@ -141,7 +150,7 @@ export const models: Models = [
   },
   {
     displayName: 'DeepSeek V4 Pro',
-    modelVersion: '1',
+    modelVersion: '2026-04-23',
     maxInputTokens: 128000,
     maxOutputTokens: 128000,
     name: 'DeepSeek-V4-Pro',
