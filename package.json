@@ -108,7 +108,7 @@
     "cssnano": "8.0.2",
     "cz-git": "1.13.1",
     "eslint": "10.6.0",
-    "eslint-config-next": "16.2.9",
+    "eslint-config-next": "16.2.10",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-react-compiler": "19.1.0-rc.2",
     "oxfmt": "0.57.0",
