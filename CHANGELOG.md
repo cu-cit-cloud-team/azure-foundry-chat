@@ -1,3 +1,28 @@
+## [1.0.0-beta.54](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.53...v1.0.0-beta.54) (2026-07-07)
+
+### 🔧 Chores
+
+* **deps-dev:** bump @types/node in the types group (#2652) ([709148f](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/709148fe5b7143e460de905796591270d72ae710)), references [#2652](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2652)
+* **deps-dev:** bump eslint-config-next in the eslint group (#2655) ([3241bb9](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/3241bb9d97e7d520549c890da9110ecb57e114aa)), references [#2655](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2655)
+* **deps-dev:** bump oxfmt from 0.57.0 to 0.58.0 (#2667) ([d611fc3](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/d611fc300d53cb507c8bd299e6977ea3338be3b1)), references [#2667](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2667)
+* **deps-dev:** bump oxlint from 1.72.0 to 1.73.0 (#2665) ([179ddba](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/179ddba7603f5db891418709176b060ae532b227)), references [#2665](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2665)
+* **deps-dev:** bump the conventional-changelog group with 2 updates (#2661) ([22ad5e2](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/22ad5e2ba834f7382f2063e6fb51f545d1a58da2)), references [#2661](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2661)
+* **deps:** bump @rive-app/react-webgl2 from 4.29.3 to 4.29.4 (#2656) ([a43c120](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/a43c120aebc8ba71ce3ac13ffe136073f156ae18)), references [#2656](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2656)
+* **deps:** bump @xyflow/react from 12.11.1 to 12.11.2 (#2662) ([02bf1f2](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/02bf1f2b38e263cfd2baf09a365a0b151a490ee6)), references [#2662](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2662)
+* **deps:** bump lucide-react from 1.22.0 to 1.23.0 (#2657) ([5ee02c2](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/5ee02c28e1f89058b220299a587e5b63ec9c5ba2)), references [#2657](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2657)
+* **deps:** bump next from 16.2.9 to 16.2.10 in the next group (#2654) ([249c012](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/249c012b3c7f5818841e0ebae082772a03a02d2c)), references [#2654](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2654)
+* **deps:** bump radix-ui from 1.6.1 to 1.6.2 (#2666) ([4dba2b8](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/4dba2b8eff21d0d063e64d6918085862003b3377)), references [#2666](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2666)
+* **deps:** bump shiki from 4.3.0 to 4.3.1 (#2659) ([cccf56a](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/cccf56af2aea150cf2d4892b7f8e57fb147dbfb8)), references [#2659](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2659)
+* **deps:** bump the ai group with 3 updates (#2663) ([4618947](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/4618947dab472aa06468ff9e75449864b4ac6d6d)), references [#2663](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2663)
+* **deps:** bump the ai group with 4 updates (#2660) ([8df5c86](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/8df5c865466b5af4f557c7a373adf1a80cb76020)), references [#2660](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2660)
+* **deps:** bump the ai group with 7 updates (#2653) ([73f625f](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/73f625f195419aec2b80e64fcee3ec0342ee74a7)), references [#2653](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2653)
+* **deps:** bump the ai group with 7 updates (#2658) ([1e7a1e5](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/1e7a1e5fc0a4a9e380d5e231e538b0ec9a9e4ff1)), references [#2658](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2658)
+* **deps:** bump the radix group across 1 directory with 12 updates (#2664) ([7235ebc](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/7235ebc364c3c7b987177cb7d855288022e416d9)), references [#2664](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2664)
+
+### 🎨 Style
+
+* **utils/models:** move sonnet 5 to end (order by release date) ([91e4c7b](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/91e4c7bf2f9e350624a803aeed836e9024b34bb4))
+
 ## [1.0.0-beta.53](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.52...v1.0.0-beta.53) (2026-06-30)
 
 ### 🏗️ Build System
