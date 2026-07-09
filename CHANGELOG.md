@@ -1,3 +1,21 @@
+## [1.0.0-beta.55](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.54...v1.0.0-beta.55) (2026-07-09)
+
+### 🔧 Chores
+
+* **deps-dev:** bump @types/node in the types group (#2669) ([89266fc](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/89266fcb299c00a0010c1c137148e9b58405165d)), references [#2669](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2669)
+* **deps/deps-dev:** bump several dependencies ([cde0ab6](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/cde0ab61362919c5ff5ab941ffe50a0d17e9c92d))
+* **deps:** bump @rive-app/react-webgl2 from 4.29.4 to 4.29.5 (#2672) ([77749a6](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/77749a6104aa3f8f40d317d799665f5288381dc8)), references [#2672](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2672)
+* **deps:** bump the ai group with 5 updates (#2668) ([17f0f08](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/17f0f08d286dc036fc9848f30461e618e1f56935)), references [#2668](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2668)
+* **deps:** bump the ai group with 7 updates (#2670) ([b32fb20](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/b32fb20f2af689fab2ce26e1c2c94f6e37fa8803)), references [#2670](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2670)
+
+### ✨ Features
+
+* add/enable gpt-5.6 models (luna, sol, terra) ([4df1cbd](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/4df1cbde75eef7659f64b6fc5b1235d895a9a917))
+
+### 🎨 Style
+
+* **utils/models:** update modelVersion and displayName ([180eb9d](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/180eb9d04fb055c7dfad3d04e08f1d83303756e8))
+
 ## [1.0.0-beta.54](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.53...v1.0.0-beta.54) (2026-07-07)
 
 ### 🔧 Chores
