@@ -77,8 +77,8 @@ export const models: Models = [
     capabilities: ['tools', 'web-search', 'reasoning'],
   },
   {
-    displayName: 'GPT Chat Latest',
-    modelVersion: '2026-05-05',
+    displayName: 'GPT Chat Latest (GPT 5.5 Instant)',
+    modelVersion: '2026-06-24',
     maxInputTokens: 200000,
     maxOutputTokens: 128000,
     name: 'gpt-chat-latest',
