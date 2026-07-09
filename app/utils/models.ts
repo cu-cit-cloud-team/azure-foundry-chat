@@ -14,24 +14,6 @@ export type Models = Model[];
 
 export const models: Models = [
   {
-    displayName: 'GPT 5.3 Chat',
-    modelVersion: '2026-03-03',
-    maxInputTokens: 200000,
-    maxOutputTokens: 100000,
-    name: 'gpt-5.3-chat',
-    provider: 'openai',
-    capabilities: ['tools', 'web-search'],
-  },
-  {
-    displayName: 'GPT 5.3 Codex',
-    modelVersion: '2026-02-24',
-    maxInputTokens: 272000,
-    maxOutputTokens: 128000,
-    name: 'gpt-5.3-codex',
-    provider: 'openai',
-    capabilities: ['tools', 'reasoning', 'web-search'],
-  },
-  {
     displayName: 'GPT 5.4',
     modelVersion: '2026-03-05',
     maxInputTokens: 200000,
