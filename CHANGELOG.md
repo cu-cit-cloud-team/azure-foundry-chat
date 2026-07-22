@@ -1,3 +1,16 @@
+## [1.0.0-beta.56](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.55...v1.0.0-beta.56) (2026-07-22)
+
+### 🛠️ Code Refactoring
+
+* remove/deprecate several models ([db0a3a2](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/db0a3a203e0c7422c25b5a6f69221d1d95facae6))
+* **utils/models:** remove gpt-5.3 models ([3f5f889](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/3f5f889a95e713fc515eb6dd30b6939cc47751b6))
+
+### 🔧 Chores
+
+* **deps/deps-dev:** bump several out of date deps ([1d60a9b](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/1d60a9b680f110f3f4797c84c928b784394f7a9e))
+* **deps:** bump actions/checkout from 7.0.0 to 7.0.1 (#2674) ([a19e96f](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/a19e96fb110495086517f937e154c83bd23d31d1)), references [#2674](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2674)
+* **deps:** bump actions/setup-node from 6.4.0 to 7.0.0 (#2673) ([6db7b04](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/6db7b04aee590e3139d3bcd8963274e85f7b21f3)), references [#2673](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2673)
+
 ## [1.0.0-beta.55](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.54...v1.0.0-beta.55) (2026-07-09)
 
 ### 🔧 Chores
