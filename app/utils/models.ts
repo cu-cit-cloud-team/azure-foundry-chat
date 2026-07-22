@@ -48,6 +48,7 @@ export const models: Models = [
     name: 'gpt-5.6-luna',
     provider: 'openai',
     capabilities: ['tools', 'web-search', 'reasoning'],
+    default: true,
   },
   {
     displayName: 'GPT 5.6 Terra',
@@ -124,7 +125,7 @@ export const models: Models = [
 ];
 
 // constants to use as fallbacks when no model is found
-export const DEFAULT_MODEL_NAME = 'gpt-chat-latest';
+export const DEFAULT_MODEL_NAME = 'gpt-5.6-luna';
 export const DEFAULT_MAX_INPUT_TOKENS = 272000;
 export const DEFAULT_MAX_OUTPUT_TOKENS = 128000;
 
