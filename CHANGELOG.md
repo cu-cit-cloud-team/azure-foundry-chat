@@ -1,3 +1,20 @@
+## [1.0.0-beta.57](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.56...v1.0.0-beta.57) (2026-07-24)
+
+### 🔧 Chores
+
+* **deps-dev:** bump deveral dev dependencies ([0bc8685](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/0bc8685bd4eb5dae084255698efbf2741e744d43))
+* **deps:** bump ai-sdk group ([5a6cc47](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/5a6cc4767ba3767932f4ad588109d7f44896add1))
+* **deps:** bump openai ([a88a43d](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/a88a43d1dd94b0a09e49ec5ea0a1e21dfd20f9eb))
+* **deps:** bump radix group and lucide-react ([6bf197a](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/6bf197a1c21feeb9c72965dc4c19e4b8309c6a0a))
+
+### ✨ Features
+
+* add/enable Claude Opus 5 ([2b92afb](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/2b92afbb375dec9f4e7f05ba7f0d65e692ad91fe))
+
+### 🛠️ Code Refactoring
+
+* **utils/models:** update default model ([40dd970](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/40dd9709bba6f89b73d46760f1391ac3a511c9e8))
+
 ## [1.0.0-beta.56](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.55...v1.0.0-beta.56) (2026-07-22)
 
 ### 🛠️ Code Refactoring
