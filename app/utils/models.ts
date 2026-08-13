@@ -32,15 +32,6 @@ export const models: Models = [
     capabilities: ['tools', 'web-search'],
   },
   {
-    displayName: 'GPT Chat Latest (GPT 5.5 Instant)',
-    modelVersion: '2026-06-24',
-    maxInputTokens: 200000,
-    maxOutputTokens: 128000,
-    name: 'gpt-chat-latest',
-    provider: 'openai',
-    capabilities: ['tools', 'web-search', 'reasoning'],
-  },
-  {
     displayName: 'GPT 5.6 Luna',
     modelVersion: '2026-07-09',
     maxInputTokens: 256000,
