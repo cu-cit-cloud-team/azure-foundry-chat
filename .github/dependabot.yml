@@ -13,6 +13,10 @@ updates:
       include: "scope"
   - package-ecosystem: "npm"
     directory: "/"
+    ignore:
+    - dependency-name: "shiki"
+      update-types:
+        - "version-update:semver-major"
     groups:
       ai:
         patterns:
