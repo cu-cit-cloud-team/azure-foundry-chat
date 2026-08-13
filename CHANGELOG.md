@@ -1,3 +1,18 @@
+## [1.0.0-beta.58](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.57...v1.0.0-beta.58) (2026-08-13)
+
+### 🔄 Continuous Integration
+
+* **dependabot:** ignore major version updates to shiki ([35e3338](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/35e3338a2b0c029a6183bc968467c9a4698f268b))
+
+### 🐛 Fixes
+
+* **deps:** dowbgrade shiki to match @streamdown/code's requirements ([9ac6768](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/9ac6768971dacd5defd0c709192b1e5a65562766))
+
+### 🔧 Chores
+
+* **deps/deps-dev:** bump several ([be5d523](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/be5d5237a79b8f9cff4df0795ad14075c7912d19))
+* **overrides:** add brace-expansion to close dependabot alert ([e31a737](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/e31a73719e08fdb37900de5ab346e2a586c99352))
+
 ## [1.0.0-beta.57](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.56...v1.0.0-beta.57) (2026-07-24)
 
 ### 🔧 Chores
