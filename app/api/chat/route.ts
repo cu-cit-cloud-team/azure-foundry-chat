@@ -317,6 +317,7 @@ export async function POST(req: Request) {
       model: modelName,
       systemMessage: systemMessageRaw,
       webSearch,
+      mcp,
     } = await req.json();
 
     const requestedInstructions =
@@ -421,8 +422,7 @@ export async function POST(req: Request) {
       abortSignal: req.signal,
     };
 
-    // set useMcpServer to true if MCP_SERVER_URL is provided, otherwise false
-    const useMcpServer = Boolean(MCP_SERVER_URL);
+    const useMcpServer = mcp === true && Boolean(MCP_SERVER_URL);
 
     let mcpClient: Awaited<ReturnType<typeof createMCPClient>> | undefined;
     let mcpTools: ToolSet = {};

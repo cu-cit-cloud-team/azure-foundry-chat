@@ -144,6 +144,8 @@ export default function App() {
           promptInputRef={promptInputRef}
           useWebSearch={false}
           onToggleWebSearch={() => {}}
+          useMCP={false}
+          onToggleMCP={() => {}}
           chatStatus='ready'
           onStop={() => {}}
         />
@@ -177,6 +179,8 @@ function ChatInner({
 }: ChatInnerProps) {
   const [useWebSearch, setUseWebSearch] = useState(false);
   const useWebSearchRef = useRef(useWebSearch);
+  const [useMCP, setUseMCP] = useState(false);
+  const useMCPRef = useRef(useMCP);
 
   const focusTextarea = useCallback(() => {
     setTimeout(() => {
@@ -189,6 +193,10 @@ function ChatInner({
   useEffect(() => {
     useWebSearchRef.current = useWebSearch;
   }, [useWebSearch]);
+
+  useEffect(() => {
+    useMCPRef.current = useMCP;
+  }, [useMCP]);
 
   // Focus PromptInput on mount (unless system message textarea is focused)
   useEffect(() => {
@@ -244,6 +252,7 @@ function ChatInner({
               model: modelNameRef.current,
               id: userId,
               webSearch: useWebSearchRef.current,
+              mcp: useMCPRef.current,
             },
           };
         },
@@ -410,6 +419,11 @@ function ChatInner({
     focusTextarea();
   }, [focusTextarea]);
 
+  const handleToggleMCP = useCallback(() => {
+    setUseMCP((prev) => !prev);
+    focusTextarea();
+  }, [focusTextarea]);
+
   // subscribe to storage change events so multiple tabs stay in sync
   useEffect(() => {
     const handleStorageChanges = (e: StorageEvent) => {
@@ -510,6 +524,8 @@ function ChatInner({
         promptInputRef={promptInputRef}
         useWebSearch={useWebSearch}
         onToggleWebSearch={handleToggleWebSearch}
+        useMCP={useMCP}
+        onToggleMCP={handleToggleMCP}
         chatStatus={status}
         onStop={stop}
       />

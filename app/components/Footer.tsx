@@ -1,5 +1,5 @@
 import { useAtom } from 'jotai';
-import { CheckIcon, GlobeIcon } from 'lucide-react';
+import { CheckIcon, GlobeIcon, WrenchIcon } from 'lucide-react';
 import Image from 'next/image';
 import { memo, useCallback, useEffect, useRef, useState } from 'react';
 
@@ -70,6 +70,8 @@ interface FooterProps {
   promptInputRef: React.RefObject<HTMLTextAreaElement | null>;
   useWebSearch: boolean;
   onToggleWebSearch: () => void;
+  useMCP: boolean;
+  onToggleMCP: () => void;
   chatStatus?: 'ready' | 'submitted' | 'streaming' | 'error';
   onStop?: () => void;
 }
@@ -176,6 +178,8 @@ export const Footer = memo(
     promptInputRef,
     useWebSearch,
     onToggleWebSearch,
+    useMCP,
+    onToggleMCP,
     chatStatus,
     onStop,
   }: FooterProps) => {
@@ -310,6 +314,22 @@ export const Footer = memo(
                     {!supportsWebSearch
                       ? 'This model does not support web search'
                       : `${useWebSearch ? 'Disable' : 'Enable'} Web Search `}
+                  </TooltipContent>
+                </Tooltip>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <span className='inline-flex' role='presentation'>
+                      <PromptInputButton
+                        onClick={onToggleMCP}
+                        variant={useMCP ? 'default' : 'ghost'}
+                      >
+                        <WrenchIcon size={16} />
+                        <span>TDX MCP</span>
+                      </PromptInputButton>
+                    </span>
+                  </TooltipTrigger>
+                  <TooltipContent side='top' align='start'>
+                    {`${useMCP ? 'Disable' : 'Enable'} TDX MCP`}
                   </TooltipContent>
                 </Tooltip>
                 <ModelSelector
