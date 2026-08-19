@@ -1,3 +1,21 @@
+## [1.0.0-beta.59](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.58...v1.0.0-beta.59) (2026-08-19)
+
+### 🛠️ Code Refactoring
+
+* add button to toggle tdx mcp; default to false ([0281885](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/028188575029ff62e0a5e6450c950466f9862bd6))
+* **api/chat:** remove support for gpt-chat-latest ([08018e4](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/08018e43fb72f015b29a65ed12650f1153f165da))
+* **utils/models:** remove gpt-chat-latest (gpt-5.5-chat) ([8b33e1b](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/8b33e1b314074695f44880593afc3ac899dc858b))
+
+### 🔄 Continuous Integration
+
+* **build-and-deploy:** remove install flag ([e62a582](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/e62a58200c0cc41b12a19a879e2c819570b23023))
+
+### 🔧 Chores
+
+* **deps/deps-dev:** bump several ([6dcbf74](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/6dcbf7446501207a742a844fef3c0c1f7e965315))
+* **deps/deps-dev:** bump several ([bc9748e](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/bc9748eb5fcf759cf015e158bfbcb570d3143d25))
+* **env.local.example:** remove gpt-chat-latest ([81c53d6](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/81c53d6c59356d1bb5d1ae8bf734080f149dee87))
+
 ## [1.0.0-beta.58](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.57...v1.0.0-beta.58) (2026-08-13)
 
 ### 🔄 Continuous Integration
