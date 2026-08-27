@@ -87,7 +87,7 @@ export const models: Models = [
     capabilities: ['tools', 'reasoning'],
   },
   {
-    displayName: 'DeepSeek V4 Flash',
+    displayName: 'DeepSeek V4 Flash 0731',
     modelVersion: '2026-04-23',
     maxInputTokens: 128000,
     maxOutputTokens: 128000,
