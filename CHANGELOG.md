@@ -1,3 +1,23 @@
+## [1.0.0-beta.60](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.59...v1.0.0-beta.60) (2026-08-27)
+
+### ✨ Features
+
+* add/enable grok-4.6 ([ce02505](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/ce025051a181eb66f815f351fe2198114c56ca12))
+
+### 🔧 Chores
+
+* **deps-dev:** bump @types/react-dom in the types group (#2682) ([43e40f1](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/43e40f1adc6a6c25916915045a502e52dfcff0e7)), references [#2682](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2682)
+* **deps-dev:** bump cssnano from 8.0.6 to 8.0.8 (#2681) ([e1a8a5e](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/e1a8a5ec69065f2f600e4620ee2f71edc1082d38)), references [#2681](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2681)
+* **deps-dev:** bump cz-git from 1.13.2 to 1.14.0 (#2679) ([0025974](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/0025974c6b1136a40b5215ed71b59e84c72db452)), references [#2679](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2679)
+* **deps-dev:** bump the eslint group with 2 updates (#2677) ([04d338a](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/04d338adba3e7b0dab74115c32f088b874114806)), references [#2677](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2677)
+* **deps/deps-dev:** bump several ([a2f3d5d](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/a2f3d5d321c5967518fa9af5f8446863b1bcbe6b))
+* **deps:** bump @rive-app/react-webgl2 from 4.32.0 to 4.32.1 (#2680) ([acb51f5](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/acb51f53313af033e407f79bc1f60478dd342743)), references [#2680](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2680)
+* **deps:** bump jotai from 2.20.2 to 2.20.3 (#2683) ([52c774f](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/52c774fbb2a2288b8c8311ac85ee005ab5df370c)), references [#2683](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2683)
+* **deps:** bump lucide-react from 1.33.0 to 1.34.0 (#2684) ([32a26f5](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/32a26f538d74197e190b5ed361f3dbc3563a3e32)), references [#2684](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2684)
+* **deps:** bump motion from 13.1.0 to 13.1.1 (#2678) ([b84961e](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/b84961ed6813d80d4b284168fcde9b3fefb01567)), references [#2678](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2678)
+* **deps:** bump next from 16.3.1 to 16.3.2 in the next group (#2676) ([56e0b1d](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/56e0b1d0b8d9514cf1d3a88078c3dd71545c15ac)), references [#2676](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2676)
+* **deps:** bump the ai group with 7 updates (#2675) ([48c7113](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/48c7113f1cd6f75f1347dd1804ba4bea71955497)), references [#2675](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2675)
+
 ## [1.0.0-beta.59](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.58...v1.0.0-beta.59) (2026-08-19)
 
 ### 🛠️ Code Refactoring
