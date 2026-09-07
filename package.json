@@ -113,7 +113,7 @@
     "eslint-plugin-react-compiler": "19.1.0-rc.2",
     "oxfmt": "0.65.0",
     "oxlint": "1.80.0",
-    "postcss": "8.5.26",
+    "postcss": "8.5.28",
     "postcss-cli": "11.0.1",
     "prettier": "3.9.6",
     "prettier-plugin-tailwindcss": "0.8.1",
@@ -126,7 +126,7 @@
   "overrides": {
     "brace-expansion": "^5.0.9",
     "linkify-it": "^6.1.0",
-    "postcss": "8.5.26",
+    "postcss": "8.5.28",
     "sharp": "^0.35.3"
   },
   "browserslist": {
