@@ -51,7 +51,7 @@ export const models: Models = [
     capabilities: ['tools', 'reasoning'],
   },
   {
-    displayName: 'Claude Opus 5.54',
+    displayName: 'Claude Opus 5.5',
     modelVersion: '2',
     maxInputTokens: 256000,
     maxOutputTokens: 128000,
