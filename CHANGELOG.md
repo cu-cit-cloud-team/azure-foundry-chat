@@ -1,3 +1,25 @@
+## [1.0.0-beta.62](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.61...v1.0.0-beta.62) (2026-09-23)
+
+### 🛠️ Code Refactoring
+
+* add/remove some models ([0ace02f](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/0ace02f4628fdbe4223f9e26dd43456ff181d5f8))
+
+### 🔧 Chores
+
+* **deps-dev:** bump @types/node in the types group (#2737) ([6fe4501](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/6fe4501c18e23638cff152f20e87094f0e505042)), references [#2737](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2737)
+* **deps-dev:** bump @types/node in the types group (#2744) ([9b3c50f](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/9b3c50f7439e3cc562127bc22bac07417d609844)), references [#2744](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2744)
+* **deps-dev:** bump cssnano from 9.0.4 to 9.0.5 (#2742) ([a712ed1](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/a712ed17ff17a0320a2fe81c5824d7ec88f27e04)), references [#2742](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2742)
+* **deps-dev:** bump eslint from 10.10.0 to 10.11.0 in the eslint group (#2745) ([e1b5a67](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/e1b5a6776bd16d3c298805654f381f211f0c1032)), references [#2745](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2745)
+* **deps-dev:** bump prettier from 3.9.7 to 3.9.8 in the prettier group (#2738) ([bf37465](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/bf37465130d4714e5606d81ef381ffb085b31a96)), references [#2738](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2738)
+* **deps/deps-dev:** bump several ([3f087a9](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/3f087a9d859d0e8741cfdc82b1b91736d6fc2887))
+* **deps:** bump @rive-app/react-webgl2 from 4.34.2 to 4.34.3 (#2741) ([b2e86ac](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/b2e86ac53c70d703a86d83151c110d0249053ac6)), references [#2741](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2741)
+* **deps:** bump lucide-react from 1.46.0 to 1.47.0 (#2740) ([facbf7a](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/facbf7a269fcb110dd276d8b92d6986c7afc5bce)), references [#2740](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2740)
+* **deps:** bump openai from 7.15.0 to 7.18.0 (#2739) ([02f0d68](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/02f0d68a4312eccfe7dfff0054609a0448cb1eb1)), references [#2739](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2739)
+* **deps:** bump openai from 7.18.0 to 7.19.0 (#2746) ([5affade](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/5affade22cc4bbc1218ca852b162621f7b31594b)), references [#2746](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2746)
+* **deps:** bump openai from 7.19.0 to 7.20.0 (#2747) ([3d8ec1a](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/3d8ec1a63f7d3a505ed3a4da860bae029342cf24)), references [#2747](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2747)
+* **deps:** bump the ai group with 7 updates (#2736) ([27328e0](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/27328e09efc51ee2306da5f92680ae40789ad5ab)), references [#2736](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2736)
+* **deps:** bump the ai group with 7 updates (#2743) ([bec926a](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/bec926a6d3117bef9189318825583e804be4ce2f)), references [#2743](https://github.com/cu-cit-cloud-team/azure-foundry-chat/issues/2743)
+
 ## [1.0.0-beta.61](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.60...v1.0.0-beta.61) (2026-09-16)
 
 ### 🎨 Style
