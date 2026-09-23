@@ -14,48 +14,21 @@ export type Models = Model[];
 
 export const models: Models = [
   {
-    displayName: 'GPT 5.4 Mini',
-    modelVersion: '2026-03-17',
-    maxInputTokens: 272000,
-    maxOutputTokens: 128000,
-    name: 'gpt-5.4-mini',
-    provider: 'openai',
-    capabilities: ['tools', 'web-search'],
-  },
-  {
-    displayName: 'GPT 5.4 Nano',
-    modelVersion: '2026-03-17',
-    maxInputTokens: 272000,
-    maxOutputTokens: 128000,
-    name: 'gpt-5.4-nano',
-    provider: 'openai',
-    capabilities: ['tools', 'web-search'],
-  },
-  {
-    displayName: 'GPT 5.6 Luna',
-    modelVersion: '2026-07-09',
+    displayName: 'GPT 6 Luna',
+    modelVersion: '2026-09-22',
     maxInputTokens: 256000,
     maxOutputTokens: 128000,
-    name: 'gpt-5.6-luna',
+    name: 'gpt-6-luna',
     provider: 'openai',
     capabilities: ['tools', 'web-search', 'reasoning'],
     default: true,
   },
   {
-    displayName: 'GPT 5.6 Terra',
-    modelVersion: '2026-07-09',
+    displayName: 'GPT 6 Sol',
+    modelVersion: '2026-09-22',
     maxInputTokens: 256000,
     maxOutputTokens: 128000,
-    name: 'gpt-5.6-terra',
-    provider: 'openai',
-    capabilities: ['tools', 'web-search', 'reasoning'],
-  },
-  {
-    displayName: 'GPT 5.6 Sol',
-    modelVersion: '2026-07-09',
-    maxInputTokens: 256000,
-    maxOutputTokens: 128000,
-    name: 'gpt-5.6-sol',
+    name: 'gpt-6-sol',
     provider: 'openai',
     capabilities: ['tools', 'web-search', 'reasoning'],
   },
@@ -78,11 +51,11 @@ export const models: Models = [
     capabilities: ['tools', 'reasoning'],
   },
   {
-    displayName: 'Claude Opus 5',
+    displayName: 'Claude Opus 5.54',
     modelVersion: '2',
     maxInputTokens: 256000,
     maxOutputTokens: 128000,
-    name: 'claude-opus-5',
+    name: 'claude-opus-5-5',
     provider: 'anthropic',
     capabilities: ['tools', 'reasoning'],
   },
@@ -116,7 +89,7 @@ export const models: Models = [
 ];
 
 // constants to use as fallbacks when no model is found
-export const DEFAULT_MODEL_NAME = 'gpt-5.6-luna';
+export const DEFAULT_MODEL_NAME = 'gpt-6-luna';
 export const DEFAULT_MAX_INPUT_TOKENS = 272000;
 export const DEFAULT_MAX_OUTPUT_TOKENS = 128000;
 

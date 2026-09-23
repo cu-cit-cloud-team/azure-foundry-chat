@@ -29,7 +29,7 @@ function validateEnvVars() {
     AZURE_FOUNDRY_RESOURCE_NAME,
     AZURE_FOUNDRY_ENDPOINT,
     AZURE_OPENAI_GPT_IMAGE_DEPLOYMENT,
-    AZURE_OPENAI_GPT56_LUNA_DEPLOYMENT,
+    AZURE_OPENAI_GPT6_LUNA_DEPLOYMENT,
     AZURE_ANTHROPIC_API_PATH,
     AZURE_ANTHROPIC_API_VERSION,
     AZURE_DEEPSEEK_API_PATH,
@@ -53,15 +53,12 @@ const {
   AZURE_FOUNDRY_OPENAI_COMPATIBLE_ENDPOINT,
   AZURE_FOUNDRY_RESOURCE_NAME,
   AZURE_OPENAI_GPT_IMAGE_DEPLOYMENT,
-  AZURE_OPENAI_GPT54_MINI_DEPLOYMENT,
-  AZURE_OPENAI_GPT54_NANO_DEPLOYMENT,
-  AZURE_OPENAI_GPT56_LUNA_DEPLOYMENT,
-  AZURE_OPENAI_GPT56_SOL_DEPLOYMENT,
-  AZURE_OPENAI_GPT56_TERRA_DEPLOYMENT,
+  AZURE_OPENAI_GPT6_LUNA_DEPLOYMENT,
+  AZURE_OPENAI_GPT6_SOL_DEPLOYMENT,
   AZURE_ANTHROPIC_API_PATH,
   AZURE_ANTHROPIC_API_VERSION,
   AZURE_ANTHROPIC_CLAUDE_HAIKU_45_DEPLOYMENT,
-  AZURE_ANTHROPIC_CLAUDE_OPUS_5_DEPLOYMENT,
+  AZURE_ANTHROPIC_CLAUDE_OPUS_55_DEPLOYMENT,
   AZURE_ANTHROPIC_CLAUDE_SONNET_5_DEPLOYMENT,
   AZURE_DEEPSEEK_API_PATH,
   AZURE_DEEPSEEK_V4_FLASH_DEPLOYMENT,
@@ -334,9 +331,7 @@ export async function POST(req: Request) {
       requestedInstructions || messageInstructions || defaults.systemMessage;
 
     // determine if the model supports the images tool
-    const useImageTool =
-      (model.startsWith('gpt-41') || model.startsWith('gpt-5')) &&
-      !model.includes('codex');
+    const useImageTool = model.startsWith('gpt-6') || model.startsWith('gpt-5');
 
     // create azure client
     const azure = createAzure({
@@ -380,14 +375,11 @@ export async function POST(req: Request) {
 
     // Map model names to their deployment environment variables
     const modelDeploymentMap: Record<string, string | undefined> = {
-      'gpt-5.4-mini': AZURE_OPENAI_GPT54_MINI_DEPLOYMENT,
-      'gpt-5.4-nano': AZURE_OPENAI_GPT54_NANO_DEPLOYMENT,
-      'gpt-5.6-luna': AZURE_OPENAI_GPT56_LUNA_DEPLOYMENT,
-      'gpt-5.6-sol': AZURE_OPENAI_GPT56_SOL_DEPLOYMENT,
-      'gpt-5.6-terra': AZURE_OPENAI_GPT56_TERRA_DEPLOYMENT,
+      'gpt-6-luna': AZURE_OPENAI_GPT6_LUNA_DEPLOYMENT,
+      'gpt-6-sol': AZURE_OPENAI_GPT6_SOL_DEPLOYMENT,
       'claude-haiku-4-5': AZURE_ANTHROPIC_CLAUDE_HAIKU_45_DEPLOYMENT,
       'claude-sonnet-5': AZURE_ANTHROPIC_CLAUDE_SONNET_5_DEPLOYMENT,
-      'claude-opus-5': AZURE_ANTHROPIC_CLAUDE_OPUS_5_DEPLOYMENT,
+      'claude-opus-5-5': AZURE_ANTHROPIC_CLAUDE_OPUS_55_DEPLOYMENT,
       'DeepSeek-V4-Flash': AZURE_DEEPSEEK_V4_FLASH_DEPLOYMENT,
       'DeepSeek-V4-Pro': AZURE_DEEPSEEK_V4_PRO_DEPLOYMENT,
       'grok-4.6': AZURE_XAI_GROK_4_6_DEPLOYMENT,
