@@ -69,15 +69,6 @@ export const models: Models = [
     capabilities: ['tools', 'reasoning'],
   },
   {
-    displayName: 'DeepSeek V4 Pro',
-    modelVersion: '2026-04-23',
-    maxInputTokens: 256000,
-    maxOutputTokens: 128000,
-    name: 'DeepSeek-V4-Pro',
-    provider: 'deepseek',
-    capabilities: ['tools', 'reasoning'],
-  },
-  {
     displayName: 'Grok 4.7',
     modelVersion: '1',
     maxInputTokens: 200000,
