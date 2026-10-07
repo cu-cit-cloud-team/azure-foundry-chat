@@ -1,3 +1,13 @@
+## [1.0.0-beta.64](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.63...v1.0.0-beta.64) (2026-10-07)
+
+### 🛠️ Code Refactoring
+
+* grok 4.6 -> gok 4.7 ([62a5b5c](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/62a5b5ceb9a739ac06d40926e05a012f27f3ca29))
+
+### 🔧 Chores
+
+* **deps/deps-dev/overrides:** bump several ([34befab](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/34befabc13401ceaac7502f93b786f88d331056c))
+
 ## [1.0.0-beta.63](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.62...v1.0.0-beta.63) (2026-10-02)
 
 ### ✨ Features
