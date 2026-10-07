@@ -33,11 +33,11 @@ export const models: Models = [
     capabilities: ['tools', 'web-search', 'reasoning'],
   },
   {
-    displayName: 'Claude Haiku 4.5',
+    displayName: 'Claude Haiku 5.5',
     modelVersion: '2',
     maxInputTokens: 136000,
     maxOutputTokens: 64000,
-    name: 'claude-haiku-4-5',
+    name: 'claude-haiku-5-5',
     provider: 'anthropic',
     capabilities: ['tools', 'reasoning'],
   },
