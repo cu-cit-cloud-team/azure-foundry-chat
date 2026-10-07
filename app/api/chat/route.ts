@@ -63,7 +63,7 @@ const {
   AZURE_DEEPSEEK_API_PATH,
   AZURE_DEEPSEEK_V4_FLASH_DEPLOYMENT,
   AZURE_DEEPSEEK_V4_PRO_DEPLOYMENT,
-  AZURE_XAI_GROK_4_6_DEPLOYMENT,
+  AZURE_XAI_GROK_4_7_DEPLOYMENT,
   MCP_SERVER_URL,
 } = process.env;
 
@@ -382,7 +382,7 @@ export async function POST(req: Request) {
       'claude-opus-5-5': AZURE_ANTHROPIC_CLAUDE_OPUS_55_DEPLOYMENT,
       'DeepSeek-V4-Flash': AZURE_DEEPSEEK_V4_FLASH_DEPLOYMENT,
       'DeepSeek-V4-Pro': AZURE_DEEPSEEK_V4_PRO_DEPLOYMENT,
-      'grok-4.6': AZURE_XAI_GROK_4_6_DEPLOYMENT,
+      'grok-4.7': AZURE_XAI_GROK_4_7_DEPLOYMENT,
     };
 
     const deploymentName = modelDeploymentMap[model];

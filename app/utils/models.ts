@@ -78,11 +78,11 @@ export const models: Models = [
     capabilities: ['tools', 'reasoning'],
   },
   {
-    displayName: 'Grok 4.6',
+    displayName: 'Grok 4.7',
     modelVersion: '1',
     maxInputTokens: 200000,
     maxOutputTokens: 128000,
-    name: 'grok-4.6',
+    name: 'grok-4.7',
     provider: 'xai',
     capabilities: ['tools', 'reasoning'],
   },
