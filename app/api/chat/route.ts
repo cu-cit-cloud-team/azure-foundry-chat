@@ -4,20 +4,20 @@ import { createDeepSeek } from '@ai-sdk/deepseek';
 import { createMCPClient } from '@ai-sdk/mcp';
 import { createXai } from '@ai-sdk/xai';
 import {
-  consumeStream,
-  convertToModelMessages,
-  createUIMessageStreamResponse,
-  extractReasoningMiddleware,
-  generateId,
-  isStepCount,
-  smoothStream,
-  streamText,
-  toUIMessageStream,
-  wrapLanguageModel,
-  type ModelMessage,
-  type ToolSet,
-  type UIMessage,
-  type UserModelMessage,
+    consumeStream,
+    convertToModelMessages,
+    createUIMessageStreamResponse,
+    extractReasoningMiddleware,
+    generateId,
+    isStepCount,
+    smoothStream,
+    streamText,
+    toUIMessageStream,
+    wrapLanguageModel,
+    type ModelMessage,
+    type ToolSet,
+    type UIMessage,
+    type UserModelMessage,
 } from 'ai';
 
 import { DEFAULT_MAX_OUTPUT_TOKENS, DEFAULT_MODEL_NAME } from '@/app/utils/models';
@@ -61,7 +61,7 @@ const {
   AZURE_ANTHROPIC_CLAUDE_OPUS_55_DEPLOYMENT,
   AZURE_ANTHROPIC_CLAUDE_SONNET_55_DEPLOYMENT,
   AZURE_DEEPSEEK_API_PATH,
-  AZURE_DEEPSEEK_V4_FLASH_DEPLOYMENT,
+  AZURE_DEEPSEEK_V4_1_FLASH_DEPLOYMENT,
   AZURE_DEEPSEEK_V4_PRO_DEPLOYMENT,
   AZURE_XAI_GROK_4_7_DEPLOYMENT,
   MCP_SERVER_URL,
@@ -380,7 +380,7 @@ export async function POST(req: Request) {
       'claude-haiku-4-5': AZURE_ANTHROPIC_CLAUDE_HAIKU_45_DEPLOYMENT,
       'claude-sonnet-5-5': AZURE_ANTHROPIC_CLAUDE_SONNET_55_DEPLOYMENT,
       'claude-opus-5-5': AZURE_ANTHROPIC_CLAUDE_OPUS_55_DEPLOYMENT,
-      'DeepSeek-V4-Flash': AZURE_DEEPSEEK_V4_FLASH_DEPLOYMENT,
+      'DeepSeek-V4.1-Flash': AZURE_DEEPSEEK_V4_1_FLASH_DEPLOYMENT,
       'DeepSeek-V4-Pro': AZURE_DEEPSEEK_V4_PRO_DEPLOYMENT,
       'grok-4.7': AZURE_XAI_GROK_4_7_DEPLOYMENT,
     };
