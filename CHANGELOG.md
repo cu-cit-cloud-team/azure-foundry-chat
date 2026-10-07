@@ -1,3 +1,15 @@
+## [1.0.0-beta.65](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.64...v1.0.0-beta.65) (2026-10-07)
+
+### 🛠️ Code Refactoring
+
+* claude haiku 4.5 -> 5.5 ([6af5062](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/6af50624a9252c0deff51adc93587b6a01e5291b))
+* DeepSeek v4 Flash 0731 -> DeepSeek v4.1 Flash ([2a78aa6](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/2a78aa673ca42455134108b36398d18320ce5ce9))
+* remove DeepSeek v4 Pro (v4.1 Flash is better and cheaper)" ([925ec4b](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/925ec4bbe4d4da0590a9e7dda564d1db73c33650))
+
+### 🔧 Chores
+
+* **overrides:** add katex to close security alert ([1a2feb0](https://github.com/cu-cit-cloud-team/azure-foundry-chat/commit/1a2feb02fd1067741a3e476eff62c1501c5a28cf))
+
 ## [1.0.0-beta.64](https://github.com/cu-cit-cloud-team/azure-foundry-chat/compare/v1.0.0-beta.63...v1.0.0-beta.64) (2026-10-07)
 
 ### 🛠️ Code Refactoring
