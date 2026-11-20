@@ -61,7 +61,7 @@
     "@streamdown/code": "2.0.0",
     "@streamdown/math": "1.0.3",
     "@streamdown/mermaid": "1.0.3",
-    "@xyflow/react": "12.12.1",
+    "@xyflow/react": "13.0.1",
     "ai": "7.0.173",
     "ai-elements": "1.9.1",
     "ansi-to-react": "6.2.6",
