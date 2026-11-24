@@ -1,6 +1,6 @@
 {
   "name": "azure-foundry-chat",
-  "version": "2026.11.0",
+  "version": "2026.11.1",
   "description": "Private streaming chat bot experience powered by Azure AI Foundry",
   "private": true,
   "engines": {
